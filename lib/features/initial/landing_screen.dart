@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
+import 'package:sephsuu_care/core/constants/app_font_size.dart';
 import 'package:sephsuu_care/core/widgets/app_button.dart';
+import 'package:sephsuu_care/features/auth/login_screen.dart';
+import 'package:sephsuu_care/features/auth/role_selection_screen.dart';
+import 'package:sephsuu_care/helpers/widgets/arced_text.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
@@ -13,10 +18,9 @@ class LandingScreen extends StatelessWidget {
         height: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topCenter,
+            begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFFFF8FB3), Color(0xFF8EC5FF), Color(0xFF7EE8C8)],
-            stops: [0.0, 0.52, 1.0],
+            colors: [Color(0xFFFFE3EB), Color(0xFFF5FAFF), Color(0xFFE3F6EF)],
           ),
         ),
         child: SafeArea(
@@ -25,6 +29,8 @@ class LandingScreen extends StatelessWidget {
             child: Column(
               children: [
                 const Spacer(),
+                const _LandingHeader(),
+                const SizedBox(height: 24),
                 Image.asset(
                   'assets/images/sefi.png',
                   width: MediaQuery.sizeOf(context).width * 0.72,
@@ -33,15 +39,14 @@ class LandingScreen extends StatelessWidget {
                 const SizedBox(height: 48),
                 AppButton(
                   width: double.infinity,
-                  height: 52,
                   label: const Text(
                     'Login',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                    style: TextStyle(fontSize: AppFontSize.base, fontWeight: FontWeight.w700),
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.blue,
+                    backgroundColor: AppColors.pink,
                     foregroundColor: AppColors.light,
-                    disabledBackgroundColor: AppColors.blue.withValues(
+                    disabledBackgroundColor: AppColors.pink.withValues(
                       alpha: 0.6,
                     ),
                     disabledForegroundColor: AppColors.light.withValues(
@@ -52,16 +57,21 @@ class LandingScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute<void>(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                    );
+                  },
                 ),
                 const SizedBox(height: 14),
                 AppButton(
                   width: double.infinity,
-                  height: 52,
                   label: const Text(
                     "Don't have an account? Signup",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+                    style: TextStyle(fontSize: AppFontSize.base, fontWeight: FontWeight.w700),
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.light,
@@ -78,7 +88,13 @@ class LandingScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute<void>(
+                        builder: (context) => const RoleSelectionScreen(),
+                      ),
+                    );
+                  },
                 ),
                 const SizedBox(height: 28),
               ],
@@ -86,6 +102,98 @@ class LandingScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _LandingHeader extends StatelessWidget {
+  const _LandingHeader();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+          decoration: BoxDecoration(
+            color: AppColors.light.withValues(alpha: 0.74),
+            border: Border.all(color: AppColors.light),
+            borderRadius: BorderRadius.circular(999),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(
+                Icons.favorite_rounded,
+                color: AppColors.pink,
+                size: 18,
+              ),
+              const SizedBox(width: 7),
+              Text(
+                'gentle care companion',
+                style: GoogleFonts.inter(
+                  color: AppColors.dark,
+                  fontSize: AppFontSize.xs,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 6),
+        ArcedText(
+          text: 'sephsuu care',
+          width: 50,
+          height: 82,
+          radius: 360,
+          letterSpacing: 7,
+          arcDegrees: 5,
+          style: GoogleFonts.inter(
+            color: AppColors.dark,
+            fontSize: AppFontSize.x3l,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+        Transform.translate(
+          offset: const Offset(0, -12),
+          child: Column(
+            children: [
+              Container(
+                width: 74,
+                height: 4,
+                decoration: BoxDecoration(
+                  color: AppColors.pink,
+                  borderRadius: BorderRadius.circular(999),
+                ),
+              ),
+              const SizedBox(height: 12),
+              Text.rich(
+                TextSpan(
+                  style: GoogleFonts.inter(
+                    color: AppColors.gray,
+                    fontSize: AppFontSize.base,
+                    height: 1.35,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  children: [
+                    const TextSpan(text: 'your health, '),
+                    TextSpan(
+                      text: 'cared for',
+                      style: GoogleFonts.inter(
+                        color: AppColors.dark,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    const TextSpan(text: '\nanytime.'),
+                  ],
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

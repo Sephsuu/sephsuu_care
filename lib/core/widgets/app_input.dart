@@ -77,6 +77,7 @@ class AppInput extends StatelessWidget {
   final String? initialValue;
 
   final Widget? labelCharacter;
+  final Widget? suffixIcon;
 
   final ValueChanged<String>? onChanged;
   final VoidCallback? onTap;
@@ -114,6 +115,7 @@ class AppInput extends StatelessWidget {
     this.hintText,
     this.initialValue,
     this.labelCharacter,
+    this.suffixIcon,
     this.onChanged,
     this.onTap,
     this.obscureText = false,
@@ -192,6 +194,11 @@ class AppInput extends StatelessWidget {
                     )
                   : null,
               prefixIconConstraints: const BoxConstraints(
+                minWidth: 0,
+                minHeight: 0,
+              ),
+              suffixIcon: suffixIcon,
+              suffixIconConstraints: const BoxConstraints(
                 minWidth: 0,
                 minHeight: 0,
               ),
