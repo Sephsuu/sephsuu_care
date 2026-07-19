@@ -207,7 +207,7 @@ class _AppRadioTile<T> extends StatelessWidget {
             itemPadding ??
             EdgeInsets.symmetric(
               horizontal: bordered ? 12 : 0,
-              vertical: bordered ? 10 : 0,
+              vertical: bordered ? 6 : 0,
             ),
         child: Row(
           mainAxisSize: MainAxisSize.min,

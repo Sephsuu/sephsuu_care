@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 import 'package:sephsuu_care/core/constants/app_font_size.dart';
 import 'package:sephsuu_care/core/widgets/app_button.dart';
 import 'package:sephsuu_care/core/widgets/app_card.dart';
+import 'package:sephsuu_care/core/widgets/app_header_1.dart';
 import 'package:sephsuu_care/core/widgets/app_input.dart';
+import 'package:sephsuu_care/features/dashboard/user_dashboard_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -36,6 +37,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (!mounted) return;
     setState(() => _isSigningIn = false);
+
+    final identifier = _identifierController.text.trim();
+    final username = identifier.contains('@')
+        ? identifier.split('@').first
+        : identifier;
+
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute<void>(
+        builder: (context) => UserDashboardScreen(username: username),
+      ),
+      (route) => false,
+    );
   }
 
   void _togglePasswordVisibility() {
@@ -151,7 +164,7 @@ class _LoginArt extends StatelessWidget {
           Text(
             'a calmer way back in',
             textAlign: TextAlign.center,
-            style: GoogleFonts.inter(
+            style: const TextStyle(
               color: AppColors.dark,
               fontSize: 28,
               fontWeight: FontWeight.w900,
@@ -161,7 +174,7 @@ class _LoginArt extends StatelessWidget {
           Text(
             'Your care space is ready when you are.',
             textAlign: TextAlign.center,
-            style: GoogleFonts.inter(
+            style: const TextStyle(
               color: AppColors.gray,
               fontSize: 15,
               fontWeight: FontWeight.w600,
@@ -198,14 +211,7 @@ class _LoginPanel extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              'login to sephsuu care',
-              style: GoogleFonts.inter(
-                color: AppColors.dark,
-                fontSize: AppFontSize.x3l,
-                fontWeight: FontWeight.w900,
-              ),
-            ),
+            const AppHeader1('login to sephsuu care'),
             const SizedBox(height: 26),
             AppInput(
               controller: screen._identifierController,
@@ -259,7 +265,7 @@ class _LoginPanel extends StatelessWidget {
                     minimumSize: const Size(0, 42),
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    textStyle: GoogleFonts.inter(
+                    textStyle: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w800,
                     ),
@@ -277,15 +283,17 @@ class _LoginPanel extends StatelessWidget {
             const SizedBox(height: 22),
             AppButton(
               width: double.infinity,
-              height: 54,
               onProcess: screen._isSigningIn,
               loadingLabel: const Text(
-                'Opening care space...',
+                'opening care space...',
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
               ),
               label: const Text(
                 'login',
-                style: TextStyle(fontSize: AppFontSize.base, fontWeight: FontWeight.w900),
+                style: TextStyle(
+                  fontSize: AppFontSize.base,
+                  fontWeight: FontWeight.w900,
+                ),
               ),
               icon: const Icon(Icons.favorite_rounded, size: 19),
               style: ElevatedButton.styleFrom(

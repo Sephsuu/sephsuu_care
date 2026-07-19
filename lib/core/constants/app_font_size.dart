@@ -1,6 +1,7 @@
 class AppFontSize {
     AppFontSize._();
 
+    static const double x2s = 10;
     static const double xs = 12;   // text-xs
     static const double sm = 14;   // text-sm
     static const double base = 16; // text-base

@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 import 'package:sephsuu_care/core/constants/app_font_size.dart';
 import 'package:sephsuu_care/core/widgets/app_button.dart';
+import 'package:sephsuu_care/core/widgets/app_header_badge.dart';
 import 'package:sephsuu_care/features/auth/registration_form_screen.dart';
 
 enum SignupRole { patient, nurse, doctor }
@@ -153,7 +154,6 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
                         const SizedBox(height: 24),
                         AppButton(
                           width: double.infinity,
-                          height: 54,
                           disabled: _selectedRole == null,
                           icon: const Icon(Icons.login_rounded, size: 19),
                           label: const Text(
@@ -210,33 +210,14 @@ class _RoleHeader extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 7,
-                ),
-                decoration: BoxDecoration(
-                  color: AppColors.light.withValues(alpha: 0.76),
-                  border: Border.all(color: AppColors.light),
-                  borderRadius: BorderRadius.circular(999),
-                ),
-                child: Text(
-                  'choose your care path',
-                  style: GoogleFonts.inter(
-                    color: AppColors.pink,
-                    fontSize: AppFontSize.xs,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-              ),
+              const AppHeaderBadge(label: 'choose your care path'),
               const SizedBox(height: 14),
               Text(
                 'who are you signing up as?',
-                style: GoogleFonts.inter(
+                style: GoogleFonts.lilitaOne(
                   color: AppColors.dark,
                   fontSize: AppFontSize.x3l,
-                  height: 1.03,
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w100,
                 ),
               ),
             ],
@@ -306,7 +287,7 @@ class _RoleCard extends StatelessWidget {
                   const Spacer(),
                   Text(
                     option.label,
-                    style: GoogleFonts.inter(
+                    style: const TextStyle(
                       color: AppColors.dark,
                       fontSize: AppFontSize.xl,
                       fontWeight: FontWeight.w900,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sephsuu_care/core/constants/app_color.dart';
 
 typedef AppDateFormatter = String Function(BuildContext context, DateTime date);
 typedef AppDateDisabled = bool Function(DateTime date);
@@ -220,7 +221,7 @@ class AppDatePicker extends StatelessWidget {
                           Icon(
                             Icons.calendar_today_rounded,
                             size: 18,
-                            color: enabled ? Colors.grey.shade700 : Colors.grey,
+                            color: enabled ? AppColors.pink : Colors.grey,
                           ),
                       const SizedBox(width: 8),
                       Expanded(

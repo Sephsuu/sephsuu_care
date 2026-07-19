@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:sephsuu_care/core/api/api_client.dart';
+import 'package:sephsuu_care/core/api/api_exception.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 import 'package:sephsuu_care/core/constants/app_font_size.dart';
 import 'package:sephsuu_care/core/widgets/app_button.dart';
 import 'package:sephsuu_care/core/widgets/app_card.dart';
 import 'package:sephsuu_care/core/widgets/app_date_picker.dart';
+import 'package:sephsuu_care/core/widgets/app_header_1.dart';
+import 'package:sephsuu_care/core/widgets/app_header_badge.dart';
 import 'package:sephsuu_care/core/widgets/app_input.dart';
 import 'package:sephsuu_care/core/widgets/app_radio_group.dart';
+import 'package:sephsuu_care/core/widgets/app_snackbar.dart';
+import 'package:sephsuu_care/features/initial/known_allergies_screen.dart';
+import 'package:sephsuu_care/helpers/date_helper.dart';
+import 'package:sephsuu_care/helpers/validators/input_validator.dart';
+import 'package:sephsuu_care/services/auth_service.dart';
 
 class RegistrationFormScreen extends StatefulWidget {
   final String? role;
@@ -23,8 +31,7 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
   final _usernameController = TextEditingController();
   final _emailController = TextEditingController();
   final _contactNumberController = TextEditingController();
-  final _emergencyNameController = TextEditingController();
-  final _emergencyNumberController = TextEditingController();
+  final _authService = AuthService(ApiClient());
 
   DateTime? _dateOfBirth;
   String? _gender;
@@ -36,8 +43,6 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
     _usernameController.dispose();
     _emailController.dispose();
     _contactNumberController.dispose();
-    _emergencyNameController.dispose();
-    _emergencyNumberController.dispose();
     super.dispose();
   }
 
@@ -47,49 +52,55 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
     return role[0].toUpperCase() + role.substring(1);
   }
 
-  String? _requiredText(String? value, String label) {
-    if (value == null || value.trim().isEmpty) return '$label is required';
-    return null;
-  }
+  String _formatSubmitError(Object error) {
+    if (error is! ApiException) return error.toString();
 
-  String? _validateEmail(String? value) {
-    final required = _requiredText(value, 'Email');
-    if (required != null) return required;
+    final fieldErrors = error.errors?.values
+        .whereType<List>()
+        .expand((messages) => messages)
+        .map((message) => message.toString())
+        .where((message) => message.isNotEmpty)
+        .toList();
 
-    final email = value!.trim();
-    if (!email.contains('@') || !email.contains('.')) {
-      return 'Enter a valid email';
+    if (fieldErrors != null && fieldErrors.isNotEmpty) {
+      return fieldErrors.first;
     }
 
-    return null;
-  }
-
-  String? _validatePhone(String? value, String label) {
-    final required = _requiredText(value, label);
-    if (required != null) return required;
-
-    final digits = value!.replaceAll(RegExp(r'[^0-9]'), '');
-    if (digits.length < 10) return 'Enter a valid $label';
-
-    return null;
+    return error.message;
   }
 
   Future<void> _submit() async {
     if (!(_formKey.currentState?.validate() ?? false)) return;
 
     setState(() => _isSubmitting = true);
-    await Future<void>.delayed(const Duration(milliseconds: 800));
 
-    if (!mounted) return;
-    setState(() => _isSubmitting = false);
+    try {
+      final registeredUser = await _authService.register(
+        fullName: _fullNameController.text.trim(),
+        username: _usernameController.text.trim(),
+        email: _emailController.text.trim(),
+        role: widget.role ?? 'patient',
+        contactNumber: _contactNumberController.text.trim(),
+        dateOfBirth: DateHelper.formatApiDate(_dateOfBirth!),
+        gender: _gender!,
+      );
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        behavior: SnackBarBehavior.floating,
-        backgroundColor: AppColors.dark,
-        content: Text('Registration details saved for $_roleLabel'),
-      ),
-    );
+      if (!mounted) return;
+      AppSnackBar.success(
+        context,
+        'Account created for ${registeredUser['user']?['full_name'] ?? _roleLabel}',
+      );
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute<void>(
+          builder: (context) => const KnownAllergiesScreen(),
+        ),
+      );
+    } catch (error) {
+      if (!mounted) return;
+      AppSnackBar.error(context, _formatSubmitError(error));
+    } finally {
+      if (mounted) setState(() => _isSubmitting = false);
+    }
   }
 
   @override
@@ -161,7 +172,10 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
                                   focusedBorderColor: AppColors.pink,
                                   borderRadius: 8,
                                   validator: (value) =>
-                                      _requiredText(value, 'Full name'),
+                                      InputValidator.requiredText(
+                                        value,
+                                        'Full name',
+                                      ),
                                 ),
                                 AppInput(
                                   label: 'Username',
@@ -178,7 +192,10 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
                                   focusedBorderColor: AppColors.pink,
                                   borderRadius: 8,
                                   validator: (value) =>
-                                      _requiredText(value, 'Username'),
+                                      InputValidator.requiredText(
+                                        value,
+                                        'Username',
+                                      ),
                                 ),
                                 AppInput(
                                   label: 'Email',
@@ -195,7 +212,7 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
                                   borderColor: AppColors.lightpink,
                                   focusedBorderColor: AppColors.pink,
                                   borderRadius: 8,
-                                  validator: _validateEmail,
+                                  validator: InputValidator.email,
                                 ),
                                 AppDatePicker(
                                   label: 'Date of birth',
@@ -205,6 +222,7 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
                                   borderColor: AppColors.lightpink,
                                   focusedBorderColor: AppColors.pink,
                                   required: true,
+                                  formatter: DateHelper.formatDisplayDate,
                                   onChanged: (date) {
                                     setState(() => _dateOfBirth = date);
                                   },
@@ -229,11 +247,11 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
                                   setState(() => _gender = value);
                                 },
                                 options: const [
+                                  AppRadioOption(label: 'Male', value: 'male'),
                                   AppRadioOption(
                                     label: 'Female',
                                     value: 'female',
                                   ),
-                                  AppRadioOption(label: 'Male', value: 'male'),
                                   AppRadioOption(
                                     label: 'Others',
                                     value: 'others',
@@ -246,72 +264,32 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
                               ),
                             ),
                             const SizedBox(height: 18),
-                            _ResponsiveFields(
-                              isWide: isWide,
-                              children: [
-                                AppInput(
-                                  label: 'Contact number',
-                                  controller: _contactNumberController,
-                                  hintText: '0917 123 4567',
-                                  keyboardType: TextInputType.phone,
-                                  textInputAction: TextInputAction.next,
-                                  labelCharacter: const Icon(
-                                    Icons.phone_outlined,
-                                    size: AppFontSize.lg,
-                                    color: AppColors.pink,
-                                  ),
-                                  fillColor: AppColors.light,
-                                  borderColor: AppColors.lightpink,
-                                  focusedBorderColor: AppColors.pink,
-                                  borderRadius: 8,
-                                  validator: (value) =>
-                                      _validatePhone(value, 'contact number'),
+                            SizedBox(
+                              width: isWide ? 395 : double.infinity,
+                              child: AppInput(
+                                label: 'Contact number',
+                                controller: _contactNumberController,
+                                hintText: '0917 123 4567',
+                                keyboardType: TextInputType.phone,
+                                textInputAction: TextInputAction.done,
+                                labelCharacter: const Icon(
+                                  Icons.phone_outlined,
+                                  size: AppFontSize.lg,
+                                  color: AppColors.pink,
                                 ),
-                                AppInput(
-                                  label: 'Emergency contact name',
-                                  controller: _emergencyNameController,
-                                  hintText: 'Maria Dela Cruz',
-                                  textInputAction: TextInputAction.next,
-                                  labelCharacter: const Icon(
-                                    Icons.volunteer_activism_outlined,
-                                    size: AppFontSize.lg,
-                                    color: AppColors.pink,
-                                  ),
-                                  fillColor: AppColors.light,
-                                  borderColor: AppColors.lightpink,
-                                  focusedBorderColor: AppColors.pink,
-                                  borderRadius: 8,
-                                  validator: (value) => _requiredText(
-                                    value,
-                                    'Emergency contact name',
-                                  ),
+                                fillColor: AppColors.light,
+                                borderColor: AppColors.lightpink,
+                                focusedBorderColor: AppColors.pink,
+                                borderRadius: 8,
+                                validator: (value) => InputValidator.phone(
+                                  value,
+                                  'contact number',
                                 ),
-                                AppInput(
-                                  label: 'Emergency contact number',
-                                  controller: _emergencyNumberController,
-                                  hintText: '0918 765 4321',
-                                  keyboardType: TextInputType.phone,
-                                  textInputAction: TextInputAction.done,
-                                  labelCharacter: const Icon(
-                                    Icons.contact_phone_outlined,
-                                    size: AppFontSize.lg,
-                                    color: AppColors.pink,
-                                  ),
-                                  fillColor: AppColors.light,
-                                  borderColor: AppColors.lightpink,
-                                  focusedBorderColor: AppColors.pink,
-                                  borderRadius: 8,
-                                  validator: (value) => _validatePhone(
-                                    value,
-                                    'emergency contact number',
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
                             const SizedBox(height: 24),
                             AppButton(
                               width: double.infinity,
-                              height: 54,
                               onProcess: _isSubmitting,
                               icon: const Icon(
                                 Icons.favorite_rounded,
@@ -370,36 +348,21 @@ class _RegistrationHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
+        AppHeaderBadge(
+          label: '${roleLabel.toLowerCase()} signup',
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
-          decoration: BoxDecoration(
-            color: AppColors.light.withValues(alpha: 0.76),
-            border: Border.all(color: AppColors.light),
-            borderRadius: BorderRadius.circular(999),
-          ),
-          child: Text(
-            '${roleLabel.toLowerCase()} signup',
-            style: GoogleFonts.inter(
-              color: AppColors.pink,
-              fontSize: AppFontSize.xs,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-        ),
-        const SizedBox(height: 14),
-        Text(
-          'tell us about you',
-          style: GoogleFonts.inter(
+          textStyle: const TextStyle(
             color: AppColors.dark,
-            fontSize: AppFontSize.x3l,
-            height: 1.03,
+            fontSize: AppFontSize.xs,
             fontWeight: FontWeight.w900,
           ),
         ),
+        const SizedBox(height: 14),
+        const AppHeader1('tell us about you'),
         const SizedBox(height: 8),
         Text(
-          'these details help Sephsuu Care shape your account and keep emergency contacts close.',
-          style: GoogleFonts.inter(
+          'these details help Sephsuu Care shape your account and prepare your generated login.',
+          style: const TextStyle(
             color: AppColors.gray,
             fontSize: AppFontSize.base,
             height: 1.45,
