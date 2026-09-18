@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sephsuu_care/core/constants/app_clay.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
+import 'package:sephsuu_care/core/constants/app_font_size.dart';
+import 'package:sephsuu_care/core/widgets/app_badge.dart';
+import 'package:sephsuu_care/core/widgets/app_card.dart';
 
 class AppBottomNavigation extends StatelessWidget {
   final int selectedIndex;
@@ -13,7 +17,7 @@ class AppBottomNavigation extends StatelessWidget {
 
   static const _items = [
     (icon: Icons.home_rounded, label: 'Home'),
-    (icon: Icons.favorite_border_rounded, label: 'Learn'),
+    (icon: Icons.menu_book_rounded, label: 'Learn'),
     (icon: Icons.medical_services_outlined, label: 'Vitals'),
     (icon: Icons.person_outline_rounded, label: 'Chat'),
   ];
@@ -22,72 +26,68 @@ class AppBottomNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       top: false,
-      minimum: const EdgeInsets.fromLTRB(18, 8, 18, 14),
-      child: Container(
-        height: 68,
-        padding: const EdgeInsets.all(9),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(28),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.dark.withValues(alpha: 0.08),
-              blurRadius: 28,
-              offset: const Offset(0, 10),
-            ),
-          ],
-        ),
-        child: Row(
-          children: List.generate(_items.length, (index) {
-            final item = _items[index];
-            final isSelected = selectedIndex == index;
+      minimum: const EdgeInsets.fromLTRB(18, 10, 18, 16),
+      child: AppCard(
+        height: 64,
+        padding: const EdgeInsets.all(8),
+        backgroundColor: AppColors.card,
+        borderColor: AppColors.lightpink,
+        borderRadius: 28,
+        boxShadow: AppClay.shadows,
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final unitWidth = constraints.maxWidth / 9;
 
-            return Expanded(
-              flex: isSelected ? 2 : 1,
-              child: Semantics(
-                button: true,
-                selected: isSelected,
-                label: item.label,
-                child: InkWell(
-                  onTap: () => onSelected(index),
-                  borderRadius: BorderRadius.circular(20),
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 220),
-                    curve: Curves.easeOut,
-                    decoration: BoxDecoration(
-                      color: isSelected ? AppColors.dark : Colors.transparent,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Row(
+            return Row(
+              children: List.generate(_items.length, (index) {
+                final item = _items[index];
+                final isSelected = selectedIndex == index;
+
+                return AnimatedContainer(
+                  width: unitWidth * (isSelected ? 3 : 2),
+                  duration: const Duration(milliseconds: 280),
+                  curve: Curves.easeOutCubic,
+                  child: Semantics(
+                    button: true,
+                    selected: isSelected,
+                    label: item.label,
+                    child: AppBadge(
+                      label: item.label,
+                      selected: isSelected,
+                      onTap: () => onSelected(index),
+                      icon: item.icon,
+                      selectedIcon: item.icon,
+                      showLabel: isSelected,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          item.icon,
-                          color: isSelected ? Colors.white : AppColors.dark,
-                          size: 25,
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      borderRadius: 20,
+                      gap: 8,
+                      iconSize: 25,
+                      selectedBackgroundColor: AppColors.pink,
+                      backgroundColor: AppColors.card,
+                      borderColor: AppColors.card,
+                      selectedBorderColor: null,
+                      selectedForegroundColor: AppColors.light,
+                      foregroundColor: AppColors.gray,
+                      selectedBoxShadow: [
+                        BoxShadow(
+                          color: AppColors.pink.withValues(alpha: 0.24),
+                          blurRadius: 14,
+                          offset: const Offset(0, 5),
                         ),
-                        if (isSelected) ...[
-                          const SizedBox(width: 8),
-                          Flexible(
-                            child: Text(
-                              item.label,
-                              maxLines: 1,
-                              overflow: TextOverflow.fade,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        ],
                       ],
+                      animationDuration: const Duration(milliseconds: 280),
+                      textStyle: const TextStyle(
+                        color: AppColors.light,
+                        fontSize: AppFontSize.sm,
+                        fontWeight: FontWeight.w800,
+                      ),
                     ),
                   ),
-                ),
-              ),
+                );
+              }),
             );
-          }),
+          },
         ),
       ),
     );

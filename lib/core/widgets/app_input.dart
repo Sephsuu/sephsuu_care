@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sephsuu_care/core/constants/app_clay.dart';
 
 // AppInput(
 //   label: 'Username',
@@ -136,12 +137,12 @@ class AppInput extends StatelessWidget {
     this.fillColor,
     this.borderColor,
     this.focusedBorderColor,
-    this.borderRadius = 8,
+    this.borderRadius = AppClay.radius,
   });
 
   @override
   Widget build(BuildContext context) {
-    final Color resolvedBorderColor = borderColor ?? Colors.grey.shade400;
+    final Color resolvedBorderColor = borderColor ?? AppClay.edge;
     final Color resolvedFocusedBorderColor =
         focusedBorderColor ?? Theme.of(context).colorScheme.primary;
 
@@ -202,8 +203,8 @@ class AppInput extends StatelessWidget {
                 minWidth: 0,
                 minHeight: 0,
               ),
-              filled: fillColor != null,
-              fillColor: fillColor,
+              filled: true,
+              fillColor: fillColor ?? AppClay.surface,
               contentPadding:
                   contentPadding ??
                   const EdgeInsets.symmetric(horizontal: 12, vertical: 12),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sephsuu_care/core/constants/app_clay.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 
 typedef AppDateFormatter = String Function(BuildContext context, DateTime date);
@@ -63,7 +64,7 @@ class AppDatePicker extends StatelessWidget {
     this.fillColor,
     this.borderColor,
     this.focusedBorderColor,
-    this.borderRadius = 8,
+    this.borderRadius = AppClay.radius,
     this.helpText,
     this.cancelText,
     this.confirmText,
@@ -145,7 +146,7 @@ class AppDatePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final resolvedBorderColor = borderColor ?? Colors.grey.shade400;
+    final resolvedBorderColor = borderColor ?? AppClay.edge;
     final resolvedFocusedBorderColor =
         focusedBorderColor ?? Theme.of(context).colorScheme.primary;
     final hasValue = value != null;
@@ -183,8 +184,8 @@ class AppDatePicker extends StatelessWidget {
                 child: InputDecorator(
                   isEmpty: !hasValue,
                   decoration: InputDecoration(
-                    filled: fillColor != null,
-                    fillColor: fillColor,
+                    filled: true,
+                    fillColor: fillColor ?? AppClay.surface,
                     contentPadding:
                         contentPadding ??
                         const EdgeInsets.symmetric(

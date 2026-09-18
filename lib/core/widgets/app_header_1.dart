@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sephsuu_care/core/constants/app_clay.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 import 'package:sephsuu_care/core/constants/app_font_size.dart';
@@ -34,6 +35,7 @@ class AppHeader1 extends StatelessWidget {
       fontSize: fontSize,
       fontWeight: fontWeight,
       height: height,
+      shadows: AppClay.textShadows,
     );
 
     return Text(

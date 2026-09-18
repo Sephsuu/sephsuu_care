@@ -9,6 +9,7 @@ import 'package:sephsuu_care/core/widgets/app_card.dart';
 import 'package:sephsuu_care/core/widgets/app_layout_header.dart';
 import 'package:sephsuu_care/core/widgets/app_header_1.dart';
 import 'package:sephsuu_care/core/widgets/app_header_badge.dart';
+import 'package:sephsuu_care/features/learn/learn_selection_screen.dart';
 import 'package:sephsuu_care/helpers/widgets/stroked_text.dart';
 
 class UserDashboardScreen extends StatefulWidget {
@@ -38,97 +39,103 @@ class _UserDashboardScreenState extends State<UserDashboardScreen> {
     final greeting = _greetingForHour(DateTime.now().hour);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
-      body: SafeArea(
-        bottom: false,
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(
-                horizontalPadding,
-                isWide ? 24 : 14,
-                horizontalPadding,
-                12,
-              ),
-              child: Center(
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 1100),
-                  child: AppLayoutHeader(
-                    username: widget.username,
-                    onProfileTap: () => setState(() => _selectedIndex = 3),
-                    onNotificationsTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Notifications are coming soon.'),
-                        ),
-                      );
-                    },
+      backgroundColor: Colors.transparent,
+      extendBody: true,
+      body: DecoratedBox(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Color(0xFFFFEEF3), Color(0xFFF7FBFF), Color(0xFFE7F8EF)],
+          ),
+        ),
+        child: SafeArea(
+          bottom: false,
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(
+                  horizontalPadding,
+                  isWide ? 24 : 14,
+                  horizontalPadding,
+                  12,
+                ),
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 1100),
+                    child: AppLayoutHeader(
+                      username: widget.username,
+                      onProfileTap: () => setState(() => _selectedIndex = 3),
+                      onNotificationsTap: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Notifications are coming soon.'),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              child: IndexedStack(
-                index: _selectedIndex,
-                children: [
-                  SingleChildScrollView(
-                    key: const PageStorageKey('dashboard-home'),
-                    padding: EdgeInsets.fromLTRB(
-                      horizontalPadding,
-                      isWide ? 14 : 8,
-                      horizontalPadding,
-                      32,
-                    ),
-                    child: Center(
-                      child: ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 1100),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const AppHeaderBadge(
-                              label: 'your care dashboard',
-                              icon: Icons.favorite_rounded,
-                              padding: EdgeInsetsGeometry.symmetric(
-                                vertical: 5,
-                                horizontal: 10,
+              Expanded(
+                child: IndexedStack(
+                  index: _selectedIndex,
+                  children: [
+                    SingleChildScrollView(
+                      key: const PageStorageKey('dashboard-home'),
+                      padding: EdgeInsets.fromLTRB(
+                        horizontalPadding,
+                        isWide ? 14 : 8,
+                        horizontalPadding,
+                        32,
+                      ),
+                      child: Center(
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 1100),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const AppHeaderBadge(
+                                label: 'your care dashboard',
+                                icon: Icons.favorite_rounded,
+                                padding: EdgeInsetsGeometry.symmetric(
+                                  vertical: 5,
+                                  horizontal: 10,
+                                ),
+                                textStyle: TextStyle(
+                                  fontSize: AppFontSize.x2s,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                                iconSize: 14,
+                                gap: 5,
                               ),
-                              textStyle: TextStyle(
-                                fontSize: AppFontSize.x2s,
-                                fontWeight: FontWeight.w800,
+                              _WelcomeSection(
+                                greeting: greeting,
+                                username: widget.username,
+                                height: welcomeHeight,
+                                isWide: isWide,
                               ),
-                              iconSize: 14,
-                              gap: 5,
-                            ),
-                            _WelcomeSection(
-                              greeting: greeting,
-                              username: widget.username,
-                              height: welcomeHeight,
-                              isWide: isWide,
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const _EmptyDashboardTab(
-                    icon: Icons.favorite_border_rounded,
-                    title: 'Your care',
-                    message: 'Your care items will appear here.',
-                  ),
-                  const _EmptyDashboardTab(
-                    icon: Icons.medical_services_outlined,
-                    title: 'Health',
-                    message: 'Your health records will appear here.',
-                  ),
-                  _EmptyDashboardTab(
-                    icon: Icons.person_outline_rounded,
-                    title: widget.username,
-                    message: 'Your profile details will appear here.',
-                  ),
-                ],
+                    const LearnSelectionScreen(),
+                    const _EmptyDashboardTab(
+                      icon: Icons.medical_services_outlined,
+                      title: 'Health',
+                      message: 'Your health records will appear here.',
+                    ),
+                    _EmptyDashboardTab(
+                      icon: Icons.person_outline_rounded,
+                      title: widget.username,
+                      message: 'Your profile details will appear here.',
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: AppBottomNavigation(

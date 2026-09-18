@@ -1,6 +1,7 @@
 // lib/shared/widgets/app_card_summary.dart
 
 import 'package:flutter/material.dart';
+import 'package:sephsuu_care/core/constants/app_clay.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 
 class AppCardSummary extends StatelessWidget {
@@ -31,7 +32,7 @@ class AppCardSummary extends StatelessWidget {
     this.moreContent,
     this.backgroundColor,
     this.borderColor,
-    this.borderRadius = 8,
+    this.borderRadius = AppClay.radius,
     this.boxShadow,
     this.labelStyle,
     this.valueStyle,
@@ -45,17 +46,10 @@ class AppCardSummary extends StatelessWidget {
       padding: padding,
       decoration: BoxDecoration(
         color: backgroundColor ?? AppColors.card,
+        gradient: AppClay.sheen(backgroundColor ?? AppColors.card),
         borderRadius: BorderRadius.circular(borderRadius),
         border: Border.all(color: borderColor ?? AppColors.border),
-        boxShadow:
-            boxShadow ??
-            [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.05),
-                blurRadius: 6,
-                offset: const Offset(0, 2),
-              ),
-            ],
+        boxShadow: boxShadow ?? AppClay.shadows,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

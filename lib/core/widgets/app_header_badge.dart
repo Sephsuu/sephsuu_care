@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sephsuu_care/core/constants/app_clay.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 import 'package:sephsuu_care/core/constants/app_font_size.dart';
 
@@ -38,6 +39,8 @@ class AppHeaderBadge extends StatelessWidget {
       padding: padding,
       decoration: BoxDecoration(
         color: backgroundColor,
+        gradient: AppClay.sheen(backgroundColor),
+        boxShadow: AppClay.shadows,
         border: Border.all(color: borderColor),
         borderRadius: BorderRadius.circular(borderRadius),
       ),

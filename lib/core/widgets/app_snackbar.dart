@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sephsuu_care/core/constants/app_clay.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 
 enum AppSnackBarType { success, error, info }
@@ -49,14 +50,10 @@ class AppSnackBar {
                   ),
                   decoration: BoxDecoration(
                     color: _backgroundColor(type),
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColors.dark.withValues(alpha: 0.18),
-                        blurRadius: 18,
-                        offset: const Offset(0, 8),
-                      ),
-                    ],
+                    borderRadius: BorderRadius.circular(AppClay.radius),
+                    gradient: AppClay.sheen(_backgroundColor(type)),
+                    border: Border.all(color: const Color(0x66FFFFFF)),
+                    boxShadow: AppClay.shadows,
                   ),
                   child: Row(
                     children: [

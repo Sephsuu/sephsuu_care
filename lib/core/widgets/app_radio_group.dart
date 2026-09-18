@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sephsuu_care/core/constants/app_clay.dart';
 
 class AppRadioOption<T> {
   final String label;
@@ -62,7 +63,7 @@ class AppRadioGroup<T> extends StatelessWidget {
     this.activeColor,
     this.fillColor,
     this.borderColor,
-    this.borderRadius = 8,
+    this.borderRadius = AppClay.radius,
     this.bordered = false,
     this.required = false,
     this.validator,
@@ -269,7 +270,8 @@ class _AppRadioTile<T> extends StatelessWidget {
 
     child = DecoratedBox(
       decoration: BoxDecoration(
-        color: fillColor,
+        color: fillColor ?? AppClay.surface,
+        gradient: AppClay.sheen(fillColor ?? AppClay.surface),
         borderRadius: BorderRadius.circular(borderRadius),
         border: Border.all(color: resolvedBorderColor),
       ),
@@ -288,7 +290,7 @@ class _AppRadioTile<T> extends StatelessWidget {
                   offset: const Offset(0, 8),
                 ),
               ]
-            : null,
+            : AppClay.shadows,
       ),
       child: child,
     );

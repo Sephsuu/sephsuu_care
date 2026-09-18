@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sephsuu_care/core/constants/app_clay.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 
 // Sample Usage
@@ -136,9 +137,12 @@ class AppButton extends StatelessWidget {
                   padding ??
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(AppClay.radius),
+                side: const BorderSide(color: Color(0x99FFFFFF), width: 1.5),
               ),
-              elevation: 1,
+              elevation: 6,
+              shadowColor: AppClay.shadow,
+              surfaceTintColor: Colors.transparent,
             ),
         child: Row(
           mainAxisSize: MainAxisSize.min,

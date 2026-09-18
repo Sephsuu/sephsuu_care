@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sephsuu_care/core/constants/app_clay.dart';
 
 typedef AppSelectFilter<T> =
     bool Function(AppSelectOption<T> option, String keyword);
@@ -74,7 +75,7 @@ class AppSelect<T> extends StatelessWidget {
     this.fillColor,
     this.borderColor,
     this.focusedBorderColor,
-    this.borderRadius = 8,
+    this.borderRadius = AppClay.radius,
     this.sheetMaxHeightFactor = 0.72,
     this.emptyText = 'No options found',
     this.validator,
@@ -133,7 +134,7 @@ class AppSelect<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final resolvedBorderColor = borderColor ?? Colors.grey.shade400;
+    final resolvedBorderColor = borderColor ?? AppClay.edge;
     final resolvedFocusedBorderColor =
         focusedBorderColor ?? Theme.of(context).colorScheme.primary;
     final selectedOption = _selectedOption;
@@ -168,8 +169,8 @@ class AppSelect<T> extends StatelessWidget {
                 child: InputDecorator(
                   isEmpty: selectedOption == null,
                   decoration: InputDecoration(
-                    filled: fillColor != null,
-                    fillColor: fillColor,
+                    filled: true,
+                    fillColor: fillColor ?? AppClay.surface,
                     contentPadding:
                         contentPadding ??
                         const EdgeInsets.symmetric(
@@ -322,8 +323,9 @@ class _AppSelectSheetState<T> extends State<_AppSelectSheet<T>> {
     return Container(
       constraints: BoxConstraints(maxHeight: height),
       decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
+        color: AppClay.surface,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+        boxShadow: AppClay.shadows,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,

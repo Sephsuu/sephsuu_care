@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sephsuu_care/core/constants/app_clay.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 
 class AppCard extends StatelessWidget {
@@ -24,8 +25,8 @@ class AppCard extends StatelessWidget {
     this.height,
     this.backgroundColor = AppColors.card,
     this.borderColor = AppColors.border,
-    this.borderWidth = 1,
-    this.borderRadius = 12,
+    this.borderWidth = 1.5,
+    this.borderRadius = AppClay.radius,
     this.boxShadow,
     this.onTap,
     this.clipBehavior = Clip.antiAlias,
@@ -41,14 +42,12 @@ class AppCard extends StatelessWidget {
       clipBehavior: clipBehavior,
       decoration: BoxDecoration(
         color: backgroundColor,
+        gradient: AppClay.sheen(backgroundColor),
         borderRadius: BorderRadius.circular(borderRadius),
         border: borderColor == null
-          ? null
-          : Border.all(
-            color: borderColor!,
-            width: borderWidth,
-          ),
-        boxShadow: boxShadow,
+            ? null
+            : Border.all(color: borderColor!, width: borderWidth),
+        boxShadow: boxShadow ?? AppClay.shadows,
       ),
       child: child,
     );

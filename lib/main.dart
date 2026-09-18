@@ -35,6 +35,7 @@ void startSyncListener({
 
     if (hasInternet) {
       // await allergyRepository.syncPendingOperations();
+
     }
   });
 }

@@ -1,0 +1,19 @@
+{
+  "dart.autoImportCompletions": true,
+  "dart.completeFunctionCalls": true,
+  "[dart]": {
+    "editor.quickSuggestions": {
+      "other": "on",
+      "comments": "off",
+      "strings": "on"
+    },
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.parameterHints.enabled": true,
+    "editor.suggest.showClasses": true,
+    "editor.suggest.showConstructors": true,
+    "editor.suggest.showFields": true,
+    "editor.suggest.showVariables": true,
+    "editor.suggest.showUnimported": true
+  }
+}

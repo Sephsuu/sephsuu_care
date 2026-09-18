@@ -1,0 +1,4 @@
+- When creating a screen adhere to as much as possible break the components into smaller pieces
+- Always use my generic components at /core/widgets
+- Always used my generic widgets if needed
+- Always do consider using helpers if needed I have generic helpers and if I dont have a required helper for a specific scenario, create a generic one

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sephsuu_care/core/constants/app_clay.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 
 // AppAvatar(
@@ -51,20 +52,21 @@ class AppAvatar extends StatelessWidget {
       height: size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: border,
+        border: border ?? Border.all(color: Colors.white, width: 2),
+        boxShadow: AppClay.shadows,
       ),
       clipBehavior: Clip.antiAlias,
       child: hasImage
-        ? Image.network(
-          src!,
-          width: size,
-          height: size,
-          fit: fit,
-          errorBuilder: (context, error, stackTrace) {
-            return _buildFallback();
-          },
-        )
-        : _buildFallback(),
+          ? Image.network(
+              src!,
+              width: size,
+              height: size,
+              fit: fit,
+              errorBuilder: (context, error, stackTrace) {
+                return _buildFallback();
+              },
+            )
+          : _buildFallback(),
     );
   }
 
@@ -76,12 +78,13 @@ class AppAvatar extends StatelessWidget {
       alignment: Alignment.center,
       child: Text(
         fallback,
-        style: fallbackStyle ??
-          const TextStyle(
-            color: AppColors.blue,
-            fontWeight: FontWeight.w700,
-            fontSize: 14,
-          ),
+        style:
+            fallbackStyle ??
+            const TextStyle(
+              color: AppColors.blue,
+              fontWeight: FontWeight.w700,
+              fontSize: 14,
+            ),
       ),
     );
   }

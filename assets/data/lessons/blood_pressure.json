@@ -1,0 +1,286 @@
+{
+  "lesson_id": "blood_pressure",
+  "title": {
+    "en": "How to Take Blood Pressure",
+    "tl": "Paano Kumuha ng Blood Pressure"
+  },
+  "tabs": [
+    {
+      "key": "what",
+      "image_placeholder": {
+        "en": "A monitor display showing the top and bottom blood pressure numbers.",
+        "tl": "Display ng monitor na nagpapakita ng itaas at ibabang numero ng blood pressure."
+      },
+      "label": {
+        "en": "What",
+        "tl": "Ano"
+      },
+      "title": {
+        "en": "What is Blood Pressure?",
+        "tl": "Ano ang Blood Pressure?"
+      },
+      "content": {
+        "en": [
+          "Blood pressure is the force of blood pushing against the walls of your arteries as your heart pumps blood.",
+          "A blood pressure reading has two numbers: systolic and diastolic.",
+          "The systolic number is the top number. The diastolic number is the bottom number.",
+          "Example: 120/80 mmHg. 120 is the systolic pressure and 80 is the diastolic pressure.",
+          "Blood pressure can change depending on activity, stress, sleep, caffeine, exercise, medicine, and body position."
+        ],
+        "tl": [
+          "Ang blood pressure ay ang puwersa ng dugo na tumutulak sa pader ng mga ugat habang nagpa-pump ng dugo ang puso.",
+          "Ang blood pressure reading ay may dalawang numero: systolic at diastolic.",
+          "Ang systolic ay ang nasa itaas na numero. Ang diastolic ay ang nasa ibabang numero.",
+          "Halimbawa: 120/80 mmHg. Ang 120 ay systolic pressure at ang 80 ay diastolic pressure.",
+          "Maaaring magbago ang blood pressure depende sa activity, stress, tulog, caffeine, ehersisyo, gamot, at posisyon ng katawan."
+        ]
+      },
+      "app_note": {
+        "en": "Use this feature to record and monitor your blood pressure over time. This app does not diagnose medical conditions.",
+        "tl": "Gamitin ang feature na ito para i-record at subaybayan ang iyong blood pressure sa paglipas ng panahon. Ang app na ito ay hindi nagbibigay ng diagnosis."
+      }
+    },
+    {
+      "key": "how",
+      "label": {
+        "en": "How",
+        "tl": "Paano"
+      },
+      "title": {
+        "en": "How to Take Blood Pressure",
+        "tl": "Paano Kumuha ng Blood Pressure"
+      },
+      "sections": [
+        {
+          "title": {
+            "en": "Before taking BP",
+            "tl": "Bago kumuha ng BP"
+          },
+          "steps": {
+            "en": [
+              "Avoid caffeine, smoking, and exercise for at least 30 minutes.",
+              "Empty your bladder if needed.",
+              "Sit quietly and rest for at least 5 minutes.",
+              "Use the correct cuff size.",
+              "Place the cuff on bare skin, not over clothing."
+            ],
+            "tl": [
+              "Iwasan ang caffeine, paninigarilyo, at ehersisyo nang hindi bababa sa 30 minuto.",
+              "Umihi muna kung kinakailangan.",
+              "Umupo nang tahimik at magpahinga nang hindi bababa sa 5 minuto.",
+              "Gamitin ang tamang sukat ng cuff.",
+              "Ilagay ang cuff sa balat mismo, hindi sa ibabaw ng damit."
+            ]
+          }
+        },
+        {
+          "title": {
+            "en": "Correct position",
+            "tl": "Tamang posisyon"
+          },
+          "image_placeholder": {
+            "en": "Seated posture with the back supported, feet flat, and arm resting on a table.",
+            "tl": "Posisyon ng pag-upo na may suporta ang likod, patag ang mga paa, at nakapatong ang braso sa mesa."
+          },
+          "steps": {
+            "en": [
+              "Sit with your back supported.",
+              "Keep both feet flat on the floor.",
+              "Do not cross your legs.",
+              "Rest your arm on a table.",
+              "Keep the cuff at heart or chest level.",
+              "Stay still and do not talk while measuring."
+            ],
+            "tl": [
+              "Umupo nang may suporta ang likod.",
+              "Ilagay ang dalawang paa nang patag sa sahig.",
+              "Huwag mag-dekwatro o mag-cross ng legs.",
+              "Ipatong ang braso sa mesa.",
+              "Panatilihin ang cuff sa level ng puso o dibdib.",
+              "Manatiling hindi gumagalaw at huwag magsalita habang sinusukat."
+            ]
+          }
+        },
+        {
+          "title": {
+            "en": "Steps",
+            "tl": "Mga hakbang"
+          },
+          "image_placeholder": {
+            "en": "A close-up of the cuff on the upper arm and the monitor’s start button.",
+            "tl": "Malapitang larawan ng cuff sa itaas ng braso at ng start button ng monitor."
+          },
+          "steps": {
+            "en": [
+              "Wrap the cuff around your upper arm.",
+              "Make sure the cuff is snug but not too tight.",
+              "Press the start button on the BP monitor.",
+              "Wait until the reading appears.",
+              "Record the systolic and diastolic numbers.",
+              "Add notes if needed."
+            ],
+            "tl": [
+              "Ibalot ang cuff sa itaas na bahagi ng braso.",
+              "Siguraduhing sakto ang higpit ng cuff, hindi masyadong maluwag at hindi masyadong mahigpit.",
+              "Pindutin ang start button ng BP monitor.",
+              "Hintaying lumabas ang reading.",
+              "I-record ang systolic at diastolic numbers.",
+              "Maglagay ng notes kung kinakailangan."
+            ]
+          }
+        }
+      ],
+      "example": {
+        "en": {
+          "systolic": "120",
+          "diastolic": "80",
+          "pulse": "76",
+          "arm_used": "Left",
+          "position": "Sitting",
+          "notes": "After resting"
+        },
+        "tl": {
+          "systolic": "120",
+          "diastolic": "80",
+          "pulse": "76",
+          "arm_used": "Kaliwa",
+          "position": "Nakaupo",
+          "notes": "Pagkatapos magpahinga"
+        }
+      }
+    },
+    {
+      "key": "why",
+      "label": {
+        "en": "Why",
+        "tl": "Bakit"
+      },
+      "title": {
+        "en": "Why Monitor Blood Pressure?",
+        "tl": "Bakit Kailangang I-monitor ang Blood Pressure?"
+      },
+      "content": {
+        "en": [
+          "Monitoring blood pressure helps users understand their health pattern over time.",
+          "It can help track daily or weekly BP changes.",
+          "It can help users notice if readings are higher or lower than usual.",
+          "It can help users share records with a healthcare provider.",
+          "It can help users monitor BP while taking maintenance medicine.",
+          "One reading may not tell the full story. It is better to track blood pressure regularly and review the pattern over time."
+        ],
+        "tl": [
+          "Ang pag-monitor ng blood pressure ay nakakatulong para maintindihan ng user ang pattern ng kanilang kalusugan sa paglipas ng panahon.",
+          "Nakakatulong ito para masubaybayan ang daily o weekly na pagbabago ng BP.",
+          "Nakakatulong ito para mapansin kung mas mataas o mas mababa ang readings kaysa sa karaniwan.",
+          "Nakakatulong ito para maibahagi ang records sa healthcare provider.",
+          "Nakakatulong ito para ma-monitor ang BP habang umiinom ng maintenance medicine.",
+          "Ang isang reading ay hindi sapat para malaman ang buong kondisyon. Mas mabuting regular na i-track ang blood pressure at tingnan ang pattern nito."
+        ]
+      },
+      "safety_reminder": {
+        "en": "If your reading is unusual for you, or if you feel symptoms such as chest pain, severe headache, weakness, dizziness, or difficulty breathing, seek medical help immediately.",
+        "tl": "Kung kakaiba ang reading mo, o kung nakakaramdam ka ng pananakit ng dibdib, matinding sakit ng ulo, panghihina, pagkahilo, o hirap sa paghinga, agad na humingi ng tulong medikal."
+      }
+    },
+    {
+      "key": "when",
+      "label": {
+        "en": "When",
+        "tl": "Kailan"
+      },
+      "title": {
+        "en": "When Should You Take Blood Pressure?",
+        "tl": "Kailan Dapat Kumuha ng Blood Pressure?"
+      },
+      "content": {
+        "en": [
+          "You can take blood pressure in the morning before heavy activity.",
+          "You can take blood pressure in the evening before resting or sleeping.",
+          "You can take blood pressure before taking BP medicine, if advised by a healthcare provider.",
+          "You can take blood pressure when you feel unusual symptoms.",
+          "For consistent tracking, measure at the same time each day and under similar conditions."
+        ],
+        "tl": [
+          "Maaaring kumuha ng blood pressure sa umaga bago gumawa ng mabibigat na activity.",
+          "Maaaring kumuha ng blood pressure sa gabi bago magpahinga o matulog.",
+          "Maaaring kumuha ng blood pressure bago uminom ng BP medicine, kung ito ay payo ng healthcare provider.",
+          "Maaaring kumuha ng blood pressure kapag may nararamdamang kakaibang sintomas.",
+          "Para consistent ang tracking, sukatin ito sa parehong oras araw-araw at sa halos parehong kondisyon."
+        ]
+      },
+      "schedule_options": [
+        {
+          "key": "morning",
+          "label": {
+            "en": "Morning",
+            "tl": "Umaga"
+          }
+        },
+        {
+          "key": "afternoon",
+          "label": {
+            "en": "Afternoon",
+            "tl": "Hapon"
+          }
+        },
+        {
+          "key": "evening",
+          "label": {
+            "en": "Evening",
+            "tl": "Gabi"
+          }
+        },
+        {
+          "key": "before_medication",
+          "label": {
+            "en": "Before medication",
+            "tl": "Bago uminom ng gamot"
+          }
+        },
+        {
+          "key": "after_medication",
+          "label": {
+            "en": "After medication",
+            "tl": "Pagkatapos uminom ng gamot"
+          }
+        },
+        {
+          "key": "when_feeling_symptoms",
+          "label": {
+            "en": "When feeling symptoms",
+            "tl": "Kapag may nararamdamang sintomas"
+          }
+        },
+        {
+          "key": "custom_time",
+          "label": {
+            "en": "Custom time",
+            "tl": "Custom na oras"
+          }
+        }
+      ],
+      "reminder_message": {
+        "en": "It’s time to check your blood pressure. Sit down, rest for 5 minutes, and measure when you are ready.",
+        "tl": "Oras na para i-check ang iyong blood pressure. Umupo, magpahinga ng 5 minuto, at sukatin kapag handa ka na."
+      }
+    }
+  ],
+  "short_ui_copy": {
+    "what": {
+      "en": "Blood pressure is the force of blood pushing against your artery walls. It is shown as two numbers: systolic over diastolic, such as 120/80 mmHg.",
+      "tl": "Ang blood pressure ay ang puwersa ng dugo sa pader ng mga ugat. Ipinapakita ito bilang dalawang numero: systolic over diastolic, tulad ng 120/80 mmHg."
+    },
+    "how": {
+      "en": "Sit quietly for 5 minutes. Keep your back supported, feet flat, and arm resting at chest level. Place the cuff on bare skin and do not talk while measuring.",
+      "tl": "Umupo nang tahimik sa loob ng 5 minuto. Suportahan ang likod, ilapat ang mga paa sa sahig, at ipahinga ang braso sa level ng dibdib. Ilagay ang cuff sa balat at huwag magsalita habang sinusukat."
+    },
+    "why": {
+      "en": "Tracking blood pressure helps you monitor changes over time and share your records with a healthcare provider.",
+      "tl": "Ang pag-track ng blood pressure ay nakakatulong para masubaybayan ang pagbabago nito at maibahagi ang records sa healthcare provider."
+    },
+    "when": {
+      "en": "Measure at the same time each day, such as morning or evening, or when advised by your healthcare provider.",
+      "tl": "Sukatin ito sa parehong oras araw-araw, tulad ng umaga o gabi, o kapag pinayuhan ng healthcare provider."
+    }
+  }
+}
