@@ -2,17 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sephsuu_care/core/constants/app_clay.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 import 'package:sephsuu_care/core/constants/app_font_size.dart';
-import 'package:sephsuu_care/core/widgets/app_button.dart';
-
-// Sample Usage
-// AppTabSwitcher<String>(
-//   value: selectedTab,
-//   options: const [
-//     AppTabOption(value: 'overview', label: 'Overview'),
-//     AppTabOption(value: 'history', label: 'History'),
-//   ],
-//   onChanged: (value) => setState(() => selectedTab = value),
-// )
 
 class AppTabOption<T> {
   final T value;
@@ -28,33 +17,65 @@ class AppTabOption<T> {
   });
 }
 
-/// A controlled tab selector. The parent updates [value] and displays content.
-/// Each option should have a unique value.
 class AppTabSwitcher<T> extends StatelessWidget {
   final T? value;
   final List<AppTabOption<T>> options;
   final ValueChanged<T> onChanged;
+
   final bool enabled;
+
+  /// Space between each tab.
   final double spacing;
+
   final double runSpacing;
-  final WrapAlignment alignment;
+
+  /// Padding outside the whole switcher.
   final EdgeInsetsGeometry? padding;
+
+  /// Padding inside each tab.
   final EdgeInsetsGeometry? itemPadding;
+
   final double? width;
   final double height;
+
+  /// Outer switcher radius.
   final double borderRadius;
+
+  /// Radius of each individual tab.
+  final double itemBorderRadius;
+
   final Color borderColor;
   final double borderWidth;
+
   final Color outerColor;
   final double outerWidth;
+
   final List<BoxShadow> boxShadow;
+
   final Color selectedBackgroundColor;
   final Color backgroundColor;
+
   final Color selectedForegroundColor;
   final Color foregroundColor;
+
   final TextStyle? textStyle;
-  final ButtonStyle? selectedStyle;
-  final ButtonStyle? style;
+
+  /// horizontal:
+  /// [icon] Label
+  ///
+  /// vertical:
+  /// [icon]
+  /// Label
+  final Axis itemDirection;
+
+  /// Gap between icon and label.
+  final double itemGap;
+
+  /// Makes all tabs occupy equal available width.
+  final bool expandItems;
+
+  final Duration animationDuration;
+  final Curve animationCurve;
 
   const AppTabSwitcher({
     super.key,
@@ -62,26 +83,29 @@ class AppTabSwitcher<T> extends StatelessWidget {
     required this.options,
     required this.onChanged,
     this.enabled = true,
-    this.spacing = 8,
+    this.spacing = 4,
     this.runSpacing = 8,
-    this.alignment = WrapAlignment.start,
     this.padding,
     this.itemPadding,
     this.width,
-    this.height = 44,
+    this.height = 48,
     this.borderRadius = 999,
+    this.itemBorderRadius = 999,
     this.borderColor = AppColors.border,
     this.borderWidth = 1.5,
     this.outerColor = AppColors.light,
     this.outerWidth = 6,
-    this.boxShadow = AppClay.shadows,
+    this.boxShadow = AppClay.lightShadows,
     this.selectedBackgroundColor = AppColors.pink,
     this.backgroundColor = AppColors.light,
     this.selectedForegroundColor = AppColors.light,
     this.foregroundColor = AppColors.dark,
     this.textStyle,
-    this.selectedStyle,
-    this.style,
+    this.itemDirection = Axis.horizontal,
+    this.itemGap = 8,
+    this.expandItems = false,
+    this.animationDuration = const Duration(milliseconds: 220),
+    this.animationCurve = Curves.easeOutCubic,
   });
 
   @override
@@ -100,55 +124,134 @@ class AppTabSwitcher<T> extends StatelessWidget {
           ),
           child: Padding(
             padding: EdgeInsets.all(outerWidth),
-            child: Wrap(
-              spacing: spacing,
-              runSpacing: runSpacing,
-              alignment: alignment,
-              children: options.map((option) {
-                final isSelected = option.value == value;
-                final background = isSelected
-                    ? selectedBackgroundColor
-                    : backgroundColor;
-                final foreground = isSelected
-                    ? selectedForegroundColor
-                    : foregroundColor;
-                final buttonStyle = ElevatedButton.styleFrom(
-                  backgroundColor: background,
-                  foregroundColor: foreground,
-                  disabledBackgroundColor: background.withValues(alpha: 0.6),
-                  disabledForegroundColor: foreground.withValues(alpha: 0.4),
-                  padding:
-                      itemPadding ??
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  textStyle:
-                      textStyle ??
-                      const TextStyle(
-                        fontSize: AppFontSize.sm,
-                        fontWeight: FontWeight.w600,
-                      ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(borderRadius),
-                  ),
-                  elevation: isSelected ? 5 : 0,
-                  shadowColor: AppClay.shadow,
-                  surfaceTintColor: Colors.transparent,
-                ).merge(isSelected ? selectedStyle ?? style : style);
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                // Use equal-width tabs only if the parent
+                // provides a finite width.
+                if (expandItems && constraints.hasBoundedWidth) {
+                  return Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      for (var index = 0; index < options.length; index++) ...[
+                        Expanded(child: _buildTab(context, options[index])),
 
-                return Semantics(
-                  button: true,
-                  selected: isSelected,
-                  child: AppButton(
-                    icon: option.icon,
-                    label: Text(option.label),
-                    height: height,
-                    disabled: !enabled || option.disabled,
-                    style: buttonStyle,
-                    onPressed: () {
-                      if (!isSelected) onChanged(option.value);
-                    },
-                  ),
+                        if (index < options.length - 1)
+                          SizedBox(width: spacing),
+                      ],
+                    ],
+                  );
+                }
+
+                return Wrap(
+                  spacing: spacing,
+                  runSpacing: runSpacing,
+                  children: [
+                    for (final option in options) _buildTab(context, option),
+                  ],
                 );
-              }).toList(),
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTab(BuildContext context, AppTabOption<T> option) {
+    final bool isSelected = option.value == value;
+    final bool isDisabled = !enabled || option.disabled;
+
+    final Color background = isSelected
+        ? selectedBackgroundColor
+        : backgroundColor;
+
+    final Color foreground = isSelected
+        ? selectedForegroundColor
+        : foregroundColor;
+
+    return Semantics(
+      button: true,
+      selected: isSelected,
+      enabled: !isDisabled,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: isDisabled
+              ? null
+              : () {
+                  if (!isSelected) {
+                    onChanged(option.value);
+                  }
+                },
+          borderRadius: BorderRadius.circular(itemBorderRadius),
+          child: AnimatedContainer(
+            duration: animationDuration,
+            curve: animationCurve,
+            height: height,
+            padding:
+                itemPadding ??
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            decoration: BoxDecoration(
+              color: isDisabled
+                  ? background.withValues(alpha: 0.55)
+                  : background,
+              borderRadius: BorderRadius.circular(itemBorderRadius),
+
+              boxShadow: isSelected
+                  ? [
+                      BoxShadow(
+                        color: selectedBackgroundColor.withValues(alpha: 0.22),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ]
+                  : const [],
+            ),
+            child: Center(
+              child: Flex(
+                direction: itemDirection,
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  if (option.icon != null) ...[
+                    IconTheme(
+                      data: IconThemeData(
+                        color: isDisabled
+                            ? foreground.withValues(alpha: 0.4)
+                            : foreground,
+                      ),
+                      child: option.icon!,
+                    ),
+                    SizedBox(
+                      width: itemDirection == Axis.horizontal ? itemGap : 0,
+                      height: itemDirection == Axis.vertical ? itemGap : 0,
+                    ),
+                  ],
+
+                  Flexible(
+                    child: Text(
+                      option.label,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      style:
+                          textStyle?.copyWith(
+                            color: isDisabled
+                                ? foreground.withValues(alpha: 0.4)
+                                : foreground,
+                          ) ??
+                          TextStyle(
+                            color: isDisabled
+                                ? foreground.withValues(alpha: 0.4)
+                                : foreground,
+                            fontSize: AppFontSize.xs,
+                            fontWeight: FontWeight.w700,
+                          ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -51,15 +51,18 @@ class AppHeaderBadge extends StatelessWidget {
             Icon(icon, color: iconColor, size: iconSize),
             SizedBox(width: gap),
           ],
-          Text(
-            label,
-            style:
-                textStyle ??
-                TextStyle(
-                  color: textColor,
-                  fontSize: AppFontSize.xs,
-                  fontWeight: FontWeight.w800,
-                ),
+          Flexible(
+            child: Text(
+              label,
+              textAlign: TextAlign.center,
+              style:
+                  textStyle ??
+                  TextStyle(
+                    color: textColor,
+                    fontSize: AppFontSize.xs,
+                    fontWeight: FontWeight.w800,
+                  ),
+            ),
           ),
         ],
       ),

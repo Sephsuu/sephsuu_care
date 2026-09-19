@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:sephsuu_care/core/api/api_client.dart';
+import 'package:sephsuu_care/core/api/api_exception.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 import 'package:sephsuu_care/core/constants/app_font_size.dart';
 import 'package:sephsuu_care/core/widgets/app_button.dart';
 import 'package:sephsuu_care/core/widgets/app_card.dart';
 import 'package:sephsuu_care/core/widgets/app_header_1.dart';
 import 'package:sephsuu_care/core/widgets/app_input.dart';
+import 'package:sephsuu_care/core/widgets/app_snackbar.dart';
 import 'package:sephsuu_care/features/dashboard/user_dashboard_screen.dart';
+import 'package:sephsuu_care/services/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -19,6 +23,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final _identifierController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  final _authServie = AuthService(ApiClient());
+
   bool _isPasswordHidden = true;
   bool _isSigningIn = false;
 
@@ -30,25 +36,41 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _handleLogin() async {
+    if (_isSigningIn) return;
     if (!(_formKey.currentState?.validate() ?? false)) return;
 
     setState(() => _isSigningIn = true);
-    await Future<void>.delayed(const Duration(milliseconds: 900));
 
-    if (!mounted) return;
-    setState(() => _isSigningIn = false);
+    try {
+      await _authServie.login(
+        identifier: _identifierController.text.trim(), 
+        password: _passwordController.text
+      );
 
-    final identifier = _identifierController.text.trim();
-    final username = identifier.contains('@')
-        ? identifier.split('@').first
-        : identifier;
+      if (!mounted) return;
 
-    Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute<void>(
-        builder: (context) => UserDashboardScreen(username: username),
-      ),
-      (route) => false,
-    );
+      final identifier = _identifierController.text.trim();
+      final username = identifier.contains('@')
+          ? identifier.split('@').first
+          : identifier;
+
+        Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute<void>(
+            builder: (_) => UserDashboardScreen(username: username),
+          ),
+          (_) => false,
+        );
+    } on ApiException catch (error) {
+      if (!mounted) return;
+      AppSnackBar.error(context, error.message);
+    } catch (_) {
+      if (!mounted) return;
+      AppSnackBar.error(context, 'Unable to sign in. Please try again.');
+    } finally {
+      if (mounted) {
+        setState(() => _isSigningIn = false);
+      }
+    }
   }
 
   void _togglePasswordVisibility() {

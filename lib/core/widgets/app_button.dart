@@ -2,49 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sephsuu_care/core/constants/app_clay.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 
-// Sample Usage
-
-// AppButton(
-//   actionType: AppButtonActionType.add,
-//   icon: const Icon(
-//     Icons.add_circle_outline,
-//     size: 18,
-//   ),
-//   label: const Text(
-//     'Add Branch',
-//     style: TextStyle(
-//       fontSize: 14,
-//       fontWeight: FontWeight.w600,
-//     ),
-//   ),
-//   loadingLabel: const Text(
-//     'Saving...',
-//     style: TextStyle(
-//       fontSize: 14,
-//       fontWeight: FontWeight.w600,
-//     ),
-//   ),
-//   onProcess: isSaving,
-//   disabled: false,
-//   width: double.infinity,
-//   height: 48,
-//   padding: const EdgeInsets.symmetric(
-//     horizontal: 18,
-//     vertical: 12,
-//   ),
-//   style: ElevatedButton.styleFrom(
-//     backgroundColor: const Color(0xFFE67E22),
-//     foregroundColor: Colors.white,
-//     disabledBackgroundColor: const Color(0xFFE67E22).withOpacity(0.6),
-//     disabledForegroundColor: Colors.white.withOpacity(0.8),
-//     elevation: 1,
-//     shape: RoundedRectangleBorder(
-//       borderRadius: BorderRadius.circular(10),
-//     ),
-//   ),
-//   onPressed: handleSave,
-// )
-
 enum AppButtonActionType { add, update, delete }
 
 class AppButton extends StatelessWidget {
@@ -61,6 +18,15 @@ class AppButton extends StatelessWidget {
   final double? height;
   final double? width;
 
+  final List<BoxShadow>? boxShadow;
+
+  final Color? borderColor;
+  final double borderWidth;
+
+  /// Shared radius for the button, outer border, and shadow.
+  /// Takes precedence over the shape radius supplied through [style].
+  final double borderRadius;
+
   const AppButton({
     super.key,
     this.actionType,
@@ -74,16 +40,23 @@ class AppButton extends StatelessWidget {
     this.padding,
     this.height,
     this.width,
+    this.boxShadow,
+    this.borderColor = AppColors.light,
+    this.borderWidth = 1.5,
+    this.borderRadius = AppClay.radius,
   });
 
   Color? get _backgroundColor {
     switch (actionType) {
       case AppButtonActionType.add:
-        return AppColors.blue; // dark orange
+        return AppColors.blue;
+
       case AppButtonActionType.update:
-        return AppColors.green; // dark green
+        return AppColors.green;
+
       case AppButtonActionType.delete:
-        return AppColors.red; // dark red
+        return AppColors.red;
+
       case null:
         return null;
     }
@@ -95,10 +68,13 @@ class AppButton extends StatelessWidget {
     switch (actionType) {
       case AppButtonActionType.add:
         return const Icon(Icons.add, size: 18);
+
       case AppButtonActionType.update:
         return const Icon(Icons.edit_square, size: 18);
+
       case AppButtonActionType.delete:
         return const Icon(Icons.delete, size: 18);
+
       case null:
         return null;
     }
@@ -121,29 +97,52 @@ class AppButton extends StatelessWidget {
 
     final Widget? resolvedLabel = onProcess ? loadingLabel ?? label : label;
 
-    return SizedBox(
+    return Container(
       width: width,
       height: height ?? 44,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(borderRadius),
+        boxShadow: boxShadow ?? AppClay.lightShadows,
+        border: borderColor == null
+            ? null
+            : Border.all(color: borderColor!, width: borderWidth),
+      ),
       child: ElevatedButton(
         onPressed: isDisabled ? null : onPressed,
         style:
-            style ??
-            ElevatedButton.styleFrom(
-              backgroundColor: _backgroundColor,
-              foregroundColor: Colors.white,
-              disabledBackgroundColor: _backgroundColor?.withValues(alpha: 0.6),
-              disabledForegroundColor: Colors.white.withValues(alpha: 0.8),
-              padding:
-                  padding ??
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(AppClay.radius),
-                side: const BorderSide(color: Color(0x99FFFFFF), width: 1.5),
-              ),
-              elevation: 6,
-              shadowColor: AppClay.shadow,
-              surfaceTintColor: Colors.transparent,
-            ),
+            (style ??
+                    ElevatedButton.styleFrom(
+                      backgroundColor: _backgroundColor,
+                      foregroundColor: Colors.white,
+
+                      disabledBackgroundColor: _backgroundColor?.withValues(
+                        alpha: 0.6,
+                      ),
+                      disabledForegroundColor: Colors.white.withValues(
+                        alpha: 0.8,
+                      ),
+
+                      padding:
+                          padding ??
+                          const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 10,
+                          ),
+
+                      elevation: 0,
+                      shadowColor: Colors.transparent,
+                      surfaceTintColor: Colors.transparent,
+                    ))
+                .copyWith(
+                  shape: WidgetStateProperty.resolveWith((states) {
+                    return RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(borderRadius),
+                      side:
+                          style?.shape?.resolve(states)?.side ??
+                          BorderSide.none,
+                    );
+                  }),
+                ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,

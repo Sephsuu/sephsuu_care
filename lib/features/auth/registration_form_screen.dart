@@ -88,7 +88,7 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
       if (!mounted) return;
       AppSnackBar.success(
         context,
-        'Account created for ${registeredUser['user']?['full_name'] ?? _roleLabel}',
+        registeredUser["message"],
       );
       Navigator.of(context).pushReplacement(
         MaterialPageRoute<void>(

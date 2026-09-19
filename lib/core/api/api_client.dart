@@ -8,10 +8,13 @@ import 'api_response.dart';
 enum RequestMethod { get, post, put, patch, delete }
 
 class ApiClient {
-  static const String defaultBaseUrl = String.fromEnvironment(
-    'FASTAPI_API_URL',
-    defaultValue: 'https://r0kpvj1t-8000.asse.devtunnels.ms/api',
+  static const String serverUrl = String.fromEnvironment(
+    'FASTAPI_URL',
+    defaultValue: 'http://192.168.1.3:8000',
   );
+
+  static const String defaultBaseUrl = '$serverUrl/api';
+  static const String graphqlUrl = '$serverUrl/graphql';
 
   final Dio _dio;
   final FlutterSecureStorage _secureStorage;
@@ -146,6 +149,8 @@ class ApiClient {
 
   Future<T> graphql<T>({
     required String query,
+    // An absolute endpoint URL or a path relative to this client's base URL.
+    String? path,
     Map<String, dynamic>? variables,
     Map<String, dynamic>? headers,
     bool withAuth = true,
@@ -157,7 +162,7 @@ class ApiClient {
     if (variables != null) body['variables'] = variables;
 
     final response = await request<Map<String, dynamic>>(
-      path: '',
+      path: path ?? graphqlUrl,
       method: RequestMethod.post,
       body: body,
       headers: headers,

@@ -1,0 +1,308 @@
+{
+  "lesson_id": "pulse_rate",
+  "title": {
+    "en": "How to Check Pulse Rate",
+    "tl": "Paano Kumuha ng Pulse Rate"
+  },
+  "tabs": [
+    {
+      "key": "what",
+      "image_placeholder": {
+        "en": "A person checking their pulse on the wrist while looking at a clock.",
+        "tl": "Taong kumukuha ng pulse sa pulso habang tumitingin sa oras."
+      },
+      "label": {
+        "en": "What",
+        "tl": "Ano"
+      },
+      "title": {
+        "en": "What is Pulse Rate?",
+        "tl": "Ano ang Pulse Rate?"
+      },
+      "content": {
+        "en": [
+          "Pulse rate is the number of times your heart beats in one minute.",
+          "It is usually measured in beats per minute, or bpm.",
+          "You can usually feel your pulse where an artery is close to the skin, such as your wrist or neck.",
+          "For most adults, a resting pulse rate between 60 and 100 bpm is generally considered typical.",
+          "People who are physically active or athletic may have a lower resting pulse rate.",
+          "Your pulse rate can change because of physical activity, stress, emotions, illness, temperature, medications, caffeine, and other factors.",
+          "A pulse reading alone cannot diagnose a medical condition."
+        ],
+        "tl": [
+          "Ang pulse rate ay ang bilang ng tibok ng iyong puso sa loob ng isang minuto.",
+          "Karaniwang sinusukat ito sa beats per minute o bpm.",
+          "Karaniwang mararamdaman ang pulse sa mga bahagi ng katawan kung saan malapit sa balat ang ugat, tulad ng pulso o leeg.",
+          "Para sa karamihan ng adults, ang resting pulse rate na nasa pagitan ng 60 at 100 bpm ay karaniwang itinuturing na typical.",
+          "Ang mga taong physically active o athletic ay maaaring magkaroon ng mas mababang resting pulse rate.",
+          "Maaaring magbago ang pulse rate dahil sa physical activity, stress, emosyon, sakit, temperatura, gamot, caffeine, at iba pang factors.",
+          "Hindi sapat ang pulse reading lamang para mag-diagnose ng medical condition."
+        ]
+      },
+      "app_note": {
+        "en": "Use this feature to record and monitor your pulse rate over time. Consider your readings together with how you feel. This app does not diagnose medical conditions.",
+        "tl": "Gamitin ang feature na ito para i-record at subaybayan ang iyong pulse rate sa paglipas ng panahon. Isaalang-alang ang iyong readings kasama ang iyong nararamdaman. Ang app na ito ay hindi nagbibigay ng diagnosis."
+      }
+    },
+    {
+      "key": "how",
+      "label": {
+        "en": "How",
+        "tl": "Paano"
+      },
+      "title": {
+        "en": "How to Check Pulse Rate",
+        "tl": "Paano Kumuha ng Pulse Rate"
+      },
+      "sections": [
+        {
+          "title": {
+            "en": "Before checking your pulse",
+            "tl": "Bago kumuha ng pulse"
+          },
+          "steps": {
+            "en": [
+              "If you are checking your resting pulse, sit or lie down and relax before measuring.",
+              "Avoid measuring immediately after exercise if you want your resting pulse rate.",
+              "Keep your arm and hand relaxed.",
+              "Use a watch, clock, or timer that shows seconds.",
+              "If you recently exercised, allow your heart rate time to settle before recording a resting measurement."
+            ],
+            "tl": [
+              "Kung resting pulse ang kukunin, umupo o humiga at mag-relax muna bago magsukat.",
+              "Iwasang magsukat kaagad pagkatapos mag-ehersisyo kung resting pulse rate ang nais mong malaman.",
+              "Panatilihing relaxed ang iyong braso at kamay.",
+              "Gumamit ng relo, clock, o timer na nagpapakita ng seconds.",
+              "Kung katatapos mo lang mag-ehersisyo, bigyan muna ng oras na bumaba ang heart rate bago mag-record ng resting measurement."
+            ]
+          }
+        },
+        {
+          "title": {
+            "en": "Correct position",
+            "tl": "Tamang posisyon"
+          },
+          "image_placeholder": {
+            "en": "Index and middle fingers placed on the inside of the wrist below the base of the thumb.",
+            "tl": "Hintuturo at gitnang daliri na nakalagay sa loob ng pulso sa ibaba ng base ng hinlalaki."
+          },
+          "steps": {
+            "en": [
+              "Sit comfortably and keep your body relaxed.",
+              "Rest your arm on a table or your lap.",
+              "Turn your palm upward.",
+              "Place the tips of your index and middle fingers on the inside of the opposite wrist, below the base of the thumb.",
+              "Press gently until you feel the pulse.",
+              "Do not press too hard."
+            ],
+            "tl": [
+              "Umupo nang komportable at panatilihing relaxed ang katawan.",
+              "Ipahinga ang braso sa mesa o sa iyong hita.",
+              "Iharap pataas ang palad.",
+              "Ilagay ang dulo ng hintuturo at gitnang daliri sa loob ng kabilang pulso, sa ibaba ng base ng hinlalaki.",
+              "Dahan-dahang pindutin hanggang maramdaman ang pulse.",
+              "Huwag pindutin nang masyadong malakas."
+            ]
+          }
+        },
+        {
+          "title": {
+            "en": "Steps",
+            "tl": "Mga hakbang"
+          },
+          "image_placeholder": {
+            "en": "A close-up of two fingers checking the wrist pulse while a timer counts seconds.",
+            "tl": "Malapitang larawan ng dalawang daliri na kumukuha ng pulse sa pulso habang may timer."
+          },
+          "steps": {
+            "en": [
+              "Find your pulse using your index and middle fingers.",
+              "Once you can clearly feel the beats, start your timer.",
+              "Count each heartbeat for 60 seconds.",
+              "The number of beats counted in 60 seconds is your pulse rate in bpm.",
+              "If the rhythm feels regular, you may count for 30 seconds and multiply the result by 2.",
+              "If the heartbeat feels irregular, count for the full 60 seconds.",
+              "Record the pulse rate, date, time, activity, and any symptoms you are experiencing."
+            ],
+            "tl": [
+              "Hanapin ang iyong pulse gamit ang hintuturo at gitnang daliri.",
+              "Kapag malinaw mo nang nararamdaman ang tibok, simulan ang timer.",
+              "Bilangin ang bawat tibok sa loob ng 60 segundo.",
+              "Ang bilang ng tibok sa loob ng 60 segundo ang iyong pulse rate sa bpm.",
+              "Kung regular ang rhythm, maaari kang magbilang nang 30 segundo at i-multiply sa 2 ang resulta.",
+              "Kung parang irregular ang tibok, bilangin ito sa buong 60 segundo.",
+              "I-record ang pulse rate, petsa, oras, activity, at anumang sintomas na nararamdaman."
+            ]
+          }
+        }
+      ],
+      "example": {
+        "en": {
+          "pulse": "76 bpm",
+          "measurement_site": "Wrist",
+          "position": "Sitting",
+          "activity": "Resting",
+          "notes": "After resting"
+        },
+        "tl": {
+          "pulse": "76 bpm",
+          "measurement_site": "Pulso",
+          "position": "Nakaupo",
+          "activity": "Nagpapahinga",
+          "notes": "Pagkatapos magpahinga"
+        }
+      }
+    },
+    {
+      "key": "why",
+      "label": {
+        "en": "Why",
+        "tl": "Bakit"
+      },
+      "title": {
+        "en": "Why Monitor Pulse Rate?",
+        "tl": "Bakit Kailangang I-monitor ang Pulse Rate?"
+      },
+      "content": {
+        "en": [
+          "Monitoring your pulse rate can help you understand your usual resting heart rate.",
+          "It can help you notice changes in your heart rate over time.",
+          "It can help you see how physical activity, stress, rest, or other factors affect your pulse.",
+          "It can help you keep a record that can be shared with a healthcare provider.",
+          "It may be useful when a healthcare provider asks you to monitor your heart rate regularly.",
+          "A single pulse reading does not provide the full picture. Your pulse should be considered together with your symptoms, activity, medications, and overall health.",
+          "Heart rate naturally changes throughout the day and usually increases during physical activity."
+        ],
+        "tl": [
+          "Ang pag-monitor ng pulse rate ay nakakatulong para malaman mo ang iyong karaniwang resting heart rate.",
+          "Nakakatulong ito para mapansin ang pagbabago ng iyong heart rate sa paglipas ng panahon.",
+          "Nakakatulong ito para makita kung paano naaapektuhan ng physical activity, stress, pahinga, at iba pang factors ang iyong pulse.",
+          "Nakakatulong ito para magkaroon ka ng record na maaaring ibahagi sa healthcare provider.",
+          "Maaari itong maging kapaki-pakinabang kung pinayuhan ka ng healthcare provider na regular na i-monitor ang iyong heart rate.",
+          "Ang isang pulse reading lamang ay hindi nagbibigay ng buong impormasyon. Dapat ding isaalang-alang ang iyong mga sintomas, activity, gamot, at overall health.",
+          "Natural na nagbabago ang heart rate sa buong araw at karaniwang tumataas habang gumagawa ng physical activity."
+        ]
+      },
+      "safety_reminder": {
+        "en": "Seek urgent medical help if an unusual pulse occurs together with serious symptoms such as chest pain or pressure, severe shortness of breath, fainting, severe dizziness, confusion, or significant weakness. Do not rely only on the pulse number when deciding whether to seek medical care.",
+        "tl": "Agad na humingi ng medical help kung ang kakaibang pulse ay kasabay ng malubhang sintomas tulad ng pananakit o paninikip ng dibdib, matinding hirap sa paghinga, pagkawala ng malay, matinding pagkahilo, pagkalito, o matinding panghihina. Huwag umasa lamang sa pulse number sa pagdedesisyon kung kailangan ng medical care."
+      }
+    },
+    {
+      "key": "when",
+      "label": {
+        "en": "When",
+        "tl": "Kailan"
+      },
+      "title": {
+        "en": "When Should You Check Pulse Rate?",
+        "tl": "Kailan Dapat Kumuha ng Pulse Rate?"
+      },
+      "content": {
+        "en": [
+          "You can check your resting pulse when you are calm and have been resting.",
+          "For consistent tracking, try measuring at approximately the same time and under similar conditions each day.",
+          "You may check your pulse before and after physical activity to observe how your heart rate changes.",
+          "You may check your pulse when you feel symptoms such as unusual palpitations, dizziness, weakness, or shortness of breath, as long as doing so does not delay seeking medical care.",
+          "Check your pulse according to the schedule recommended by your healthcare provider if you have been advised to monitor it.",
+          "Record what you were doing before the measurement because activity can affect your pulse rate."
+        ],
+        "tl": [
+          "Maaari mong i-check ang resting pulse kapag kalmado ka at nakapagpahinga na.",
+          "Para consistent ang tracking, subukang magsukat sa halos parehong oras at kondisyon araw-araw.",
+          "Maaari mong i-check ang pulse bago at pagkatapos ng physical activity upang makita kung paano nagbabago ang heart rate.",
+          "Maaari mong i-check ang pulse kapag nakakaramdam ng kakaibang palpitations, pagkahilo, panghihina, o hirap sa paghinga, basta hindi nito maaantala ang paghingi ng medical care.",
+          "I-check ang pulse ayon sa schedule na inirekomenda ng healthcare provider kung pinayuhan kang regular itong i-monitor.",
+          "I-record kung ano ang ginagawa mo bago ang measurement dahil maaaring makaapekto ang activity sa pulse rate."
+        ]
+      },
+      "schedule_options": [
+        {
+          "key": "morning",
+          "label": {
+            "en": "Morning",
+            "tl": "Umaga"
+          }
+        },
+        {
+          "key": "afternoon",
+          "label": {
+            "en": "Afternoon",
+            "tl": "Hapon"
+          }
+        },
+        {
+          "key": "evening",
+          "label": {
+            "en": "Evening",
+            "tl": "Gabi"
+          }
+        },
+        {
+          "key": "before_activity",
+          "label": {
+            "en": "Before activity",
+            "tl": "Bago mag-activity"
+          }
+        },
+        {
+          "key": "after_activity",
+          "label": {
+            "en": "After activity",
+            "tl": "Pagkatapos ng activity"
+          }
+        },
+        {
+          "key": "before_medication",
+          "label": {
+            "en": "Before medication",
+            "tl": "Bago uminom ng gamot"
+          }
+        },
+        {
+          "key": "after_medication",
+          "label": {
+            "en": "After medication",
+            "tl": "Pagkatapos uminom ng gamot"
+          }
+        },
+        {
+          "key": "when_feeling_symptoms",
+          "label": {
+            "en": "When feeling symptoms",
+            "tl": "Kapag may nararamdamang sintomas"
+          }
+        },
+        {
+          "key": "custom_time",
+          "label": {
+            "en": "Custom time",
+            "tl": "Custom na oras"
+          }
+        }
+      ],
+      "reminder_message": {
+        "en": "It’s time to check your pulse rate. Sit comfortably, relax your arm, find your pulse on your wrist, and count the beats for 60 seconds.",
+        "tl": "Oras na para i-check ang iyong pulse rate. Umupo nang komportable, i-relax ang braso, hanapin ang pulse sa iyong pulso, at bilangin ang tibok sa loob ng 60 segundo."
+      }
+    }
+  ],
+  "short_ui_copy": {
+    "what": {
+      "en": "Pulse rate is the number of times your heart beats per minute. For most adults at rest, 60–100 bpm is generally considered typical.",
+      "tl": "Ang pulse rate ay ang bilang ng tibok ng iyong puso bawat minuto. Para sa karamihan ng adults na nagpapahinga, ang 60–100 bpm ay karaniwang itinuturing na typical."
+    },
+    "how": {
+      "en": "Sit comfortably and relax. Place your index and middle fingers on the inside of your wrist below the thumb, feel the pulse, and count the beats for 60 seconds.",
+      "tl": "Umupo nang komportable at mag-relax. Ilagay ang hintuturo at gitnang daliri sa loob ng pulso sa ibaba ng hinlalaki, damhin ang pulse, at bilangin ang tibok sa loob ng 60 segundo."
+    },
+    "why": {
+      "en": "Tracking your pulse rate can help you understand your usual heart rate and notice changes over time.",
+      "tl": "Ang pag-track ng pulse rate ay nakakatulong para malaman ang iyong karaniwang heart rate at mapansin ang mga pagbabago nito sa paglipas ng panahon."
+    },
+    "when": {
+      "en": "Check your resting pulse when you are calm and rested. For consistent tracking, measure at similar times and under similar conditions.",
+      "tl": "I-check ang resting pulse kapag kalmado at nakapagpahinga. Para consistent ang tracking, magsukat sa halos parehong oras at kondisyon."
+    }
+  }
+}

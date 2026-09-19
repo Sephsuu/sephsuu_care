@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sephsuu_care/core/constants/app_clay.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 import 'package:sephsuu_care/core/widgets/app_avatar.dart';
+import 'package:sephsuu_care/features/account/account_screen.dart';
 import 'package:sephsuu_care/helpers/widgets/stroked_text.dart';
 
 class AppLayoutHeader extends StatelessWidget {
@@ -30,14 +31,20 @@ class AppLayoutHeader extends StatelessWidget {
           button: true,
           label: '$username profile',
           child: InkWell(
-            onTap: onProfileTap,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AccountScreen(),
+                ),
+              );
+            },
             customBorder: const CircleBorder(),
             child: AppAvatar(
               size: 46,
               fallback: initial,
               backgroundColor: AppColors.pink,
               fallbackStyle: const TextStyle(color: AppColors.light),
-              border: Border.all(color: AppColors.pink, width: 2),
             ),
           ),
         ),

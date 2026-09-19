@@ -1,12 +1,14 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 import 'package:sephsuu_care/core/constants/app_font_size.dart';
 import 'package:sephsuu_care/core/widgets/app_header_1.dart';
 import 'package:sephsuu_care/core/widgets/app_card.dart';
 import 'package:sephsuu_care/core/widgets/app_header_badge.dart';
+import 'package:sephsuu_care/core/widgets/app_screen_header.dart';
 import 'package:sephsuu_care/core/widgets/app_tab_switcher.dart';
 
 class VitalLessonScreen extends StatefulWidget {
@@ -72,8 +74,7 @@ class _VitalLessonScreenState extends State<VitalLessonScreen> {
   }
 
   Widget _buildLesson(Map<String, dynamic> lesson) {
-    final title =
-        _localizedText(lesson['title'], _language) ?? widget.fallbackTitle;
+    final lessonName = lesson["lesson_id"].toString().replaceAll('_', ' ');
     final tabs = (lesson['tabs'] as List<dynamic>? ?? const [])
         .whereType<Map<String, dynamic>>()
         .toList();
@@ -91,85 +92,38 @@ class _VitalLessonScreenState extends State<VitalLessonScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(14, 8, 22, 10),
-                child: Row(
-                  children: [
-                    IconButton.filledTonal(
-                      tooltip: _language == 'tl'
-                          ? 'Bumalik sa mga aralin'
-                          : 'Back to lessons',
-                      onPressed: () => Navigator.maybePop(context),
-                      icon: const Icon(Icons.arrow_back_rounded),
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Text(
-                        _language == 'tl'
-                            ? 'Alamin ang iyong kalusugan'
-                            : 'Learn about your health',
-                        style: const TextStyle(
-                          color: AppColors.gray,
-                          fontSize: AppFontSize.sm,
-                        ),
-                      ),
-                    ),
-                  ],
+              AppScreenHeader(
+                backTooltip: _language == 'tl'
+                    ? 'Bumalik sa mga aralin'
+                    : 'Back to lessons',
+                badge: AppHeaderBadge(
+                  label: _language == 'tl'
+                      ? 'alamin ang $lessonName'
+                      : 'learn about $lessonName',
+                  icon: Icons.menu_book_rounded,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 22,
-                  vertical: 8,
-                ),
-                child: _LessonHero(title: title, language: _language),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 22,
-                  vertical: 4,
-                ),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: AppTabSwitcher<String>(
-                    itemPadding: const EdgeInsets.symmetric(horizontal: 18),
-                    boxShadow: const [],
-                    value: _language,
-                    options: const [
-                      AppTabOption(value: 'en', label: 'English'),
-                      AppTabOption(value: 'tl', label: 'Tagalog'),
-                    ],
-                    onChanged: (selection) {
-                      setState(() => _language = selection);
-                    },
-                  ),
-                ),
+              _LessonLanguageSwitcher(
+                value: _language,
+                onChanged: (value) => setState(() => _language = value),
               ),
               if (availableKeys.isNotEmpty)
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 22,
-                    vertical: 8,
-                  ),
-                  child: AppTabSwitcher<String>(
-                    value: activeKey,
-                    spacing: 2,
-                    itemPadding: const EdgeInsets.symmetric(horizontal: 14),
-                    options: [
-                      for (final key in availableKeys)
-                        AppTabOption<String>(
-                          value: key,
-                          label:
-                              _localizedText(
-                                tabsByKey[key]?['label'],
-                                _language,
-                              ) ??
-                              _capitalize(key),
-                        ),
-                    ],
-                    onChanged: (value) => setState(() => _selectedTab = value),
-                  ),
+                _LessonSectionSwitcher(
+                  value: activeKey,
+                  options: [
+                    for (final key in availableKeys)
+                      AppTabOption<String>(
+                        value: key,
+                        icon: Icon(_lessonTabIcon(key), size: 22),
+                        label:
+                            _localizedText(
+                              tabsByKey[key]?['label'],
+                              _language,
+                            ) ??
+                            _capitalize(key),
+                      ),
+                  ],
+                  onChanged: (value) => setState(() => _selectedTab = value),
                 ),
               activeTab == null
                   ? const Center(child: Text('No lesson sections available.'))
@@ -191,42 +145,95 @@ class _VitalLessonScreenState extends State<VitalLessonScreen> {
   }
 }
 
-class _LessonHero extends StatelessWidget {
-  final String title;
-  final String language;
+class _LessonLanguageSwitcher extends StatelessWidget {
+  final String value;
+  final ValueChanged<String> onChanged;
 
-  const _LessonHero({required this.title, required this.language});
+  const _LessonLanguageSwitcher({required this.value, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
-    return AppCard(
-      width: double.infinity,
-      backgroundColor: const Color(0xFFFFE9EE),
-      borderColor: Colors.white,
-      padding: const EdgeInsets.all(22),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppHeaderBadge(
-            label: language == 'tl'
-                ? 'Gabay sa kalusugan'
-                : 'Your health guide',
-            icon: Icons.menu_book_rounded,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 380),
+          child: AppTabSwitcher<String>(
+            value: value,
+            onChanged: onChanged,
+            width: double.infinity,
+            expandItems: true,
+            height: 44,
+            outerWidth: 5,
+            itemDirection: Axis.horizontal,
+            itemGap: 8,
+            itemPadding: const EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 8,
+            ),
+            options: [
+              AppTabOption(value: 'en', label: 'English', icon: _flag('en')),
+              AppTabOption(value: 'tl', label: 'Tagalog', icon: _flag('tl')),
+            ],
+            selectedBackgroundColor: AppColors.lightpink,
+            selectedForegroundColor: AppColors.dark,
           ),
-          const SizedBox(height: 18),
-          AppHeader1(title, fontSize: AppFontSize.x2l),
-          const SizedBox(height: 8),
-          Text(
-            language == 'tl'
-                ? 'Alamin ang mga batayan. Sundan ang bawat hakbang.'
-                : 'Understand the basics. Follow each step.',
-            style: const TextStyle(color: AppColors.dark, height: 1.5),
-          ),
-        ],
+        ),
+      ),
+    );
+  }
+
+  Widget _flag(String language) => ClipOval(
+    child: SvgPicture.asset(
+      'assets/svg/$language.svg',
+      width: 24,
+      height: 24,
+      fit: BoxFit.cover,
+      excludeFromSemantics: true,
+    ),
+  );
+}
+
+class _LessonSectionSwitcher extends StatelessWidget {
+  final String? value;
+  final List<AppTabOption<String>> options;
+  final ValueChanged<String> onChanged;
+
+  const _LessonSectionSwitcher({
+    required this.value,
+    required this.options,
+    required this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 8),
+      child: AppTabSwitcher<String>(
+        value: value,
+        options: options,
+        onChanged: onChanged,
+        width: double.infinity,
+        expandItems: true,
+        itemDirection: Axis.vertical,
+        height: 64,
+        itemGap: 6,
+        spacing: 2,
+        itemPadding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+        selectedBackgroundColor: AppColors.pink,
+        selectedForegroundColor: AppColors.light,
       ),
     );
   }
 }
+
+IconData _lessonTabIcon(String key) => switch (key) {
+  'what' => Icons.lightbulb_outline_rounded,
+  'why' => Icons.help_outline_rounded,
+  'when' => Icons.calendar_today_outlined,
+  'how' => Icons.settings_outlined,
+  _ => Icons.menu_book_outlined,
+};
 
 class _LessonContent extends StatelessWidget {
   final Map<String, dynamic> tab;

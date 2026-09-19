@@ -15,6 +15,7 @@ class AppCard extends StatelessWidget {
   final List<BoxShadow>? boxShadow;
   final VoidCallback? onTap;
   final Clip clipBehavior;
+  final Gradient? gradient; 
 
   const AppCard({
     super.key,
@@ -23,6 +24,7 @@ class AppCard extends StatelessWidget {
     this.margin,
     this.width,
     this.height,
+    this.gradient,
     this.backgroundColor = AppColors.card,
     this.borderColor = AppColors.border,
     this.borderWidth = 1.5,
@@ -42,7 +44,7 @@ class AppCard extends StatelessWidget {
       clipBehavior: clipBehavior,
       decoration: BoxDecoration(
         color: backgroundColor,
-        gradient: AppClay.sheen(backgroundColor),
+        gradient: gradient ?? AppClay.sheen(backgroundColor),
         borderRadius: BorderRadius.circular(borderRadius),
         border: borderColor == null
             ? null

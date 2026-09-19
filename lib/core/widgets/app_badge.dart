@@ -26,6 +26,8 @@ class AppBadge extends StatelessWidget {
   final List<BoxShadow>? selectedBoxShadow;
   final Duration animationDuration;
   final Curve animationCurve;
+  final Color iconColor;
+  final Color selectedIconColor;
 
   const AppBadge({
     super.key,
@@ -51,13 +53,17 @@ class AppBadge extends StatelessWidget {
     this.selectedBoxShadow,
     this.animationDuration = const Duration(milliseconds: 220),
     this.animationCurve = Curves.easeOutCubic,
+    this.iconColor = AppColors.dark,
+    this.selectedIconColor = AppColors.light,
   });
 
   @override
   Widget build(BuildContext context) {
     final iconData = selected ? selectedIcon : icon;
     final foreground = selected ? selectedForegroundColor : foregroundColor;
-    final iconColor = selected ? selectedForegroundColor : selectedBorderColor;
+    final resolvedIconColor = selected
+      ? selectedIconColor
+      : iconColor;
 
     final badge = AnimatedContainer(
       duration: animationDuration,
@@ -73,15 +79,19 @@ class AppBadge extends StatelessWidget {
             : Border.all(color: selected ? selectedBorderColor! : borderColor),
         borderRadius: BorderRadius.circular(borderRadius),
         boxShadow: selected
-            ? selectedBoxShadow ?? AppClay.shadows
-            : AppClay.shadows,
+          ? selectedBoxShadow ?? const []
+          : const [],
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: mainAxisAlignment,
         children: [
           if (showIcon && iconData != null)
-            Icon(iconData, size: iconSize, color: iconColor),
+            Icon(
+              iconData,
+              size: iconSize,
+              color: resolvedIconColor,
+            ),
           Flexible(
             child: ClipRect(
               child: AnimatedSize(

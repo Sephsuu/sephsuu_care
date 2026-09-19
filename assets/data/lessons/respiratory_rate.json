@@ -1,0 +1,296 @@
+{
+  "lesson_id": "respiratory_rate",
+  "title": {
+    "en": "How to Check Respiratory Rate",
+    "tl": "Paano Kumuha ng Respiratory Rate"
+  },
+  "tabs": [
+    {
+      "key": "what",
+      "image_placeholder": {
+        "en": "A person sitting calmly while their breathing rate is being observed and counted.",
+        "tl": "Taong tahimik na nakaupo habang inoobserbahan at binibilang ang kanilang paghinga."
+      },
+      "label": {
+        "en": "What",
+        "tl": "Ano"
+      },
+      "title": {
+        "en": "What is Respiratory Rate?",
+        "tl": "Ano ang Respiratory Rate?"
+      },
+      "content": {
+        "en": [
+          "Respiratory rate is the number of breaths you take in one minute.",
+          "It is measured in breaths per minute.",
+          "One complete rise and fall of the chest or abdomen is counted as one breath.",
+          "For many healthy adults at rest, respiratory rate is commonly around 12 to 20 breaths per minute.",
+          "Your respiratory rate may change because of exercise, stress, fever, illness, pain, medications, altitude, and other factors.",
+          "Children normally breathe faster than adults, so expected respiratory rates vary by age.",
+          "A respiratory rate reading alone cannot diagnose a medical condition."
+        ],
+        "tl": [
+          "Ang respiratory rate ay ang bilang ng iyong paghinga sa loob ng isang minuto.",
+          "Sinusukat ito sa breaths per minute.",
+          "Ang isang kumpletong pag-angat at pagbaba ng dibdib o tiyan ay binibilang bilang isang paghinga.",
+          "Para sa maraming healthy adults na nagpapahinga, ang respiratory rate ay karaniwang nasa humigit-kumulang 12 hanggang 20 breaths per minute.",
+          "Maaaring magbago ang respiratory rate dahil sa ehersisyo, stress, lagnat, sakit, pananakit ng katawan, gamot, altitude, at iba pang factors.",
+          "Karaniwang mas mabilis huminga ang mga bata kaysa adults, kaya nag-iiba ang expected respiratory rate depende sa edad.",
+          "Hindi sapat ang respiratory rate reading lamang para mag-diagnose ng medical condition."
+        ]
+      },
+      "app_note": {
+        "en": "Use this feature to record and monitor your respiratory rate over time. Consider your readings together with how you feel. This app does not diagnose medical conditions.",
+        "tl": "Gamitin ang feature na ito para i-record at subaybayan ang iyong respiratory rate sa paglipas ng panahon. Isaalang-alang ang iyong readings kasama ang iyong nararamdaman. Ang app na ito ay hindi nagbibigay ng diagnosis."
+      }
+    },
+    {
+      "key": "how",
+      "label": {
+        "en": "How",
+        "tl": "Paano"
+      },
+      "title": {
+        "en": "How to Check Respiratory Rate",
+        "tl": "Paano Kumuha ng Respiratory Rate"
+      },
+      "sections": [
+        {
+          "title": {
+            "en": "Before checking",
+            "tl": "Bago kumuha ng respiratory rate"
+          },
+          "steps": {
+            "en": [
+              "If you want a resting respiratory rate, allow the person to rest quietly before measuring.",
+              "Avoid measuring immediately after exercise or strenuous activity when checking a resting rate.",
+              "Choose a quiet and comfortable place.",
+              "Use a watch, clock, or timer that shows seconds.",
+              "Allow breathing to remain natural. Do not intentionally make the breaths faster, slower, deeper, or shallower."
+            ],
+            "tl": [
+              "Kung resting respiratory rate ang kukunin, hayaang magpahinga muna nang tahimik ang tao bago magsukat.",
+              "Iwasang magsukat kaagad pagkatapos ng ehersisyo o mabigat na activity kung resting rate ang nais kunin.",
+              "Pumili ng tahimik at komportableng lugar.",
+              "Gumamit ng relo, clock, o timer na nagpapakita ng seconds.",
+              "Panatilihing natural ang paghinga. Huwag sadyang bilisan, bagalan, palalimin, o hinaan ang paghinga."
+            ]
+          }
+        },
+        {
+          "title": {
+            "en": "Correct position",
+            "tl": "Tamang posisyon"
+          },
+          "image_placeholder": {
+            "en": "A person sitting comfortably while the movement of their chest and abdomen is observed.",
+            "tl": "Taong komportableng nakaupo habang inoobserbahan ang paggalaw ng dibdib at tiyan."
+          },
+          "steps": {
+            "en": [
+              "Sit or lie comfortably and remain relaxed.",
+              "Keep your body as still as possible.",
+              "Breathe normally without intentionally changing your breathing pattern.",
+              "Observe the chest or abdomen as it rises and falls.",
+              "One complete rise and fall counts as one breath.",
+              "If someone else is checking your respiratory rate, try not to talk or move while they are counting."
+            ],
+            "tl": [
+              "Umupo o humiga nang komportable at manatiling relaxed.",
+              "Panatilihing hindi gumagalaw ang katawan hangga't maaari.",
+              "Huminga nang normal at huwag sadyang baguhin ang iyong breathing pattern.",
+              "Obserbahan ang pag-angat at pagbaba ng dibdib o tiyan.",
+              "Ang isang kumpletong pag-angat at pagbaba ay katumbas ng isang paghinga.",
+              "Kung ibang tao ang kumukuha ng iyong respiratory rate, subukang huwag magsalita o gumalaw habang nagbibilang sila."
+            ]
+          }
+        },
+        {
+          "title": {
+            "en": "Steps",
+            "tl": "Mga hakbang"
+          },
+          "image_placeholder": {
+            "en": "A timer counting 60 seconds while the rise and fall of a person's chest is observed.",
+            "tl": "Timer na nagbibilang ng 60 segundo habang inoobserbahan ang pag-angat at pagbaba ng dibdib ng isang tao."
+          },
+          "steps": {
+            "en": [
+              "Make sure the person is resting and breathing normally.",
+              "Watch the chest or abdomen rise and fall.",
+              "Count one complete rise and fall as one breath.",
+              "Start the timer and count the breaths for 60 seconds.",
+              "The total number of breaths counted is the respiratory rate in breaths per minute.",
+              "If breathing is regular, a shorter count may sometimes be used, but counting for a full 60 seconds gives a straightforward measurement.",
+              "If the breathing pattern appears irregular, count for the full 60 seconds.",
+              "Record the respiratory rate, date, time, activity, and any symptoms if needed."
+            ],
+            "tl": [
+              "Siguraduhing nagpapahinga at normal ang paghinga ng tao.",
+              "Obserbahan ang pag-angat at pagbaba ng dibdib o tiyan.",
+              "Bilangin ang isang kumpletong pag-angat at pagbaba bilang isang paghinga.",
+              "Simulan ang timer at bilangin ang mga paghinga sa loob ng 60 segundo.",
+              "Ang kabuuang bilang ng paghinga ang respiratory rate sa breaths per minute.",
+              "Kung regular ang paghinga, maaaring gumamit minsan ng mas maikling bilang, ngunit mas simple at direkta ang pagbibilang sa buong 60 segundo.",
+              "Kung mukhang irregular ang breathing pattern, bilangin sa buong 60 segundo.",
+              "I-record ang respiratory rate, petsa, oras, activity, at anumang sintomas kung kinakailangan."
+            ]
+          }
+        }
+      ],
+      "example": {
+        "en": {
+          "respiratory_rate": "16 breaths/min",
+          "position": "Sitting",
+          "activity": "Resting",
+          "breathing_pattern": "Regular",
+          "notes": "After resting"
+        },
+        "tl": {
+          "respiratory_rate": "16 breaths/min",
+          "position": "Nakaupo",
+          "activity": "Nagpapahinga",
+          "breathing_pattern": "Regular",
+          "notes": "Pagkatapos magpahinga"
+        }
+      }
+    },
+    {
+      "key": "why",
+      "label": {
+        "en": "Why",
+        "tl": "Bakit"
+      },
+      "title": {
+        "en": "Why Monitor Respiratory Rate?",
+        "tl": "Bakit Kailangang I-monitor ang Respiratory Rate?"
+      },
+      "content": {
+        "en": [
+          "Monitoring respiratory rate can help you understand your usual breathing rate while at rest.",
+          "It can help you notice changes in your breathing pattern over time.",
+          "Respiratory rate is one of the main vital signs used to assess basic body function.",
+          "It can help you observe how activity, illness, fever, stress, pain, or other factors affect your breathing.",
+          "It can help you keep a record that may be shared with a healthcare provider.",
+          "It may be useful if a healthcare provider has asked you to monitor your breathing rate regularly.",
+          "A single respiratory rate reading does not provide the full picture. Your symptoms, breathing effort, oxygen level, activity, and overall condition should also be considered."
+        ],
+        "tl": [
+          "Ang pag-monitor ng respiratory rate ay nakakatulong para malaman ang iyong karaniwang breathing rate habang nagpapahinga.",
+          "Nakakatulong ito para mapansin ang pagbabago sa iyong breathing pattern sa paglipas ng panahon.",
+          "Ang respiratory rate ay isa sa mga pangunahing vital signs na ginagamit para suriin ang basic functions ng katawan.",
+          "Nakakatulong ito para makita kung paano naaapektuhan ng activity, sakit, lagnat, stress, pananakit, at iba pang factors ang iyong paghinga.",
+          "Nakakatulong ito para magkaroon ka ng record na maaaring ibahagi sa healthcare provider.",
+          "Maaari itong maging kapaki-pakinabang kung pinayuhan ka ng healthcare provider na regular na i-monitor ang iyong breathing rate.",
+          "Ang isang respiratory rate reading lamang ay hindi nagbibigay ng buong impormasyon. Dapat ding isaalang-alang ang iyong mga sintomas, effort sa paghinga, oxygen level, activity, at overall condition."
+        ]
+      },
+      "safety_reminder": {
+        "en": "Seek urgent medical help if you or another person has severe or worsening difficulty breathing, cannot catch their breath, has chest pain or pressure, develops bluish or gray lips or face, becomes confused, faints, or is difficult to wake. Do not delay medical care just to measure respiratory rate.",
+        "tl": "Agad na humingi ng medical help kung ikaw o ibang tao ay may malubha o lumalalang hirap sa paghinga, hindi makahabol ng hininga, may pananakit o paninikip ng dibdib, nagiging asul o kulay abo ang labi o mukha, nalilito, nawawalan ng malay, o mahirap gisingin. Huwag ipagpaliban ang medical care para lamang sukatin ang respiratory rate."
+      }
+    },
+    {
+      "key": "when",
+      "label": {
+        "en": "When",
+        "tl": "Kailan"
+      },
+      "title": {
+        "en": "When Should You Check Respiratory Rate?",
+        "tl": "Kailan Dapat Kumuha ng Respiratory Rate?"
+      },
+      "content": {
+        "en": [
+          "You can check your resting respiratory rate when you are calm and have been resting.",
+          "For consistent tracking, try measuring at approximately the same time and under similar conditions.",
+          "You may check your respiratory rate when you notice a change in your usual breathing, as long as doing so does not delay seeking medical care.",
+          "You may check before and after physical activity if you are tracking how activity affects your breathing.",
+          "Check according to the schedule recommended by your healthcare provider if you have been advised to monitor your respiratory rate.",
+          "Record any symptoms or activities occurring around the time of measurement because they may help explain changes in your breathing rate."
+        ],
+        "tl": [
+          "Maaari mong i-check ang resting respiratory rate kapag kalmado ka at nakapagpahinga na.",
+          "Para consistent ang tracking, subukang magsukat sa halos parehong oras at kondisyon.",
+          "Maaari mong i-check ang respiratory rate kapag napansin mong nagbago ang karaniwan mong paghinga, basta hindi nito maaantala ang paghingi ng medical care.",
+          "Maaari mong i-check bago at pagkatapos ng physical activity kung tina-track mo kung paano naaapektuhan ng activity ang iyong paghinga.",
+          "I-check ito ayon sa schedule na inirekomenda ng healthcare provider kung pinayuhan kang regular na mag-monitor ng respiratory rate.",
+          "I-record ang anumang sintomas o activity sa oras ng measurement dahil maaaring makatulong ang mga ito upang maunawaan ang pagbabago sa breathing rate."
+        ]
+      },
+      "schedule_options": [
+        {
+          "key": "morning",
+          "label": {
+            "en": "Morning",
+            "tl": "Umaga"
+          }
+        },
+        {
+          "key": "afternoon",
+          "label": {
+            "en": "Afternoon",
+            "tl": "Hapon"
+          }
+        },
+        {
+          "key": "evening",
+          "label": {
+            "en": "Evening",
+            "tl": "Gabi"
+          }
+        },
+        {
+          "key": "before_activity",
+          "label": {
+            "en": "Before activity",
+            "tl": "Bago mag-activity"
+          }
+        },
+        {
+          "key": "after_activity",
+          "label": {
+            "en": "After activity",
+            "tl": "Pagkatapos ng activity"
+          }
+        },
+        {
+          "key": "when_feeling_symptoms",
+          "label": {
+            "en": "When feeling symptoms",
+            "tl": "Kapag may nararamdamang sintomas"
+          }
+        },
+        {
+          "key": "custom_time",
+          "label": {
+            "en": "Custom time",
+            "tl": "Custom na oras"
+          }
+        }
+      ],
+      "reminder_message": {
+        "en": "It’s time to check your respiratory rate. Sit comfortably, relax, breathe normally, and count each complete breath for 60 seconds.",
+        "tl": "Oras na para i-check ang iyong respiratory rate. Umupo nang komportable, mag-relax, huminga nang normal, at bilangin ang bawat kumpletong paghinga sa loob ng 60 segundo."
+      }
+    }
+  ],
+  "short_ui_copy": {
+    "what": {
+      "en": "Respiratory rate is the number of breaths you take per minute. For many healthy adults at rest, it is commonly around 12–20 breaths per minute.",
+      "tl": "Ang respiratory rate ay ang bilang ng iyong paghinga bawat minuto. Para sa maraming healthy adults na nagpapahinga, karaniwan itong humigit-kumulang 12–20 breaths per minute."
+    },
+    "how": {
+      "en": "Sit comfortably and breathe normally. Watch the chest or abdomen rise and fall, count each complete breath, and continue for 60 seconds.",
+      "tl": "Umupo nang komportable at huminga nang normal. Obserbahan ang pag-angat at pagbaba ng dibdib o tiyan, bilangin ang bawat kumpletong paghinga, at magpatuloy sa loob ng 60 segundo."
+    },
+    "why": {
+      "en": "Tracking respiratory rate can help you understand your usual breathing pattern and notice changes over time.",
+      "tl": "Ang pag-track ng respiratory rate ay nakakatulong para malaman ang iyong karaniwang breathing pattern at mapansin ang mga pagbabago nito sa paglipas ng panahon."
+    },
+    "when": {
+      "en": "Check your resting respiratory rate when you are calm and rested. For consistent tracking, measure under similar conditions.",
+      "tl": "I-check ang resting respiratory rate kapag kalmado at nakapagpahinga. Para consistent ang tracking, magsukat sa halos parehong kondisyon."
+    }
+  }
+}

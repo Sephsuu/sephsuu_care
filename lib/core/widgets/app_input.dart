@@ -105,7 +105,9 @@ class AppInput extends StatelessWidget {
   final TextStyle? hintStyle;
   final Color? fillColor;
   final Color? borderColor;
+  final double? borderWidth;
   final Color? focusedBorderColor;
+  final List<BoxShadow>? boxShadow;
 
   final double borderRadius;
 
@@ -136,8 +138,10 @@ class AppInput extends StatelessWidget {
     this.hintStyle,
     this.fillColor,
     this.borderColor,
+    this.borderWidth,
     this.focusedBorderColor,
     this.borderRadius = AppClay.radius,
+    this.boxShadow
   });
 
   @override
@@ -165,74 +169,86 @@ class AppInput extends StatelessWidget {
             const SizedBox(height: 4),
           ],
 
-          TextFormField(
-            controller: controller,
-            initialValue: controller == null ? initialValue : null,
-            onChanged: onChanged,
-            onTap: onTap,
-            obscureText: obscureText,
-            enabled: enabled,
-            readOnly: readOnly,
-            autofocus: autofocus,
-            keyboardType: keyboardType,
-            textInputAction: textInputAction,
-            maxLines: obscureText ? 1 : maxLines,
-            minLines: minLines,
-            maxLength: maxLength,
-            validator: validator,
-            style:
-                inputStyle ??
-                const TextStyle(fontSize: 14, color: Colors.black),
-            decoration: InputDecoration(
-              hintText: hintText,
-              hintStyle:
-                  hintStyle ??
-                  TextStyle(fontSize: 14, color: Colors.grey.shade500),
-              prefixIcon: labelCharacter != null
-                  ? Padding(
-                      padding: const EdgeInsets.only(left: 12, right: 8),
-                      child: labelCharacter,
-                    )
-                  : null,
-              prefixIconConstraints: const BoxConstraints(
-                minWidth: 0,
-                minHeight: 0,
-              ),
-              suffixIcon: suffixIcon,
-              suffixIconConstraints: const BoxConstraints(
-                minWidth: 0,
-                minHeight: 0,
-              ),
-              filled: true,
-              fillColor: fillColor ?? AppClay.surface,
-              contentPadding:
-                  contentPadding ??
-                  const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(borderRadius),
-                borderSide: BorderSide(color: resolvedBorderColor),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(borderRadius),
-                borderSide: BorderSide(
-                  color: resolvedFocusedBorderColor,
-                  width: 1.5,
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(borderRadius),
+              boxShadow: boxShadow ?? AppClay.lightShadows,
+              border: borderColor == null
+                ? null
+                : Border.all(
+                    color: borderColor!, 
+                    width: borderWidth ?? 0
+                  ),
+            ),
+            child: TextFormField(
+              controller: controller,
+              initialValue: controller == null ? initialValue : null,
+              onChanged: onChanged,
+              onTap: onTap,
+              obscureText: obscureText,
+              enabled: enabled,
+              readOnly: readOnly,
+              autofocus: autofocus,
+              keyboardType: keyboardType,
+              textInputAction: textInputAction,
+              maxLines: obscureText ? 1 : maxLines,
+              minLines: minLines,
+              maxLength: maxLength,
+              validator: validator,
+              style:
+                  inputStyle ??
+                  const TextStyle(fontSize: 14, color: Colors.black),
+              decoration: InputDecoration(
+                hintText: hintText,
+                hintStyle:
+                    hintStyle ??
+                    TextStyle(fontSize: 14, color: Colors.grey.shade500),
+                prefixIcon: labelCharacter != null
+                    ? Padding(
+                        padding: const EdgeInsets.only(left: 12, right: 8),
+                        child: labelCharacter,
+                      )
+                    : null,
+                prefixIconConstraints: const BoxConstraints(
+                  minWidth: 0,
+                  minHeight: 0,
+                ),
+                suffixIcon: suffixIcon,
+                suffixIconConstraints: const BoxConstraints(
+                  minWidth: 0,
+                  minHeight: 0,
+                ),
+                filled: true,
+                fillColor: fillColor ?? AppClay.surface,
+                contentPadding:
+                    contentPadding ??
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(borderRadius),
+                  borderSide: BorderSide(color: resolvedBorderColor),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(borderRadius),
+                  borderSide: BorderSide(
+                    color: resolvedFocusedBorderColor,
+                    width: 1.5,
+                  ),
+                ),
+                disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(borderRadius),
+                  borderSide: BorderSide(color: Colors.grey.shade300),
+                ),
+                errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(borderRadius),
+                  borderSide: const BorderSide(color: Colors.red),
+                ),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(borderRadius),
+                  borderSide: const BorderSide(color: Colors.red, width: 1.5),
                 ),
               ),
-              disabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(borderRadius),
-                borderSide: BorderSide(color: Colors.grey.shade300),
-              ),
-              errorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(borderRadius),
-                borderSide: const BorderSide(color: Colors.red),
-              ),
-              focusedErrorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(borderRadius),
-                borderSide: const BorderSide(color: Colors.red, width: 1.5),
-              ),
             ),
-          ),
+          )
         ],
       ),
     );

@@ -98,17 +98,8 @@ class _UserDashboardScreenState extends State<UserDashboardScreen> {
                               const AppHeaderBadge(
                                 label: 'your care dashboard',
                                 icon: Icons.favorite_rounded,
-                                padding: EdgeInsetsGeometry.symmetric(
-                                  vertical: 5,
-                                  horizontal: 10,
-                                ),
-                                textStyle: TextStyle(
-                                  fontSize: AppFontSize.x2s,
-                                  fontWeight: FontWeight.w800,
-                                ),
-                                iconSize: 14,
-                                gap: 5,
                               ),
+                              const SizedBox(height: 5),
                               _WelcomeSection(
                                 greeting: greeting,
                                 username: widget.username,

@@ -1,0 +1,318 @@
+{
+  "lesson_id": "blood_sugar",
+  "title": {
+    "en": "How to Check Blood Sugar",
+    "tl": "Paano Kumuha ng Blood Sugar"
+  },
+  "tabs": [
+    {
+      "key": "what",
+      "image_placeholder": {
+        "en": "A blood glucose meter with a test strip showing a blood sugar reading.",
+        "tl": "Blood glucose meter na may test strip at nagpapakita ng blood sugar reading."
+      },
+      "label": {
+        "en": "What",
+        "tl": "Ano"
+      },
+      "title": {
+        "en": "What is Blood Sugar?",
+        "tl": "Ano ang Blood Sugar?"
+      },
+      "content": {
+        "en": [
+          "Blood sugar, also called blood glucose, is the amount of glucose present in your blood.",
+          "Glucose is an important source of energy for your body's cells.",
+          "A blood glucose meter, also called a glucometer, can measure glucose from a small drop of blood, usually taken from a fingertip.",
+          "Blood sugar is commonly displayed in milligrams per deciliter, or mg/dL. Some devices and countries use millimoles per liter, or mmol/L.",
+          "Blood sugar levels naturally change throughout the day and can be affected by meals, physical activity, medications, stress, illness, and other factors.",
+          "For people with diabetes, blood sugar targets may differ depending on age, health condition, medications, pregnancy, and the treatment plan recommended by a healthcare provider.",
+          "A home blood sugar reading alone should not be used to diagnose diabetes or another medical condition."
+        ],
+        "tl": [
+          "Ang blood sugar, na tinatawag ding blood glucose, ay ang dami ng glucose na nasa iyong dugo.",
+          "Ang glucose ay mahalagang source ng energy para sa mga cells ng katawan.",
+          "Ang blood glucose meter, na tinatawag ding glucometer, ay sumusukat ng glucose gamit ang maliit na patak ng dugo na karaniwang kinukuha mula sa daliri.",
+          "Karaniwang ipinapakita ang blood sugar sa milligrams per deciliter o mg/dL. Ang ibang devices at countries ay gumagamit ng millimoles per liter o mmol/L.",
+          "Natural na nagbabago ang blood sugar level sa buong araw at maaaring maapektuhan ng pagkain, physical activity, gamot, stress, sakit, at iba pang factors.",
+          "Para sa mga taong may diabetes, maaaring magkaiba ang blood sugar targets depende sa edad, kondisyon ng kalusugan, gamot, pagbubuntis, at treatment plan na inirekomenda ng healthcare provider.",
+          "Hindi dapat gamitin ang isang home blood sugar reading lamang para mag-diagnose ng diabetes o ibang medical condition."
+        ]
+      },
+      "app_note": {
+        "en": "Use this feature to record and monitor your blood sugar readings over time. Follow the target range recommended by your healthcare provider. This app does not diagnose medical conditions.",
+        "tl": "Gamitin ang feature na ito para i-record at subaybayan ang iyong blood sugar readings sa paglipas ng panahon. Sundin ang target range na inirekomenda ng iyong healthcare provider. Ang app na ito ay hindi nagbibigay ng diagnosis."
+      }
+    },
+    {
+      "key": "how",
+      "label": {
+        "en": "How",
+        "tl": "Paano"
+      },
+      "title": {
+        "en": "How to Check Blood Sugar",
+        "tl": "Paano Kumuha ng Blood Sugar"
+      },
+      "sections": [
+        {
+          "title": {
+            "en": "Before checking",
+            "tl": "Bago kumuha ng blood sugar"
+          },
+          "steps": {
+            "en": [
+              "Prepare your blood glucose meter, test strip, lancing device, and a new lancet.",
+              "Check that your test strips are appropriate for your meter and are not expired.",
+              "Wash your hands with soap and warm water.",
+              "Dry your hands completely before testing.",
+              "Make sure the meter is charged or has working batteries and is ready to use.",
+              "Follow the instructions provided by the manufacturer of your glucose meter."
+            ],
+            "tl": [
+              "Ihanda ang blood glucose meter, test strip, lancing device, at bagong lancet.",
+              "Siguraduhing compatible sa iyong meter ang test strips at hindi expired.",
+              "Hugasan ang iyong mga kamay gamit ang sabon at maligamgam na tubig.",
+              "Patuyuin nang mabuti ang iyong mga kamay bago magsukat.",
+              "Siguraduhing may sapat na battery o charge ang meter at handa itong gamitin.",
+              "Sundin ang instructions ng manufacturer ng iyong glucose meter."
+            ]
+          }
+        },
+        {
+          "title": {
+            "en": "Prepare your finger",
+            "tl": "Ihanda ang iyong daliri"
+          },
+          "image_placeholder": {
+            "en": "A clean hand with a lancing device positioned near a fingertip.",
+            "tl": "Malinis na kamay na may lancing device na nakaposisyon malapit sa dulo ng daliri."
+          },
+          "steps": {
+            "en": [
+              "Make sure your hands are clean, dry, and warm.",
+              "Insert a new lancet into the lancing device according to its instructions.",
+              "Choose a fingertip for the blood sample.",
+              "If your hands are cold, gently warm them to help improve blood flow.",
+              "Keep the hand relaxed before using the lancing device.",
+              "Never share lancets or lancing devices with another person."
+            ],
+            "tl": [
+              "Siguraduhing malinis, tuyo, at mainit ang iyong mga kamay.",
+              "Maglagay ng bagong lancet sa lancing device ayon sa instructions nito.",
+              "Pumili ng daliri na gagamitin para sa blood sample.",
+              "Kung malamig ang iyong mga kamay, dahan-dahang painitin ang mga ito upang makatulong sa blood flow.",
+              "Panatilihing relaxed ang kamay bago gamitin ang lancing device.",
+              "Huwag kailanman mag-share ng lancet o lancing device sa ibang tao."
+            ]
+          }
+        },
+        {
+          "title": {
+            "en": "Steps",
+            "tl": "Mga hakbang"
+          },
+          "image_placeholder": {
+            "en": "A fingertip with a small drop of blood being applied to a glucose meter test strip.",
+            "tl": "Daliri na may maliit na patak ng dugo na inilalagay sa test strip ng glucose meter."
+          },
+          "steps": {
+            "en": [
+              "Insert the test strip into the blood glucose meter if required by your device.",
+              "Use the lancing device to prick your fingertip.",
+              "Gently encourage a small drop of blood to form.",
+              "Touch the blood sample to the appropriate area of the test strip.",
+              "Wait for the meter to process the sample.",
+              "Read the blood glucose value displayed on the screen.",
+              "Record the result together with the date, time, and whether it was taken before or after eating.",
+              "Add notes about meals, activity, medication, symptoms, or other factors if needed.",
+              "Dispose of the used lancet safely according to the manufacturer's instructions and local sharps-disposal guidance."
+            ],
+            "tl": [
+              "Ipasok ang test strip sa blood glucose meter kung kinakailangan ng iyong device.",
+              "Gamitin ang lancing device upang tusukin ang dulo ng iyong daliri.",
+              "Dahan-dahang hayaang magkaroon ng maliit na patak ng dugo.",
+              "Idikit ang blood sample sa tamang bahagi ng test strip.",
+              "Hintaying ma-process ng meter ang sample.",
+              "Basahin ang blood glucose value na ipinapakita sa screen.",
+              "I-record ang resulta kasama ang petsa, oras, at kung ito ay kinuha bago o pagkatapos kumain.",
+              "Maglagay ng notes tungkol sa pagkain, activity, gamot, sintomas, o iba pang factors kung kinakailangan.",
+              "Itapon nang ligtas ang nagamit na lancet ayon sa instructions ng manufacturer at local sharps-disposal guidance."
+            ]
+          }
+        }
+      ],
+      "example": {
+        "en": {
+          "blood_glucose": "105 mg/dL",
+          "timing": "Before meal",
+          "measurement_site": "Fingertip",
+          "meal": "Before breakfast",
+          "notes": "Before morning medication"
+        },
+        "tl": {
+          "blood_glucose": "105 mg/dL",
+          "timing": "Bago kumain",
+          "measurement_site": "Dulo ng daliri",
+          "meal": "Bago mag-almusal",
+          "notes": "Bago ang gamot sa umaga"
+        }
+      }
+    },
+    {
+      "key": "why",
+      "label": {
+        "en": "Why",
+        "tl": "Bakit"
+      },
+      "title": {
+        "en": "Why Monitor Blood Sugar?",
+        "tl": "Bakit Kailangang I-monitor ang Blood Sugar?"
+      },
+      "content": {
+        "en": [
+          "Monitoring blood sugar can help you understand how your glucose level changes throughout the day.",
+          "For people with diabetes, regular monitoring can help show whether blood sugar is within the target range recommended by a healthcare provider.",
+          "It can help you observe how meals, physical activity, stress, illness, and medications affect your blood sugar.",
+          "It can help identify patterns of readings that are higher or lower than your usual range.",
+          "Keeping a record can make it easier to share blood sugar patterns with your healthcare provider.",
+          "Blood sugar monitoring may help guide diabetes management when used according to your healthcare provider's instructions.",
+          "One reading does not provide the full picture. Patterns over time and other health information are also important."
+        ],
+        "tl": [
+          "Ang pag-monitor ng blood sugar ay nakakatulong para malaman kung paano nagbabago ang iyong glucose level sa buong araw.",
+          "Para sa mga taong may diabetes, makakatulong ang regular na monitoring upang malaman kung nasa target range na inirekomenda ng healthcare provider ang blood sugar.",
+          "Nakakatulong ito para makita kung paano naaapektuhan ng pagkain, physical activity, stress, sakit, at gamot ang iyong blood sugar.",
+          "Nakakatulong ito para mapansin ang pattern ng readings na mas mataas o mas mababa kaysa sa iyong karaniwang range.",
+          "Ang pagkakaroon ng record ay nakakatulong para mas madaling maibahagi ang blood sugar patterns sa healthcare provider.",
+          "Maaaring makatulong ang blood sugar monitoring sa diabetes management kapag ginagawa ayon sa instructions ng healthcare provider.",
+          "Hindi sapat ang isang reading lamang para malaman ang buong kondisyon. Mahalaga rin ang pattern sa paglipas ng panahon at iba pang health information."
+        ]
+      },
+      "safety_reminder": {
+        "en": "If a reading is unexpectedly high or low, repeat the test with a new strip if possible and follow the care plan provided by your healthcare provider. Seek urgent medical help for severe symptoms such as fainting, seizure, severe confusion, inability to stay awake, severe weakness, or serious difficulty breathing.",
+        "tl": "Kung hindi inaasahang mataas o mababa ang reading, ulitin ang test gamit ang bagong strip kung maaari at sundin ang care plan na ibinigay ng iyong healthcare provider. Agad na humingi ng medical help kung may malubhang sintomas tulad ng pagkawala ng malay, seizure, matinding pagkalito, hirap manatiling gising, matinding panghihina, o malubhang hirap sa paghinga."
+      }
+    },
+    {
+      "key": "when",
+      "label": {
+        "en": "When",
+        "tl": "Kailan"
+      },
+      "title": {
+        "en": "When Should You Check Blood Sugar?",
+        "tl": "Kailan Dapat Kumuha ng Blood Sugar?"
+      },
+      "content": {
+        "en": [
+          "How often you should check your blood sugar depends on your health condition, medications, and treatment plan.",
+          "If you have diabetes, follow the testing schedule recommended by your healthcare provider.",
+          "Common monitoring times may include before meals and at bedtime.",
+          "Your healthcare provider may also ask you to check one or two hours after a meal.",
+          "You may be advised to check before or after physical activity.",
+          "You may need to check when you have symptoms of low or high blood sugar, when you are sick, or when your usual routine changes.",
+          "People taking insulin or certain diabetes medicines may need to monitor more frequently.",
+          "Record the timing of the reading because blood sugar values can have different meanings depending on when you last ate, exercised, or took medication."
+        ],
+        "tl": [
+          "Ang dalas ng pag-check ng blood sugar ay depende sa iyong health condition, gamot, at treatment plan.",
+          "Kung mayroon kang diabetes, sundin ang testing schedule na inirekomenda ng iyong healthcare provider.",
+          "Karaniwang monitoring times ay maaaring bago kumain at bago matulog.",
+          "Maaari ka ring payuhan ng healthcare provider na mag-check isa o dalawang oras pagkatapos kumain.",
+          "Maaari kang payuhang mag-check bago o pagkatapos ng physical activity.",
+          "Maaaring kailanganing mag-check kapag may sintomas ng mababa o mataas na blood sugar, kapag may sakit, o kapag nagbago ang iyong karaniwang routine.",
+          "Ang mga taong gumagamit ng insulin o ilang diabetes medicines ay maaaring kailanganing mag-monitor nang mas madalas.",
+          "I-record ang timing ng reading dahil maaaring magkaiba ang kahulugan ng blood sugar value depende kung kailan ka huling kumain, nag-exercise, o uminom ng gamot."
+        ]
+      },
+      "schedule_options": [
+        {
+          "key": "fasting",
+          "label": {
+            "en": "Fasting",
+            "tl": "Fasting"
+          }
+        },
+        {
+          "key": "before_breakfast",
+          "label": {
+            "en": "Before breakfast",
+            "tl": "Bago mag-almusal"
+          }
+        },
+        {
+          "key": "before_meal",
+          "label": {
+            "en": "Before meal",
+            "tl": "Bago kumain"
+          }
+        },
+        {
+          "key": "after_meal",
+          "label": {
+            "en": "After meal",
+            "tl": "Pagkatapos kumain"
+          }
+        },
+        {
+          "key": "before_exercise",
+          "label": {
+            "en": "Before exercise",
+            "tl": "Bago mag-ehersisyo"
+          }
+        },
+        {
+          "key": "after_exercise",
+          "label": {
+            "en": "After exercise",
+            "tl": "Pagkatapos mag-ehersisyo"
+          }
+        },
+        {
+          "key": "bedtime",
+          "label": {
+            "en": "Bedtime",
+            "tl": "Bago matulog"
+          }
+        },
+        {
+          "key": "when_feeling_symptoms",
+          "label": {
+            "en": "When feeling symptoms",
+            "tl": "Kapag may nararamdamang sintomas"
+          }
+        },
+        {
+          "key": "custom_time",
+          "label": {
+            "en": "Custom time",
+            "tl": "Custom na oras"
+          }
+        }
+      ],
+      "reminder_message": {
+        "en": "It’s time to check your blood sugar. Wash and dry your hands, prepare your glucose meter and test strip, and take your reading when you are ready.",
+        "tl": "Oras na para i-check ang iyong blood sugar. Hugasan at patuyuin ang iyong mga kamay, ihanda ang glucose meter at test strip, at kunin ang reading kapag handa ka na."
+      }
+    }
+  ],
+  "short_ui_copy": {
+    "what": {
+      "en": "Blood sugar, or blood glucose, is the amount of glucose in your blood. A glucose meter can measure it from a small drop of blood, usually from your fingertip.",
+      "tl": "Ang blood sugar o blood glucose ay ang dami ng glucose sa iyong dugo. Masusukat ito ng glucose meter gamit ang maliit na patak ng dugo na karaniwang kinukuha mula sa daliri."
+    },
+    "how": {
+      "en": "Wash and dry your hands, insert a test strip into your glucose meter, prick your fingertip with a new lancet, apply a small drop of blood to the strip, and wait for the reading.",
+      "tl": "Hugasan at patuyuin ang mga kamay, ilagay ang test strip sa glucose meter, tusukin ang daliri gamit ang bagong lancet, ilagay ang maliit na patak ng dugo sa strip, at hintayin ang reading."
+    },
+    "why": {
+      "en": "Tracking blood sugar can help you understand changes over time and see how meals, activity, medications, and other factors affect your glucose level.",
+      "tl": "Ang pag-track ng blood sugar ay nakakatulong para makita ang pagbabago nito sa paglipas ng panahon at kung paano ito naaapektuhan ng pagkain, activity, gamot, at iba pang factors."
+    },
+    "when": {
+      "en": "Check blood sugar according to the schedule recommended by your healthcare provider, such as before meals, after meals, at bedtime, or when symptoms occur.",
+      "tl": "I-check ang blood sugar ayon sa schedule na inirekomenda ng healthcare provider, tulad ng bago kumain, pagkatapos kumain, bago matulog, o kapag may sintomas."
+    }
+  }
+}

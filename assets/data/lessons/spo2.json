@@ -1,0 +1,294 @@
+{
+  "lesson_id": "spo2",
+  "title": {
+    "en": "How to Check SpO₂",
+    "tl": "Paano Kumuha ng SpO₂"
+  },
+  "tabs": [
+    {
+      "key": "what",
+      "image_placeholder": {
+        "en": "A pulse oximeter attached to a fingertip showing oxygen saturation and pulse rate.",
+        "tl": "Pulse oximeter na nakakabit sa daliri at nagpapakita ng oxygen saturation at pulse rate."
+      },
+      "label": {
+        "en": "What",
+        "tl": "Ano"
+      },
+      "title": {
+        "en": "What is SpO₂?",
+        "tl": "Ano ang SpO₂?"
+      },
+      "content": {
+        "en": [
+          "SpO₂ means peripheral oxygen saturation. It is an estimate of how much oxygen your blood is carrying.",
+          "A pulse oximeter is a small device usually placed on a fingertip to estimate your SpO₂ level.",
+          "SpO₂ is shown as a percentage, such as 98%.",
+          "Most pulse oximeters also display your pulse rate or heart rate.",
+          "For many healthy people, oxygen saturation is commonly between 95% and 100%, but your usual level may differ depending on your health condition, altitude, and other factors.",
+          "A pulse oximeter provides an estimate and should not be used by itself to diagnose a medical condition."
+        ],
+        "tl": [
+          "Ang SpO₂ ay nangangahulugang peripheral oxygen saturation. Ito ay pagtatantya kung gaano karaming oxygen ang dinadala ng iyong dugo.",
+          "Ang pulse oximeter ay isang maliit na device na karaniwang inilalagay sa daliri upang tantiyahin ang iyong SpO₂ level.",
+          "Ang SpO₂ ay ipinapakita bilang percentage, tulad ng 98%.",
+          "Karamihan sa pulse oximeter ay nagpapakita rin ng pulse rate o tibok ng puso.",
+          "Para sa maraming healthy na tao, ang oxygen saturation ay karaniwang nasa pagitan ng 95% at 100%, ngunit maaaring iba ang normal mong level depende sa iyong kondisyon, altitude, at iba pang factors.",
+          "Ang pulse oximeter ay nagbibigay lamang ng estimate at hindi dapat gamitin nang mag-isa para mag-diagnose ng medical condition."
+        ]
+      },
+      "app_note": {
+        "en": "Use this feature to record and monitor your SpO₂ readings over time. Consider both your readings and how you feel. This app does not diagnose medical conditions.",
+        "tl": "Gamitin ang feature na ito para i-record at subaybayan ang iyong SpO₂ readings sa paglipas ng panahon. Isaalang-alang ang iyong readings pati na rin ang iyong nararamdaman. Ang app na ito ay hindi nagbibigay ng diagnosis."
+      }
+    },
+    {
+      "key": "how",
+      "label": {
+        "en": "How",
+        "tl": "Paano"
+      },
+      "title": {
+        "en": "How to Check SpO₂",
+        "tl": "Paano Kumuha ng SpO₂"
+      },
+      "sections": [
+        {
+          "title": {
+            "en": "Before checking SpO₂",
+            "tl": "Bago kumuha ng SpO₂"
+          },
+          "steps": {
+            "en": [
+              "Sit down and allow yourself to rest before taking a reading.",
+              "Make sure your hand and fingers are warm and relaxed.",
+              "Remove nail polish or artificial nails from the finger being used when possible.",
+              "Make sure the pulse oximeter is clean and ready to use.",
+              "Follow the instructions provided by the manufacturer of your pulse oximeter."
+            ],
+            "tl": [
+              "Umupo at magpahinga muna bago kumuha ng reading.",
+              "Siguraduhing mainit at relaxed ang iyong kamay at mga daliri.",
+              "Alisin ang nail polish o artificial nail sa daliring gagamitin kung maaari.",
+              "Siguraduhing malinis at handang gamitin ang pulse oximeter.",
+              "Sundin ang instructions ng manufacturer ng iyong pulse oximeter."
+            ]
+          }
+        },
+        {
+          "title": {
+            "en": "Correct position",
+            "tl": "Tamang posisyon"
+          },
+          "image_placeholder": {
+            "en": "A person sitting comfortably with a relaxed hand while a pulse oximeter is attached to a fingertip.",
+            "tl": "Taong komportableng nakaupo habang relaxed ang kamay at may pulse oximeter na nakakabit sa daliri."
+          },
+          "steps": {
+            "en": [
+              "Sit comfortably and remain relaxed.",
+              "Keep your hand warm and relaxed.",
+              "Rest your hand and keep it still.",
+              "Keep the hand slightly below heart level when possible.",
+              "Do not move the finger while the device is measuring.",
+              "Stay still until the numbers on the screen become steady."
+            ],
+            "tl": [
+              "Umupo nang komportable at manatiling relaxed.",
+              "Panatilihing mainit at relaxed ang iyong kamay.",
+              "Ipahinga ang kamay at huwag itong igalaw.",
+              "Kung maaari, panatilihin ang kamay nang bahagyang mas mababa sa level ng puso.",
+              "Huwag igalaw ang daliri habang nagsusukat ang device.",
+              "Manatiling hindi gumagalaw hanggang maging steady ang mga numero sa screen."
+            ]
+          }
+        },
+        {
+          "title": {
+            "en": "Steps",
+            "tl": "Mga hakbang"
+          },
+          "image_placeholder": {
+            "en": "A close-up of a pulse oximeter clipped onto the index finger with the display showing SpO₂ and pulse rate.",
+            "tl": "Malapitang larawan ng pulse oximeter na nakakabit sa hintuturo at nagpapakita ng SpO₂ at pulse rate."
+          },
+          "steps": {
+            "en": [
+              "Turn on the pulse oximeter if needed.",
+              "Place your finger fully inside the pulse oximeter.",
+              "Keep your hand and finger still.",
+              "Wait several seconds for the reading to stabilize.",
+              "Check the SpO₂ percentage displayed on the screen.",
+              "Check the pulse rate if your device displays it.",
+              "Record the SpO₂, pulse rate, date, and time.",
+              "Add notes about how you feel if needed."
+            ],
+            "tl": [
+              "I-on ang pulse oximeter kung kinakailangan.",
+              "Ipasok nang maayos ang iyong daliri sa pulse oximeter.",
+              "Panatilihing hindi gumagalaw ang kamay at daliri.",
+              "Maghintay ng ilang segundo hanggang maging stable ang reading.",
+              "Tingnan ang SpO₂ percentage na ipinapakita sa screen.",
+              "Tingnan din ang pulse rate kung ipinapakita ito ng iyong device.",
+              "I-record ang SpO₂, pulse rate, petsa, at oras.",
+              "Maglagay ng notes tungkol sa iyong nararamdaman kung kinakailangan."
+            ]
+          }
+        }
+      ],
+      "example": {
+        "en": {
+          "spo2": "98%",
+          "pulse": "76",
+          "finger_used": "Index finger",
+          "position": "Sitting",
+          "notes": "After resting"
+        },
+        "tl": {
+          "spo2": "98%",
+          "pulse": "76",
+          "finger_used": "Hintuturo",
+          "position": "Nakaupo",
+          "notes": "Pagkatapos magpahinga"
+        }
+      }
+    },
+    {
+      "key": "why",
+      "label": {
+        "en": "Why",
+        "tl": "Bakit"
+      },
+      "title": {
+        "en": "Why Monitor SpO₂?",
+        "tl": "Bakit Kailangang I-monitor ang SpO₂?"
+      },
+      "content": {
+        "en": [
+          "Monitoring SpO₂ helps you keep track of changes in your estimated blood oxygen level over time.",
+          "It can help you understand your usual SpO₂ pattern.",
+          "It can help you notice when readings are different from your usual readings.",
+          "It can help you keep a record that you can share with a healthcare provider.",
+          "It may be useful when a healthcare provider has advised you to monitor your oxygen level at home.",
+          "A single SpO₂ reading does not provide the full picture. Readings should be considered together with your symptoms and how you feel.",
+          "Pulse oximeters have limitations, and readings may be affected by factors such as cold hands, poor circulation, movement, nail polish, skin pigmentation, and the device itself."
+        ],
+        "tl": [
+          "Ang pag-monitor ng SpO₂ ay nakakatulong para masubaybayan ang pagbabago sa tinatayang oxygen level ng iyong dugo sa paglipas ng panahon.",
+          "Nakakatulong ito para malaman mo ang karaniwang pattern ng iyong SpO₂.",
+          "Nakakatulong ito para mapansin kung ang reading ay naiiba sa iyong karaniwang readings.",
+          "Nakakatulong ito para magkaroon ka ng record na maaaring ibahagi sa healthcare provider.",
+          "Maaari itong maging kapaki-pakinabang kung pinayuhan ka ng healthcare provider na i-monitor ang iyong oxygen level sa bahay.",
+          "Ang isang SpO₂ reading lamang ay hindi nagbibigay ng buong impormasyon. Dapat ding isaalang-alang ang iyong mga sintomas at kung ano ang iyong nararamdaman.",
+          "May mga limitasyon ang pulse oximeter at maaaring maapektuhan ang reading ng malamig na kamay, mahinang circulation, paggalaw, nail polish, skin pigmentation, at mismong device."
+        ]
+      },
+      "safety_reminder": {
+        "en": "Do not rely only on the pulse oximeter reading. If you have serious or worsening symptoms such as difficulty breathing, shortness of breath, chest pain or tightness, bluish lips or face, or you feel significantly unwell, seek medical help promptly even if the device reading appears normal.",
+        "tl": "Huwag umasa lamang sa reading ng pulse oximeter. Kung mayroon kang malubha o lumalalang sintomas tulad ng hirap sa paghinga, kinakapos sa paghinga, pananakit o paninikip ng dibdib, pagkakaroon ng kulay asul sa labi o mukha, o masama ang iyong pakiramdam, agad na humingi ng tulong medikal kahit mukhang normal ang reading ng device."
+      }
+    },
+    {
+      "key": "when",
+      "label": {
+        "en": "When",
+        "tl": "Kailan"
+      },
+      "title": {
+        "en": "When Should You Check SpO₂?",
+        "tl": "Kailan Dapat Kumuha ng SpO₂?"
+      },
+      "content": {
+        "en": [
+          "Check your SpO₂ according to the schedule recommended by your healthcare provider.",
+          "If you are tracking your oxygen level regularly, try to measure at similar times and under similar conditions.",
+          "You may check your SpO₂ when you experience symptoms such as unusual shortness of breath, if doing so does not delay seeking medical care.",
+          "You may check before or after an activity when your healthcare provider has asked you to monitor how activity affects your oxygen level.",
+          "You may check before or after medication or treatment when specifically advised by your healthcare provider.",
+          "Record the time, reading, pulse rate, and any symptoms so you can compare readings over time."
+        ],
+        "tl": [
+          "Kumuha ng SpO₂ ayon sa schedule na inirekomenda ng iyong healthcare provider.",
+          "Kung regular mong tina-track ang iyong oxygen level, subukang sukatin ito sa halos parehong oras at kondisyon.",
+          "Maaari mong i-check ang iyong SpO₂ kapag nakakaranas ng kakaibang hirap sa paghinga, basta hindi nito maaantala ang paghingi ng medical care.",
+          "Maaari mong i-check bago o pagkatapos ng activity kung pinayuhan ka ng healthcare provider na subaybayan kung paano naaapektuhan ng activity ang iyong oxygen level.",
+          "Maaari mong i-check bago o pagkatapos ng gamot o treatment kung partikular itong ipinayo ng iyong healthcare provider.",
+          "I-record ang oras, reading, pulse rate, at anumang sintomas upang maikumpara ang readings sa paglipas ng panahon."
+        ]
+      },
+      "schedule_options": [
+        {
+          "key": "morning",
+          "label": {
+            "en": "Morning",
+            "tl": "Umaga"
+          }
+        },
+        {
+          "key": "afternoon",
+          "label": {
+            "en": "Afternoon",
+            "tl": "Hapon"
+          }
+        },
+        {
+          "key": "evening",
+          "label": {
+            "en": "Evening",
+            "tl": "Gabi"
+          }
+        },
+        {
+          "key": "before_activity",
+          "label": {
+            "en": "Before activity",
+            "tl": "Bago mag-activity"
+          }
+        },
+        {
+          "key": "after_activity",
+          "label": {
+            "en": "After activity",
+            "tl": "Pagkatapos ng activity"
+          }
+        },
+        {
+          "key": "when_feeling_symptoms",
+          "label": {
+            "en": "When feeling symptoms",
+            "tl": "Kapag may nararamdamang sintomas"
+          }
+        },
+        {
+          "key": "custom_time",
+          "label": {
+            "en": "Custom time",
+            "tl": "Custom na oras"
+          }
+        }
+      ],
+      "reminder_message": {
+        "en": "It’s time to check your SpO₂. Sit comfortably, keep your hand warm and relaxed, place the pulse oximeter on your finger, and wait for a steady reading.",
+        "tl": "Oras na para i-check ang iyong SpO₂. Umupo nang komportable, panatilihing mainit at relaxed ang iyong kamay, ilagay ang pulse oximeter sa daliri, at hintaying maging steady ang reading."
+      }
+    }
+  ],
+  "short_ui_copy": {
+    "what": {
+      "en": "SpO₂ estimates how much oxygen your blood is carrying. A pulse oximeter usually measures it from your fingertip and displays the result as a percentage.",
+      "tl": "Ang SpO₂ ay pagtatantya kung gaano karaming oxygen ang dinadala ng iyong dugo. Karaniwang sinusukat ito ng pulse oximeter mula sa daliri at ipinapakita bilang percentage."
+    },
+    "how": {
+      "en": "Sit comfortably with a warm, relaxed hand. Place the pulse oximeter on your finger, stay still, and wait until the reading becomes steady.",
+      "tl": "Umupo nang komportable at panatilihing mainit at relaxed ang kamay. Ilagay ang pulse oximeter sa daliri, huwag gumalaw, at hintaying maging steady ang reading."
+    },
+    "why": {
+      "en": "Tracking SpO₂ can help you monitor changes over time and keep a record to share with a healthcare provider.",
+      "tl": "Ang pag-track ng SpO₂ ay nakakatulong para masubaybayan ang pagbabago nito at magkaroon ng record na maaaring ibahagi sa healthcare provider."
+    },
+    "when": {
+      "en": "Check SpO₂ as advised by your healthcare provider or according to your monitoring schedule. For consistent tracking, measure under similar conditions.",
+      "tl": "I-check ang SpO₂ ayon sa payo ng healthcare provider o sa iyong monitoring schedule. Para consistent ang tracking, sukatin ito sa halos parehong kondisyon."
+    }
+  }
+}

@@ -58,10 +58,8 @@ class LandingScreen extends StatelessWidget {
                       alpha: 0.8,
                     ),
                     elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
                   ),
+                  borderRadius: 8,
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute<void>(
@@ -96,6 +94,7 @@ class LandingScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
+                  borderRadius: 8,
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute<void>(

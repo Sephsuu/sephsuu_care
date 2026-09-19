@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 import 'package:sephsuu_care/core/constants/app_font_size.dart';
+import 'package:sephsuu_care/core/widgets/app_card.dart';
 import 'package:sephsuu_care/core/widgets/app_header_1.dart';
 import 'package:sephsuu_care/core/widgets/app_header_badge.dart';
 import 'package:sephsuu_care/features/learn/vital_lesson_screen.dart';
@@ -66,13 +67,6 @@ class LearnSelectionScreen extends StatelessWidget {
                   const AppHeaderBadge(
                     label: 'learn with sefi',
                     icon: Icons.menu_book_rounded,
-                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                    textStyle: TextStyle(
-                      fontSize: AppFontSize.x2s,
-                      fontWeight: FontWeight.w800,
-                    ),
-                    iconSize: 14,
-                    gap: 5,
                   ),
                   const SizedBox(height: 12),
                   const AppHeader1(
@@ -132,76 +126,78 @@ class _LearnTopicCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      borderRadius: BorderRadius.circular(24),
-      clipBehavior: Clip.antiAlias,
-      child: Ink(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(24),
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: topic.colors,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: topic.colors.first.withValues(alpha: 0.20),
-              blurRadius: 18,
-              offset: const Offset(0, 8),
+    final color = topic.colors.first;
+
+    return AppCard(
+      padding: EdgeInsets.zero,
+      borderRadius: 24,
+      onTap: onTap,
+      borderColor: AppColors.light,
+
+      backgroundColor: Color.alphaBlend(
+        color.withValues(alpha: 0.09),
+        Colors.white,
+      ),
+
+      gradient: LinearGradient(
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        colors: topic.colors,
+      ),
+
+      child: Stack(
+        children: [
+          Positioned(
+            right: 96,
+            top: 0,
+            bottom: 0,
+            child: Transform(
+              transform: Matrix4.skewX(-0.28),
+              alignment: Alignment.center,
+              child: Container(
+                width: 54,
+                color: Colors.white.withValues(alpha: 0.28),
+              ),
             ),
-          ],
-        ),
-        child: InkWell(
-          onTap: onTap,
-          child: Stack(
-            children: [
-              Positioned(
-                right: 96,
-                top: 0,
-                bottom: 0,
-                child: Transform(
-                  transform: Matrix4.skewX(-0.28),
-                  alignment: Alignment.center,
-                  child: Container(
-                    width: 54,
-                    color: Colors.white.withValues(alpha: 0.28),
-                  ),
-                ),
-              ),
-              Positioned(
-                right: -2,
-                top: 8,
-                bottom: -12,
-                width: 138,
-                child: Image.asset(
-                  'assets/images/learn/${topic.imageUrl}',
-                  fit: BoxFit.contain,
-                  alignment: Alignment.bottomRight,
-                ),
-              ),
-              Positioned.fill(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(22, 18, 132, 18),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      topic.title,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        color: AppColors.dark,
-                        fontSize: 20,
-                        height: 1.12,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
           ),
-        ),
+
+          Positioned(
+            right: -2,
+            top: 8,
+            bottom: -12,
+            width: 138,
+            child: Image.asset(
+              'assets/images/learn/${topic.imageUrl}',
+              fit: BoxFit.contain,
+              alignment: Alignment.bottomRight,
+            ),
+          ),
+
+          Positioned.fill(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(
+                22,
+                18,
+                132,
+                18,
+              ),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  topic.title,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    color: AppColors.dark,
+                    fontSize: 20,
+                    height: 1.12,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

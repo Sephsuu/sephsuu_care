@@ -52,7 +52,7 @@ class AppAvatar extends StatelessWidget {
       height: size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: border ?? Border.all(color: Colors.white, width: 2),
+        border: border ?? Border.all(color: Colors.white, width: 1.5),
         boxShadow: AppClay.shadows,
       ),
       clipBehavior: Clip.antiAlias,
@@ -74,7 +74,10 @@ class AppAvatar extends StatelessWidget {
     return Container(
       width: size,
       height: size,
-      color: backgroundColor,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: backgroundColor,
+      ),
       alignment: Alignment.center,
       child: Text(
         fallback,
