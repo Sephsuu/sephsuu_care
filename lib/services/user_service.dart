@@ -6,11 +6,20 @@ class UserService {
   UserService(this._apiClient);
 
   Future<Map<String, dynamic>> getCurrentUser() {
-    return _apiClient.request(
+    return _apiClient.requestData(
       path: '/users/me', 
       method: RequestMethod.get,
       withAuth: true,
       fromJson: (data) => Map<String, dynamic>.from(data as Map),
+    );
+  }
+
+  Future<void> updateProfileDetails(String key, String value) async {
+    await _apiClient.request<Object?>(
+      path: '/users/me', 
+      method: RequestMethod.patch,
+      withAuth: true,
+      body: {key: value}
     );
   }
 

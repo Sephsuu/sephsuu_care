@@ -241,14 +241,6 @@ class _LoginPanel extends StatelessWidget {
               hintText: 'sefi@example.com',
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
-              fillColor: AppColors.light,
-              borderColor: AppColors.lightpink,
-              focusedBorderColor: AppColors.pink,
-              borderRadius: 8,
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 14,
-                vertical: 15,
-              ),
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
                   return 'Email or username is required';
@@ -263,14 +255,6 @@ class _LoginPanel extends StatelessWidget {
               hintText: 'Enter your password',
               obscureText: screen._isPasswordHidden,
               textInputAction: TextInputAction.done,
-              fillColor: AppColors.light,
-              borderColor: AppColors.lightpink,
-              focusedBorderColor: AppColors.pink,
-              borderRadius: 8,
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 14,
-                vertical: 15,
-              ),
               suffixIcon: Padding(
                 padding: const EdgeInsets.only(right: 6),
                 child: TextButton.icon(

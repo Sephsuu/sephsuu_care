@@ -167,10 +167,6 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
                                     size: AppFontSize.lg,
                                     color: AppColors.pink,
                                   ),
-                                  fillColor: AppColors.light,
-                                  borderColor: AppColors.lightpink,
-                                  focusedBorderColor: AppColors.pink,
-                                  borderRadius: 8,
                                   validator: (value) =>
                                       InputValidator.requiredText(
                                         value,
@@ -187,10 +183,6 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
                                     size: AppFontSize.lg,
                                     color: AppColors.pink,
                                   ),
-                                  fillColor: AppColors.light,
-                                  borderColor: AppColors.lightpink,
-                                  focusedBorderColor: AppColors.pink,
-                                  borderRadius: 8,
                                   validator: (value) =>
                                       InputValidator.requiredText(
                                         value,
@@ -208,10 +200,6 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
                                     size: AppFontSize.lg,
                                     color: AppColors.pink,
                                   ),
-                                  fillColor: AppColors.light,
-                                  borderColor: AppColors.lightpink,
-                                  focusedBorderColor: AppColors.pink,
-                                  borderRadius: 8,
                                   validator: InputValidator.email,
                                 ),
                                 AppDatePicker(
@@ -277,10 +265,6 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
                                   size: AppFontSize.lg,
                                   color: AppColors.pink,
                                 ),
-                                fillColor: AppColors.light,
-                                borderColor: AppColors.lightpink,
-                                focusedBorderColor: AppColors.pink,
-                                borderRadius: 8,
                                 validator: (value) => InputValidator.phone(
                                   value,
                                   'contact number',

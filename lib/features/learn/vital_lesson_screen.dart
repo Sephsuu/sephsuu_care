@@ -9,6 +9,7 @@ import 'package:sephsuu_care/core/widgets/app_header_1.dart';
 import 'package:sephsuu_care/core/widgets/app_card.dart';
 import 'package:sephsuu_care/core/widgets/app_header_badge.dart';
 import 'package:sephsuu_care/core/widgets/app_screen_header.dart';
+import 'package:sephsuu_care/core/widgets/app_section_loading.dart';
 import 'package:sephsuu_care/core/widgets/app_tab_switcher.dart';
 import 'package:sephsuu_care/helpers/widgets/gradient_background.dart';
 
@@ -48,6 +49,8 @@ class _VitalLessonScreenState extends State<VitalLessonScreen> {
           child: FutureBuilder<Map<String, dynamic>>(
             future: _lesson,
             builder: (context, snapshot) {
+              final lessonName = _localizedText(snapshot.data?['lesson_id'].toString().replaceAll('_', ' '), _language) ?? widget.fallbackTitle;
+
               if (snapshot.connectionState != ConnectionState.done) {
                 return const Center(child: CircularProgressIndicator());
               }
@@ -59,16 +62,42 @@ class _VitalLessonScreenState extends State<VitalLessonScreen> {
                 );
               }
 
-              return _buildLesson(snapshot.data!);
+              return Column(
+                children: [
+                  AppScreenHeader(
+                    backTooltip: _language == 'tl'
+                        ? 'Bumalik sa mga aralin'
+                        : 'Back to lessons',
+                    badge: AppHeaderBadge(
+                      label: _language == 'tl'
+                          ? 'alamin ang $lessonName'
+                          : 'learn about $lessonName',
+                      icon: Icons.menu_book_rounded,
+                    ),
+                  ),
+
+                  Expanded(
+                    child: snapshot.connectionState != ConnectionState.done 
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : snapshot.hasError || snapshot.data == null
+                      ? _UnavailableLesson(
+                          title: widget.fallbackTitle,
+                          onBack: () => Navigator.maybePop(context),
+                        )
+                      : _buildLesson(snapshot.data!),
+                  )
+                ],
+              );
             },
           ),
-        ),
+        ) 
       ),
     );
   }
 
   Widget _buildLesson(Map<String, dynamic> lesson) {
-    final lessonName = lesson["lesson_id"].toString().replaceAll('_', ' ');
     final tabs = (lesson['tabs'] as List<dynamic>? ?? const [])
         .whereType<Map<String, dynamic>>()
         .toList();
@@ -86,17 +115,6 @@ class _VitalLessonScreenState extends State<VitalLessonScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AppScreenHeader(
-                backTooltip: _language == 'tl'
-                    ? 'Bumalik sa mga aralin'
-                    : 'Back to lessons',
-                badge: AppHeaderBadge(
-                  label: _language == 'tl'
-                      ? 'alamin ang $lessonName'
-                      : 'learn about $lessonName',
-                  icon: Icons.menu_book_rounded,
-                ),
-              ),
               _LessonLanguageSwitcher(
                 value: _language,
                 onChanged: (value) => setState(() => _language = value),

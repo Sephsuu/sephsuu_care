@@ -3,6 +3,7 @@ import 'package:sephsuu_care/core/constants/app_clay.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 import 'package:sephsuu_care/core/widgets/app_avatar.dart';
 import 'package:sephsuu_care/features/account/account_screen.dart';
+import 'package:sephsuu_care/helpers/navigation_helper.dart';
 import 'package:sephsuu_care/helpers/widgets/stroked_text.dart';
 
 class AppLayoutHeader extends StatelessWidget {
@@ -32,12 +33,7 @@ class AppLayoutHeader extends StatelessWidget {
           label: '$username profile',
           child: InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const AccountScreen(),
-                ),
-              );
+              NavigationHelper.push(context, AccountScreen());
             },
             customBorder: const CircleBorder(),
             child: AppAvatar(

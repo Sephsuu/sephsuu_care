@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sephsuu_care/core/constants/app_clay.dart';
+import 'package:sephsuu_care/core/constants/app_color.dart';
 
 class AppRadioOption<T> {
   final String label;
@@ -60,16 +61,19 @@ class AppRadioGroup<T> extends StatelessWidget {
     this.labelStyle,
     this.optionLabelStyle,
     this.descriptionStyle,
-    this.activeColor,
-    this.fillColor,
-    this.borderColor,
+    this.activeColor = AppColors.pink,
+    this.fillColor = const Color(0xBDFFFFFF),
+    this.borderColor = AppColors.light,
     this.borderRadius = AppClay.radius,
-    this.bordered = false,
+    this.bordered = true,
     this.required = false,
     this.validator,
   });
 
-  void _handleChange(FormFieldState<T> field, AppRadioOption<T> option) {
+  void _handleChange(
+    FormFieldState<T> field,
+    AppRadioOption<T> option,
+  ) {
     if (!enabled || option.disabled) return;
 
     field.didChange(option.value);
@@ -106,11 +110,12 @@ class AppRadioGroup<T> extends StatelessWidget {
                       const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFF374151),
+                        color: AppColors.dark,
                       ),
                 ),
                 const SizedBox(height: 8),
               ],
+
               RadioGroup<T>(
                 groupValue: selectedValue,
                 onChanged: (nextValue) {
@@ -119,6 +124,7 @@ class AppRadioGroup<T> extends StatelessWidget {
                   final selectedOption = options.firstWhere(
                     (option) => option.value == nextValue,
                   );
+
                   _handleChange(field, selectedOption);
                 },
                 child: Wrap(
@@ -127,7 +133,9 @@ class AppRadioGroup<T> extends StatelessWidget {
                   spacing: spacing,
                   runSpacing: runSpacing,
                   children: [
-                    for (var index = 0; index < options.length; index++)
+                    for (var index = 0;
+                        index < options.length;
+                        index++)
                       _AppRadioTile<T>(
                         option: options[index],
                         selectedValue: selectedValue,
@@ -140,11 +148,13 @@ class AppRadioGroup<T> extends StatelessWidget {
                         itemPadding: itemPadding,
                         optionLabelStyle: optionLabelStyle,
                         descriptionStyle: descriptionStyle,
-                        onTap: () => _handleChange(field, options[index]),
+                        onTap: () =>
+                            _handleChange(field, options[index]),
                       ),
                   ],
                 ),
               ),
+
               if (field.hasError) ...[
                 const SizedBox(height: 6),
                 Text(
@@ -196,9 +206,13 @@ class _AppRadioTile<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final isSelected = selectedValue == option.value;
     final isEnabled = enabled && !option.disabled;
+
+    final resolvedFillColor =
+        fillColor ?? const Color(0xBDFFFFFF);
+
     final resolvedBorderColor = isSelected
         ? activeColor
-        : borderColor ?? Colors.grey.shade300;
+        : borderColor ?? AppColors.light;
 
     Widget child = InkWell(
       onTap: isEnabled ? onTap : null,
@@ -208,7 +222,7 @@ class _AppRadioTile<T> extends StatelessWidget {
             itemPadding ??
             EdgeInsets.symmetric(
               horizontal: bordered ? 12 : 0,
-              vertical: bordered ? 6 : 0,
+              vertical: bordered ? 8 : 0,
             ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -221,38 +235,49 @@ class _AppRadioTile<T> extends StatelessWidget {
               activeColor: activeColor,
               enabled: isEnabled,
               visualDensity: VisualDensity.compact,
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              materialTapTargetSize:
+                  MaterialTapTargetSize.shrinkWrap,
             ),
+
             if (option.leading != null) ...[
               const SizedBox(width: 4),
               option.leading!,
             ],
+
             const SizedBox(width: 6),
+
             Flexible(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment:
+                    CrossAxisAlignment.start,
                 children: [
                   Text(
                     option.label,
                     style:
                         optionLabelStyle ??
                         TextStyle(
-                          color: isEnabled ? Colors.black : Colors.grey,
+                          color: isEnabled
+                              ? AppColors.dark
+                              : AppColors.gray,
                           fontSize: 14,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
                         ),
                   ),
+
                   if (option.description != null) ...[
                     const SizedBox(height: 2),
+
                     Text(
                       option.description!,
                       style:
                           descriptionStyle ??
                           TextStyle(
                             color: isEnabled
-                                ? Colors.grey.shade600
-                                : Colors.grey.shade400,
+                                ? AppColors.gray
+                                : AppColors.gray.withValues(
+                                    alpha: 0.5,
+                                  ),
                             fontSize: 12,
                             height: 1.3,
                           ),
@@ -270,10 +295,18 @@ class _AppRadioTile<T> extends StatelessWidget {
 
     child = DecoratedBox(
       decoration: BoxDecoration(
-        color: fillColor ?? AppClay.surface,
-        gradient: AppClay.sheen(fillColor ?? AppClay.surface),
-        borderRadius: BorderRadius.circular(borderRadius),
-        border: Border.all(color: resolvedBorderColor),
+        color: resolvedFillColor,
+
+        // Same sheen style as AppHeaderBadge
+        gradient: AppClay.sheen(resolvedFillColor),
+
+        borderRadius:
+            BorderRadius.circular(borderRadius),
+
+        border: Border.all(
+          color: resolvedBorderColor,
+          width: 1,
+        ),
       ),
       child: child,
     );
@@ -281,16 +314,20 @@ class _AppRadioTile<T> extends StatelessWidget {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 160),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(borderRadius),
+        borderRadius:
+            BorderRadius.circular(borderRadius),
+
         boxShadow: isSelected
             ? [
                 BoxShadow(
-                  color: activeColor.withValues(alpha: 0.12),
+                  color: activeColor.withValues(
+                    alpha: 0.16,
+                  ),
                   blurRadius: 16,
-                  offset: const Offset(0, 8),
+                  offset: const Offset(0, 6),
                 ),
               ]
-            : AppClay.shadows,
+            : AppClay.lightShadows,
       ),
       child: child,
     );

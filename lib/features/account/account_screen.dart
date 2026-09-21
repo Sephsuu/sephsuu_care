@@ -3,13 +3,19 @@ import 'package:sephsuu_care/core/api/api_client.dart';
 import 'package:sephsuu_care/core/constants/app_clay.dart';
 import 'package:sephsuu_care/core/constants/app_color.dart';
 import 'package:sephsuu_care/core/constants/app_font_size.dart';
+import 'package:sephsuu_care/core/constants/app_margin_size.dart';
 import 'package:sephsuu_care/core/widgets/app_avatar.dart';
 import 'package:sephsuu_care/core/widgets/app_button.dart';
 import 'package:sephsuu_care/core/widgets/app_card.dart';
+import 'package:sephsuu_care/core/widgets/app_empty_state.dart';
 import 'package:sephsuu_care/core/widgets/app_header_badge.dart';
 import 'package:sephsuu_care/core/widgets/app_screen_header.dart';
+import 'package:sephsuu_care/core/widgets/app_section_loading.dart';
 import 'package:sephsuu_care/core/widgets/app_snackbar.dart';
+import 'package:sephsuu_care/features/account/edit_account_screen.dart';
+import 'package:sephsuu_care/features/account/account_detail.dart';
 import 'package:sephsuu_care/features/auth/login_screen.dart';
+import 'package:sephsuu_care/helpers/date_helper.dart';
 import 'package:sephsuu_care/helpers/navigation_helper.dart';
 import 'package:sephsuu_care/helpers/widgets/gradient_background.dart';
 import 'package:sephsuu_care/services/auth_service.dart';
@@ -24,24 +30,29 @@ class AccountScreen extends StatelessWidget {
       backgroundColor: Colors.transparent,
       body: GradientBackground(
         child: SafeArea(
-          child: SingleChildScrollView(
-            child: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AppScreenHeader(
-                    badge: AppHeaderBadge(
-                      label: 'my account',
-                      icon: Icons.person_rounded,
-                    )
+          child: Column(
+            children: [
+              AppScreenHeader(
+                badge: AppHeaderBadge(
+                  label: 'my account',
+                  icon: Icons.person_rounded,
+                )
+              ),
+
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _AccountHeader(),
+                      _PersonalInformation(),
+                      _AccountDetails(),
+                      _Logout(),
+                    ],
                   ),
-                  _AccountHeader(),
-                  _PersonalInformation(),
-                  _AccountDetails(),
-                  _Logout(),
-                ],
+                )
               )
-            ),
+            ],
           )
         )
       ),
@@ -116,124 +127,173 @@ class _PeronalInformationState extends State<_PersonalInformation> {
 
   @override
   Widget build(BuildContext context) {
-     final List<Map<String, dynamic>> _personalInfo = [
-      {
-        'icon': Icons.person_outline_rounded,
-        'label': 'Full Name',
-        'value': 'Sarah Mitchell',
-      },
-      {
-        'icon': Icons.alternate_email,
-        'label': 'Username',
-        'value': 'Sephsuu',
-      },
-      {
-        'icon': Icons.phone_outlined,
-        'label': 'Contact Number',
-        'value': '+1 987 654 3210',
-      },
-      {
-        'icon': Icons.calendar_today_outlined,
-        'label': 'Date of Birth',
-        'value': '12 Mar 1995',
-      },
-      {
-        'icon': Icons.male_rounded,
-        'label': 'Gender',
-        'value': 'Female',
-      },
-    ];
+    return FutureBuilder<Map<String, dynamic>>(
+      future: _userFuture, 
+      builder: ((context, snapshot) {
+        final user = snapshot.data;
 
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(22, 11, 22, 0),
-      child: Center(
-        child: AppCard(
-          width: double.infinity,
-          backgroundColor: Color.alphaBlend(
-            AppColors.lightpink.withValues(alpha: 0.15),
-            AppColors.light,
+        final personalInfo = [
+          {
+            'icon': Icons.person_outline_rounded,
+            'label': 'Full Name',
+            'detail': AccountDetail.fullName,
+            'value': user?['full_name']?.toString() ?? '—',
+          },
+          {
+            'icon': Icons.alternate_email,
+            'label': 'Username',
+            'value': user?['username']?.toString() ?? '—',
+          },
+          {
+            'icon': Icons.phone_outlined,
+            'label': 'Contact Number',
+            'detail': AccountDetail.contactNumber,
+            'value': user?['contact_number']?.toString() ?? '—',
+          },
+          {
+            'icon': Icons.calendar_today_outlined,
+            'label': 'Date of Birth',
+            'detail': AccountDetail.dateOfBirth,
+            'value': DateHelper.formatApiDateToWords(
+              user?['date_of_birth']?.toString(),
+              fallback: '—',
+            ),
+          },
+          {
+            'icon': Icons.person_outline,
+            'label': 'Gender',
+            'detail': AccountDetail.gender,
+            'value': user?['gender']?.toString() ?? '—',
+          },
+        ];
+
+        return AppSectionLoading(
+          isLoading: snapshot.connectionState != ConnectionState.done, 
+          onRetry: _retry,
+          errorMessage: snapshot.hasError
+            ? snapshot.error.toString()
+            : null,
+          isEmpty: user == null || user.isEmpty,
+          emptyWidget: const AppEmptyState(
+            title: 'No profile details',
+            icon: Icons.person_outline_rounded,
           ),
-          margin: const EdgeInsets.only(top: 8, bottom: 8),
-          borderColor: AppColors.light,
-          borderWidth: 1.5,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AppHeaderBadge(
-                label: 'Personal Information',
-                icon: Icons.person,
-                boxShadow: AppClay.lightShadows,
-              ),
-              const SizedBox(height: 10),
-              ..._personalInfo.asMap().entries.map((entry) {
-                final index = entry.key;
-                final item = entry.value;
-                final isLast = index == _personalInfo.length - 1;
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(22, 11, 22, 0),
+            child: Center(
+              child: AppCard(
+                width: double.infinity,
+                backgroundColor: Color.alphaBlend(
+                  AppColors.lightpink.withValues(alpha: 0.15),
+                  AppColors.light,
+                ),
+                margin: const EdgeInsets.symmetric(vertical: AppMargin.sm),
+                borderColor: AppColors.light,
+                borderWidth: 1.5,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppHeaderBadge(
+                      label: 'Personal Information',
+                      icon: Icons.person,
+                      boxShadow: AppClay.lightShadows,
+                    ),
+                    const SizedBox(height: 10),
+                    ...personalInfo.asMap().entries.map((entry) {
+                      final index = entry.key;
+                      final item = entry.value;
+                      final isLast = index == personalInfo.length - 1;
 
-                return Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 12,
-                  ),
+                      final detail = item['detail'] as AccountDetail?;
 
-                  decoration: BoxDecoration(
-                    border: isLast
-                        ? null
-                        : const Border(
-                            bottom: BorderSide(
-                              color: AppColors.border,
-                              width: 1,
-                            ),
+                      return InkWell(
+                        onTap: detail == null || user == null 
+                          ? null 
+                          : () async {
+                            final saved = await NavigationHelper.push<bool>(context, EditAccountScreen(
+                              detail: detail,
+                              initialValue: user[detail.apiKey]?.toString(),
+                            ));
+
+                            if (!mounted || saved != true) return;
+
+                            _retry();
+
+                            AppSnackBar.success(
+                              context,
+                              'Profile updated successfully.',
+                            );
+                          },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 12,
                           ),
-                  ),
 
-                  child: Row(
-                    children: [
-                      Icon(
-                        item['icon'] as IconData,
-                        color: AppColors.pink,
-                        size: 20,
-                      ),
+                          decoration: BoxDecoration(
+                            border: isLast
+                                ? null
+                                : const Border(
+                                    bottom: BorderSide(
+                                      color: AppColors.border,
+                                      width: 1,
+                                    ),
+                                  ),
+                          ),
 
-                      const SizedBox(width: 14),
-
-                      Expanded(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              item['label'] as String,
-                              style: const TextStyle(
-                                fontSize: AppFontSize.xs,
-                                color: AppColors.dark,
+                          child: Row(
+                            children: [
+                              Icon(
+                                item['icon'] as IconData,
+                                color: AppColors.pink,
+                                size: 20,
                               ),
-                            ),
 
-                            Text(
-                              item['value'] as String,
-                              style: const TextStyle(
-                                fontSize: AppFontSize.xs,
+                              const SizedBox(width: 14),
+
+                              Expanded(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      item['label'] as String,
+                                      style: const TextStyle(
+                                        fontSize: AppFontSize.xs,
+                                        color: AppColors.dark,
+                                      ),
+                                    ),
+
+                                    Text(
+                                      item['value'] as String,
+                                      style: const TextStyle(
+                                        fontSize: AppFontSize.xs,
+                                        color: AppColors.gray,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                              const SizedBox(width: 8),
+
+                              Icon(
+                                detail == null
+                                    ? Icons.lock_outline_rounded
+                                    : Icons.chevron_right_rounded,
                                 color: AppColors.gray,
+                                size: 20,
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      const SizedBox(width: 8),
-
-                      const Icon(
-                        Icons.chevron_right_rounded,
-                        color: AppColors.gray,
-                        size: 20,
-                      ),
-                    ],
-                  ),
-                );
-              }),
-            ],
+                            ],
+                          ),
+                        )
+                      );
+                    }),
+                  ],
+                )
+              ),
+            ) 
           )
-        ),
-      ) 
+        );
+      })
     );
   }
 }
