@@ -59,7 +59,6 @@ class LandingScreen extends StatelessWidget {
                     ),
                     elevation: 0,
                   ),
-                  borderRadius: 8,
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute<void>(
@@ -94,7 +93,6 @@ class LandingScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  borderRadius: 8,
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute<void>(

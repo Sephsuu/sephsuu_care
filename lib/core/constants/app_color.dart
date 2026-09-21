@@ -7,9 +7,12 @@ class AppColors {
   static const Color mint = Color(0xFF27AE60);
   static const Color green = Color(0xFF22C55E);
   static const Color yellow = Color(0xFFF59E0B);
-  static const Color red = Color(0xFFEF4444);
+  static const Color red = Color.fromARGB(255, 240, 52, 52);
   static const Color pink = Color(0xFFFF6A7F);
   static const Color lightpink = Color(0xFFFFC9D4);
+  static const Color lightBlue = Color(0xFFF0F5FD);
+  static const Color lightGreen = Color(0xFFF2F8F0);
+  static const Color lightCyan = Color(0xFFEAF4F9);
 
   static const Color light = Color(0xFFFFFFFF);
   static const Color dark = Color(0xFF1F2937);

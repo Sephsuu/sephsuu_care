@@ -50,6 +50,25 @@ class AuthService {
     return data;
   }
 
+  Future<void> logout() async {
+    final refresh_token = await _apiClient.getRefreshToken();
+
+    if (refresh_token == null || refresh_token.isEmpty) {
+      throw StateError('No saved refresh token found.');
+    }
+
+    await _apiClient.request(
+      path: '/auth/logout', 
+      method: RequestMethod.post,
+      withAuth: true,
+      body: {
+        "refresh_token": refresh_token
+      }
+    );
+
+    await _apiClient.clearAuthTokens();
+  }
+
   Future<void> _saveTokens(Map<String, dynamic> data) async {
     final accessToken = data['access_token']?.toString();
     final refreshToken = data['refresh_token']?.toString();

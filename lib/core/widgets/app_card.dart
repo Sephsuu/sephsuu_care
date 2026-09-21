@@ -40,7 +40,7 @@ class AppCard extends StatelessWidget {
       width: width,
       height: height,
       margin: margin,
-      padding: padding ?? const EdgeInsets.all(16),
+      padding: padding ?? EdgeInsets.all(20),
       clipBehavior: clipBehavior,
       decoration: BoxDecoration(
         color: backgroundColor,

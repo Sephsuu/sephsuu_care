@@ -30,6 +30,7 @@ class AppAvatar extends StatelessWidget {
   final Color backgroundColor;
   final BoxBorder? border;
   final BoxFit fit;
+  final double? borderWidth;
 
   const AppAvatar({
     super.key,
@@ -41,6 +42,7 @@ class AppAvatar extends StatelessWidget {
     this.backgroundColor = const Color(0xFF5A321B),
     this.border,
     this.fit = BoxFit.cover,
+    this.borderWidth
   });
 
   @override
@@ -52,7 +54,10 @@ class AppAvatar extends StatelessWidget {
       height: size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: border ?? Border.all(color: Colors.white, width: 1.5),
+        border: border ?? Border.all(
+          color: Colors.white, 
+          width: borderWidth ?? 1.5
+        ),
         boxShadow: AppClay.shadows,
       ),
       clipBehavior: Clip.antiAlias,

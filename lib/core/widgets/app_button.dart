@@ -25,7 +25,7 @@ class AppButton extends StatelessWidget {
 
   /// Shared radius for the button, outer border, and shadow.
   /// Takes precedence over the shape radius supplied through [style].
-  final double borderRadius;
+  final double? borderRadius;
 
   const AppButton({
     super.key,
@@ -43,7 +43,7 @@ class AppButton extends StatelessWidget {
     this.boxShadow,
     this.borderColor = AppColors.light,
     this.borderWidth = 1.5,
-    this.borderRadius = AppClay.radius,
+    this.borderRadius,
   });
 
   Color? get _backgroundColor {
@@ -101,7 +101,7 @@ class AppButton extends StatelessWidget {
       width: width,
       height: height ?? 44,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(borderRadius),
+        borderRadius: BorderRadius.circular(borderRadius ?? 8),
         boxShadow: boxShadow ?? AppClay.lightShadows,
         border: borderColor == null
             ? null
@@ -136,7 +136,7 @@ class AppButton extends StatelessWidget {
                 .copyWith(
                   shape: WidgetStateProperty.resolveWith((states) {
                     return RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(borderRadius),
+                      borderRadius: BorderRadius.circular(borderRadius ?? 8),
                       side:
                           style?.shape?.resolve(states)?.side ??
                           BorderSide.none,

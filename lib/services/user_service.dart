@@ -5,6 +5,15 @@ class UserService {
 
   UserService(this._apiClient);
 
+  Future<Map<String, dynamic>> getCurrentUser() {
+    return _apiClient.request(
+      path: '/users/me', 
+      method: RequestMethod.get,
+      withAuth: true,
+      fromJson: (data) => Map<String, dynamic>.from(data as Map),
+    );
+  }
+
   Future<void> createAllergy(int allergyId, {bool isActive = true}) {
     return _createHealthRecord(
       path: '/users/me/allergies',

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'api_exception.dart';
@@ -94,9 +95,10 @@ class ApiClient {
         }
 
         throw ApiException(
-          message: 'Unauthorized',
+          message: _getErrorMessage(data, statusCode),
           statusCode: 401,
           payload: data,
+          errors: _getErrors(data)
         );
       }
 
@@ -192,6 +194,10 @@ class ApiClient {
     }
 
     return fromJson(data);
+  }
+
+  Future<String?> getRefreshToken() {
+    return _secureStorage.read(key: 'refresh_token');
   }
 
   String _methodToString(RequestMethod method) {

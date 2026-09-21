@@ -16,6 +16,7 @@ class AppHeaderBadge extends StatelessWidget {
   final double borderRadius;
   final TextStyle? textStyle;
   final bool showIcon;
+  final List<BoxShadow>? boxShadow;
 
   const AppHeaderBadge({
     super.key,
@@ -31,6 +32,7 @@ class AppHeaderBadge extends StatelessWidget {
     this.borderRadius = 999,
     this.textStyle,
     this.showIcon = true,
+    this.boxShadow,
   });
 
   @override
@@ -40,7 +42,7 @@ class AppHeaderBadge extends StatelessWidget {
       decoration: BoxDecoration(
         color: backgroundColor,
         gradient: AppClay.sheen(backgroundColor),
-        boxShadow: AppClay.shadows,
+        boxShadow: boxShadow ?? AppClay.shadows,
         border: Border.all(color: borderColor),
         borderRadius: BorderRadius.circular(borderRadius),
       ),

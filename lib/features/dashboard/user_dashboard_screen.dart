@@ -10,6 +10,7 @@ import 'package:sephsuu_care/core/widgets/app_layout_header.dart';
 import 'package:sephsuu_care/core/widgets/app_header_1.dart';
 import 'package:sephsuu_care/core/widgets/app_header_badge.dart';
 import 'package:sephsuu_care/features/learn/learn_selection_screen.dart';
+import 'package:sephsuu_care/helpers/widgets/gradient_background.dart';
 import 'package:sephsuu_care/helpers/widgets/stroked_text.dart';
 
 class UserDashboardScreen extends StatefulWidget {
@@ -41,14 +42,7 @@ class _UserDashboardScreenState extends State<UserDashboardScreen> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       extendBody: true,
-      body: DecoratedBox(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color(0xFFFFEEF3), Color(0xFFF7FBFF), Color(0xFFE7F8EF)],
-          ),
-        ),
+      body: GradientBackground(
         child: SafeArea(
           bottom: false,
           child: Column(

@@ -10,6 +10,7 @@ import 'package:sephsuu_care/core/widgets/app_card.dart';
 import 'package:sephsuu_care/core/widgets/app_header_badge.dart';
 import 'package:sephsuu_care/core/widgets/app_screen_header.dart';
 import 'package:sephsuu_care/core/widgets/app_tab_switcher.dart';
+import 'package:sephsuu_care/helpers/widgets/gradient_background.dart';
 
 class VitalLessonScreen extends StatefulWidget {
   final String lessonId;
@@ -42,14 +43,7 @@ class _VitalLessonScreenState extends State<VitalLessonScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: DecoratedBox(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color(0xFFFFEEF3), Color(0xFFF7FBFF), Color(0xFFE7F8EF)],
-          ),
-        ),
+      body: GradientBackground(
         child: SafeArea(
           child: FutureBuilder<Map<String, dynamic>>(
             future: _lesson,
@@ -262,7 +256,7 @@ class _LessonContent extends StatelessWidget {
           child: AppCard(
             width: double.infinity,
             padding: const EdgeInsets.all(16),
-            borderColor: Colors.white,
+            borderColor: AppColors.light,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -360,8 +354,8 @@ class _LessonImagePlaceholder extends StatelessWidget {
       width: double.infinity,
       margin: const EdgeInsets.only(top: 8, bottom: 8),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 28),
-      backgroundColor: const Color(0xFFEAF4F9),
-      borderColor: Colors.white,
+      backgroundColor: AppColors.lightCyan,
+      borderColor: AppColors.light,
       child: Column(
         children: [
           const Icon(Icons.image_outlined, color: AppColors.gray, size: 32),
@@ -406,9 +400,9 @@ class _BulletList extends StatelessWidget {
                 width: cardWidth,
                 padding: const EdgeInsets.all(16),
                 backgroundColor: index.isEven
-                    ? const Color(0xFFF0F5FD)
-                    : const Color(0xFFF2F8F0),
-                borderColor: Colors.white,
+                    ? AppColors.lightBlue
+                    : AppColors.lightGreen,
+                borderColor: AppColors.light,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -417,7 +411,7 @@ class _BulletList extends StatelessWidget {
                       height: 32,
                       padding: EdgeInsets.zero,
                       borderRadius: 12,
-                      borderColor: Colors.white,
+                      borderColor: AppColors.light,
                       child: Center(
                         child: numbered
                             ? Text(
@@ -472,7 +466,7 @@ class _Notice extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       backgroundColor: Color.alphaBlend(
         color.withValues(alpha: 0.09),
-        Colors.white,
+        AppColors.light,
       ),
       borderRadius: 16,
       borderColor: color.withValues(alpha: 0.22),
