@@ -1,6 +1,8 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:sephsuu_care/core/constants/app_clay.dart';
+import 'package:sephsuu_care/helpers/widgets/stroked_text.dart';
 
 class ArcedText extends StatelessWidget {
   final String text;
@@ -17,6 +19,9 @@ class ArcedText extends StatelessWidget {
 
   final double rotationFactor;
   final double letterSpacing;
+  final Color borderColor;
+  final double borderWidth;
+  final List<Shadow> shadows;
 
   const ArcedText({
     super.key,
@@ -28,12 +33,16 @@ class ArcedText extends StatelessWidget {
     this.arcDegrees = 62,
     this.rotationFactor = 0.5,
     this.letterSpacing = 1.0,
-  });
+    this.borderColor = Colors.white,
+    this.borderWidth = 2,
+    this.shadows = AppClay.lightShadows,
+  }) : assert(borderWidth >= 0);
 
   @override
   Widget build(BuildContext context) {
     final List<String> characters = text.split('');
     final int lastIndex = characters.length - 1;
+    final effectiveStyle = DefaultTextStyle.of(context).style.merge(style);
 
     return SizedBox(
       width: width,
@@ -44,16 +53,22 @@ class ArcedText extends StatelessWidget {
         children: [
           for (int index = 0; index < characters.length; index++)
             Positioned(
-              left: width / 2 +
+              left:
+                  width / 2 +
                   math.sin(_letterAngle(index, lastIndex)) * radius -
                   11,
-              top: 2 +
-                  (1 - math.cos(_letterAngle(index, lastIndex))) * radius,
+              top: 2 + (1 - math.cos(_letterAngle(index, lastIndex))) * radius,
               child: Transform.rotate(
                 angle: _letterAngle(index, lastIndex) * rotationFactor,
-                child: Text(
-                  characters[index],
-                  style: style,
+                child: StrokedText(
+                  text: characters[index],
+                  fontSize: effectiveStyle.fontSize ?? 14,
+                  fontWeight: effectiveStyle.fontWeight ?? FontWeight.normal,
+                  fillColor: effectiveStyle.color ?? Colors.black,
+                  strokeColor: borderColor,
+                  strokeWidth: borderWidth,
+                  shadows: style?.shadows ?? shadows,
+                  style: effectiveStyle,
                 ),
               ),
             ),

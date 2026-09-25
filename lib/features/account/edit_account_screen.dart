@@ -151,6 +151,7 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                       ),
                     ],
                   ),
+                
                 ),
               ),
               Padding(
@@ -313,13 +314,13 @@ class _FullNameWarning extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            width: 34,
-            height: 34,
+            width: 42,
+            height: 42,
             decoration: const BoxDecoration(
               color: AppColors.pink,
-              shape: BoxShape.circle,
+              shape: BoxShape.circle
             ),
-            child: const Icon(Icons.warning, color: AppColors.light, size: 20),
+            child: const Icon(Icons.warning, color: AppColors.light, size: AppFontSize.xl),
           ),
           const SizedBox(width: AppGap.xl),
           Expanded(

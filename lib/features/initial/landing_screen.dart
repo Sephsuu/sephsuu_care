@@ -34,7 +34,7 @@ class LandingScreen extends StatelessWidget {
                 const _LandingHeader(),
                 const SizedBox(height: 24),
                 Image.asset(
-                  'assets/images/sefi.png',
+                  'assets/images/sefi_welcome.gif',
                   width: MediaQuery.sizeOf(context).width * 0.72,
                   fit: BoxFit.contain,
                 ),

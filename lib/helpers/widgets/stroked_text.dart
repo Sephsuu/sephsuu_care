@@ -13,6 +13,8 @@ class StrokedText extends StatelessWidget {
   final int? maxLines;
   final TextOverflow? overflow;
   final TextAlign? textAlign;
+  final TextStyle? style;
+  final List<Shadow>? shadows;
 
   const StrokedText({
     super.key,
@@ -27,6 +29,8 @@ class StrokedText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.textAlign,
+    this.style,
+    this.shadows,
   });
 
   @override
@@ -36,29 +40,38 @@ class StrokedText extends StatelessWidget {
       fontWeight: fontWeight,
       letterSpacing: letterSpacing,
       height: height,
-    );
+    ).merge(style);
 
     return Stack(
+      fit: StackFit.passthrough,
+      clipBehavior: Clip.none,
       children: [
-        Text(
-          text,
-          maxLines: maxLines,
-          overflow: overflow,
-          textAlign: textAlign,
-          style: defaultStyle.copyWith(
-            foreground: Paint()
-              ..style = PaintingStyle.stroke
-              ..strokeWidth = strokeWidth
-              ..color = strokeColor,
+        if (strokeWidth > 0)
+          ExcludeSemantics(
+            child: Text(
+              text,
+              maxLines: maxLines,
+              overflow: overflow,
+              textAlign: textAlign,
+              style: defaultStyle.copyWith(
+                shadows: shadows,
+                foreground: Paint()
+                  ..style = PaintingStyle.stroke
+                  ..strokeWidth = strokeWidth
+                  ..color = strokeColor,
+              ),
+            ),
           ),
-        ),
         Text(
           text,
           maxLines: maxLines,
           overflow: overflow,
           textAlign: textAlign,
           style: defaultStyle.copyWith(
-            color: fillColor,
+            color: defaultStyle.foreground == null
+                ? defaultStyle.color ?? fillColor
+                : null,
+            shadows: strokeWidth > 0 ? const [] : shadows,
           ),
         ),
       ],

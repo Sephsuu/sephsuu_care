@@ -50,10 +50,22 @@ class AuthService {
     return data;
   }
 
-  Future<void> logout() async {
-    final refresh_token = await _apiClient.getRefreshToken();
+  Future<void> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) async {
+    await _apiClient.request(
+      path: "/auth/change-password", 
+      method: RequestMethod.post,
+      withAuth: true,
+      body: { "current_password": currentPassword, "new_password": newPassword }
+    );
+  }
 
-    if (refresh_token == null || refresh_token.isEmpty) {
+  Future<void> logout() async {
+    final refreshToken = await _apiClient.getRefreshToken();
+
+    if (refreshToken == null || refreshToken.isEmpty) {
       throw StateError('No saved refresh token found.');
     }
 
@@ -62,7 +74,7 @@ class AuthService {
       method: RequestMethod.post,
       withAuth: true,
       body: {
-        "refresh_token": refresh_token
+        "refresh_token": refreshToken
       }
     );
 

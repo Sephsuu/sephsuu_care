@@ -200,7 +200,7 @@ class _WelcomeSection extends StatelessWidget {
           width: imageSize,
           height: imageSize,
           child: Image.asset(
-            'assets/images/sefi_welcome.png',
+            'assets/images/sefi_welcome.gif',
             fit: BoxFit.contain,
             alignment: Alignment.topRight,
           ),
@@ -261,69 +261,12 @@ class _WelcomeCard extends StatelessWidget {
               width: double.infinity,
               height: height,
               padding: EdgeInsets.zero,
-              borderColor: null,
-              borderRadius: 30,
-              backgroundColor: Colors.transparent,
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.pink.withValues(alpha: 0.10),
-                  blurRadius: 28,
-                  offset: const Offset(0, 14),
-                ),
-              ],
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    border: Border.all(color: AppColors.lightpink, width: 1),
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        AppColors.light.withValues(alpha: 0.58),
-                        AppColors.lightpink.withValues(alpha: 0.30),
-                      ],
-                    ),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: isWide ? 40 : 24,
-                      vertical: isWide ? 34 : 26,
-                    ),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: FractionallySizedBox(
-                        widthFactor: isWide ? 0.58 : 0.62,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // AppHeader1(
-                            //   'Welcome to Sephsuu Care',
-                            //   color: AppColors.dark,
-                            //   fontSize: isWide
-                            //       ? AppFontSize.x3l
-                            //       : AppFontSize.x2l,
-                            //   maxLines: 2,
-                            // ),
-                            // const SizedBox(height: 10),
-                            // const Text(
-                            //   'Your health, cared for anytime.',
-                            //   style: TextStyle(
-                            //     color: AppColors.gray,
-                            //     fontSize: AppFontSize.sm,
-                            //     height: 1.4,
-                            //     fontWeight: FontWeight.w700,
-                            //   ),
-                            // ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+              borderColor: AppColors.light,
+              backgroundColor: Color.alphaBlend(
+                AppColors.lightpink.withValues(alpha: 0.50),
+                AppColors.light,
               ),
+              child: Text('.'),
             ),
           ),
         ],

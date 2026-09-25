@@ -9,7 +9,6 @@ import 'package:sephsuu_care/core/widgets/app_header_1.dart';
 import 'package:sephsuu_care/core/widgets/app_card.dart';
 import 'package:sephsuu_care/core/widgets/app_header_badge.dart';
 import 'package:sephsuu_care/core/widgets/app_screen_header.dart';
-import 'package:sephsuu_care/core/widgets/app_section_loading.dart';
 import 'package:sephsuu_care/core/widgets/app_tab_switcher.dart';
 import 'package:sephsuu_care/helpers/widgets/gradient_background.dart';
 

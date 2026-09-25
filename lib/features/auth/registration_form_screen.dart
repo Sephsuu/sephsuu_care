@@ -206,9 +206,6 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
                                   label: 'Date of birth',
                                   value: _dateOfBirth,
                                   placeholder: 'Select birthday',
-                                  fillColor: AppColors.light,
-                                  borderColor: AppColors.lightpink,
-                                  focusedBorderColor: AppColors.pink,
                                   required: true,
                                   formatter: DateHelper.formatDisplayDate,
                                   onChanged: (date) {
@@ -226,8 +223,6 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
                                 required: true,
                                 activeColor: AppColors.pink,
                                 bordered: true,
-                                fillColor: AppColors.light,
-                                borderColor: AppColors.border,
                                 alignment: WrapAlignment.start,
                                 spacing: 10,
                                 runSpacing: 10,

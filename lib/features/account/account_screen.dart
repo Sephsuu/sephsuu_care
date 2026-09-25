@@ -8,12 +8,15 @@ import 'package:sephsuu_care/core/widgets/app_avatar.dart';
 import 'package:sephsuu_care/core/widgets/app_button.dart';
 import 'package:sephsuu_care/core/widgets/app_card.dart';
 import 'package:sephsuu_care/core/widgets/app_empty_state.dart';
+import 'package:sephsuu_care/core/widgets/app_header_1.dart';
 import 'package:sephsuu_care/core/widgets/app_header_badge.dart';
+import 'package:sephsuu_care/core/widgets/app_modal.dart';
 import 'package:sephsuu_care/core/widgets/app_screen_header.dart';
 import 'package:sephsuu_care/core/widgets/app_section_loading.dart';
 import 'package:sephsuu_care/core/widgets/app_snackbar.dart';
 import 'package:sephsuu_care/features/account/edit_account_screen.dart';
 import 'package:sephsuu_care/features/account/account_detail.dart';
+import 'package:sephsuu_care/features/auth/change_password_screen.dart';
 import 'package:sephsuu_care/features/auth/login_screen.dart';
 import 'package:sephsuu_care/helpers/date_helper.dart';
 import 'package:sephsuu_care/helpers/navigation_helper.dart';
@@ -23,7 +26,7 @@ import 'package:sephsuu_care/services/user_service.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
- 
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -36,33 +39,29 @@ class AccountScreen extends StatelessWidget {
                 badge: AppHeaderBadge(
                   label: 'my account',
                   icon: Icons.person_rounded,
-                )
+                ),
               ),
 
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _AccountHeader(),
-                      _PersonalInformation(),
-                      _AccountDetails(),
-                      _Logout(),
-                    ],
+                    children: [_AccountProfile(), _AccountDetails(), _Logout()],
                   ),
-                )
-              )
+                ),
+              ),
             ],
-          )
-        )
+          ),
+        ),
       ),
     );
   }
-
 }
 
 class _AccountHeader extends StatelessWidget {
-  const _AccountHeader();
+  const _AccountHeader({required this.user});
+
+  final Map<String, dynamic> user;
 
   @override
   Widget build(BuildContext context) {
@@ -81,34 +80,33 @@ class _AccountHeader extends StatelessWidget {
             borderWidth: 3,
           ),
           const SizedBox(height: 5),
-          Text(
-            'Joseph Emanuel O. Bataller',
+          AppHeader1(
+            user['full_name']?.toString() ?? '—',
+            textAlign: TextAlign.center,
             style: TextStyle(
-              fontWeight: FontWeight.w900,
-              fontSize: AppFontSize.xl
+              fontSize: AppFontSize.x2l,
             ),
           ),
           const SizedBox(height: 5),
           Text(
-            'batallerjem208@gmail.com',
-            style: TextStyle(
-              color: AppColors.gray,
-            ),
-          )
+            user['email']?.toString() ?? '—',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: AppColors.gray),
+          ),
         ],
       ),
     );
   }
 }
 
-class _PersonalInformation extends StatefulWidget {
-  const _PersonalInformation();
+class _AccountProfile extends StatefulWidget {
+  const _AccountProfile();
 
   @override
-  State<_PersonalInformation> createState() => _PeronalInformationState();
+  State<_AccountProfile> createState() => _AccountProfileState();
 }
 
-class _PeronalInformationState extends State<_PersonalInformation> {
+class _AccountProfileState extends State<_AccountProfile> {
   final _userService = UserService(ApiClient());
   late Future<Map<String, dynamic>> _userFuture;
 
@@ -128,7 +126,7 @@ class _PeronalInformationState extends State<_PersonalInformation> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Map<String, dynamic>>(
-      future: _userFuture, 
+      future: _userFuture,
       builder: ((context, snapshot) {
         final user = snapshot.data;
 
@@ -168,132 +166,143 @@ class _PeronalInformationState extends State<_PersonalInformation> {
         ];
 
         return AppSectionLoading(
-          isLoading: snapshot.connectionState != ConnectionState.done, 
+          isLoading: snapshot.connectionState != ConnectionState.done,
           onRetry: _retry,
-          errorMessage: snapshot.hasError
-            ? snapshot.error.toString()
-            : null,
+          errorMessage: snapshot.hasError ? snapshot.error.toString() : null,
           isEmpty: user == null || user.isEmpty,
           emptyWidget: const AppEmptyState(
             title: 'No profile details',
             icon: Icons.person_outline_rounded,
           ),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(22, 11, 22, 0),
-            child: Center(
-              child: AppCard(
-                width: double.infinity,
-                backgroundColor: Color.alphaBlend(
-                  AppColors.lightpink.withValues(alpha: 0.15),
-                  AppColors.light,
-                ),
-                margin: const EdgeInsets.symmetric(vertical: AppMargin.sm),
-                borderColor: AppColors.light,
-                borderWidth: 1.5,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AppHeaderBadge(
-                      label: 'Personal Information',
-                      icon: Icons.person,
-                      boxShadow: AppClay.lightShadows,
+          child: Column(
+            children: [
+              _AccountHeader(user: user ?? const {}),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(22, 11, 22, 0),
+                child: Center(
+                  child: AppCard(
+                    width: double.infinity,
+                    backgroundColor: Color.alphaBlend(
+                      AppColors.lightpink.withValues(alpha: 0.15),
+                      AppColors.light,
                     ),
-                    const SizedBox(height: 10),
-                    ...personalInfo.asMap().entries.map((entry) {
-                      final index = entry.key;
-                      final item = entry.value;
-                      final isLast = index == personalInfo.length - 1;
+                    margin: const EdgeInsets.symmetric(vertical: AppMargin.sm),
+                    borderColor: AppColors.light,
+                    borderWidth: 1.5,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AppHeaderBadge(
+                          label: 'Personal Information',
+                          icon: Icons.person,
+                          boxShadow: AppClay.lightShadows,
+                        ),
+                        const SizedBox(height: 10),
+                        ...personalInfo.asMap().entries.map((entry) {
+                          final index = entry.key;
+                          final item = entry.value;
+                          final isLast = index == personalInfo.length - 1;
 
-                      final detail = item['detail'] as AccountDetail?;
+                          final detail = item['detail'] as AccountDetail?;
 
-                      return InkWell(
-                        onTap: detail == null || user == null 
-                          ? null 
-                          : () async {
-                            final saved = await NavigationHelper.push<bool>(context, EditAccountScreen(
-                              detail: detail,
-                              initialValue: user[detail.apiKey]?.toString(),
-                            ));
-
-                            if (!mounted || saved != true) return;
-
-                            _retry();
-
-                            AppSnackBar.success(
-                              context,
-                              'Profile updated successfully.',
-                            );
-                          },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 12,
-                          ),
-
-                          decoration: BoxDecoration(
-                            border: isLast
+                          return InkWell(
+                            onTap: detail == null || user == null
                                 ? null
-                                : const Border(
-                                    bottom: BorderSide(
-                                      color: AppColors.border,
-                                      width: 1,
+                                : () async {
+                                    final saved =
+                                        await NavigationHelper.push<bool>(
+                                          context,
+                                          EditAccountScreen(
+                                            detail: detail,
+                                            initialValue: user[detail.apiKey]
+                                                ?.toString(),
+                                          ),
+                                        );
+
+                                    if (!mounted ||
+                                        !context.mounted ||
+                                        saved != true) {
+                                      return;
+                                    }
+
+                                    _retry();
+
+                                    AppSnackBar.success(
+                                      context,
+                                      'Profile updated successfully.',
+                                    );
+                                  },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+
+                              decoration: BoxDecoration(
+                                border: isLast
+                                    ? null
+                                    : const Border(
+                                        bottom: BorderSide(
+                                          color: AppColors.border,
+                                          width: 1,
+                                        ),
+                                      ),
+                              ),
+
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    item['icon'] as IconData,
+                                    color: AppColors.pink,
+                                    size: 20,
+                                  ),
+
+                                  const SizedBox(width: 14),
+
+                                  Expanded(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          item['label'] as String,
+                                          style: const TextStyle(
+                                            fontSize: AppFontSize.xs,
+                                            color: AppColors.dark,
+                                          ),
+                                        ),
+
+                                        Text(
+                                          item['value'] as String,
+                                          style: const TextStyle(
+                                            fontSize: AppFontSize.xs,
+                                            color: AppColors.gray,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                          ),
 
-                          child: Row(
-                            children: [
-                              Icon(
-                                item['icon'] as IconData,
-                                color: AppColors.pink,
-                                size: 20,
+                                  const SizedBox(width: 8),
+
+                                  Icon(
+                                    detail == null
+                                        ? Icons.lock_outline_rounded
+                                        : Icons.chevron_right_rounded,
+                                    color: AppColors.gray,
+                                    size: 20,
+                                  ),
+                                ],
                               ),
-
-                              const SizedBox(width: 14),
-
-                              Expanded(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      item['label'] as String,
-                                      style: const TextStyle(
-                                        fontSize: AppFontSize.xs,
-                                        color: AppColors.dark,
-                                      ),
-                                    ),
-
-                                    Text(
-                                      item['value'] as String,
-                                      style: const TextStyle(
-                                        fontSize: AppFontSize.xs,
-                                        color: AppColors.gray,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-
-                              const SizedBox(width: 8),
-
-                              Icon(
-                                detail == null
-                                    ? Icons.lock_outline_rounded
-                                    : Icons.chevron_right_rounded,
-                                color: AppColors.gray,
-                                size: 20,
-                              ),
-                            ],
-                          ),
-                        )
-                      );
-                    }),
-                  ],
-                )
+                            ),
+                          );
+                        }),
+                      ],
+                    ),
+                  ),
+                ),
               ),
-            ) 
-          )
+            ],
+          ),
         );
-      })
+      }),
     );
   }
 }
@@ -303,20 +312,32 @@ class _AccountDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final List<Map<String, dynamic>> _accountDetails = [
+    final List<Map<String, dynamic>> _accountDetails = [
       {
-        'icon': Icons.key_outlined,
+        'icon': Icons.key_outlined, 
         'label': 'Change Password',
+        'onTap': () async {
+          final updated = await NavigationHelper.push(
+            context,
+            const ChangePasswordScreen()
+          );
+
+          if (!context.mounted) return;
+
+          if (updated == true) {
+            AppSnackBar.success(
+              context, 
+              'Password updated successfulluy.'
+            );
+          }
+        }
       },
-      {
-        'icon': Icons.notifications_active_outlined,
-        'label': 'Notifications',
-      },
+      {'icon': Icons.notifications_active_outlined, 'label': 'Notifications'},
       {
         'icon': Icons.help_outline,
         'label': 'Date of Birth',
         'value': 'Help and Support',
-      }
+      },
     ];
 
     return Padding(
@@ -346,57 +367,58 @@ class _AccountDetails extends StatelessWidget {
                 final item = entry.value;
                 final isLast = index == _accountDetails.length - 1;
 
-                return Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 12,
-                  ),
+                return InkWell(
+                  onTap: item["onTap"] as VoidCallback?,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
 
-                  decoration: BoxDecoration(
-                    border: isLast
-                        ? null
-                        : const Border(
-                            bottom: BorderSide(
-                              color: AppColors.border,
-                              width: 1,
+                    decoration: BoxDecoration(
+                      border: isLast
+                          ? null
+                          : const Border(
+                              bottom: BorderSide(
+                                color: AppColors.border,
+                                width: 1,
+                              ),
+                            ),
+                    ),
+
+                    child: Row(
+                      children: [
+                        Icon(
+                          item['icon'] as IconData,
+                          color: AppColors.mint,
+                          size: 20,
+                        ),
+
+                        const SizedBox(width: 14),
+
+                        Expanded(
+                          child: Text(
+                            item['label'] as String,
+                            style: const TextStyle(
+                              fontSize: AppFontSize.xs,
+                              color: AppColors.dark,
                             ),
                           ),
-                  ),
-
-                  child: Row(
-                    children: [
-                      Icon(
-                        item['icon'] as IconData,
-                        color: AppColors.mint,
-                        size: 20,
-                      ),
-
-                      const SizedBox(width: 14),
-
-                      Expanded(
-                        child: Text(
-                          item['label'] as String,
-                          style: const TextStyle(
-                            fontSize: AppFontSize.xs,
-                            color: AppColors.dark,
-                          ),
                         ),
-                      ),
 
-                      const SizedBox(width: 8),
+                        const SizedBox(width: 8),
 
-                      const Icon(
-                        Icons.chevron_right_rounded,
-                        color: AppColors.gray,
-                        size: 20,
-                      ),
-                    ],
-                  ),
+                        const Icon(
+                          Icons.chevron_right_rounded,
+                          color: AppColors.gray,
+                          size: 20,
+                        ),
+                      ],
+                    ),
+                  )
                 );
               }),
             ],
-          )
+          ),
         ),
-      ) 
+      ),
     );
   }
 }
@@ -411,6 +433,55 @@ class _Logout extends StatefulWidget {
 class _LogoutState extends State<_Logout> {
   final _authService = AuthService(ApiClient());
   bool _isLoggingOut = false;
+  bool _isConfirmLogout = false;
+
+  Future<void> _confirmLogout() async {
+    if (_isConfirmLogout || _isLoggingOut) return;
+
+    _isConfirmLogout = true;
+
+
+    try {
+      final confirmed = await AppModal.show(
+        context, 
+        builder: (modalContext) => AppModal(
+          title: 'Log out?', 
+          child: Text(
+            'Are you sure you want to log out of your account?',
+          ),
+          actions: [
+            AppButton(
+              label: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.light,
+                foregroundColor: AppColors.dark
+              ),
+            ),
+            AppButton(
+              label: Text('Log out'),
+              borderColor: AppColors.light,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.red,
+                foregroundColor: AppColors.light
+              ),
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+            )
+          ],
+        )
+      );
+
+      if (!mounted || confirmed != true) return;
+
+      await _handleLogout();
+    } finally {
+      _isConfirmLogout = false;
+    }
+  }
 
   Future<void> _handleLogout() async {
     if (_isLoggingOut) return;
@@ -428,10 +499,7 @@ class _LogoutState extends State<_Logout> {
     } catch (_) {
       if (!mounted) return;
 
-      AppSnackBar.error(
-        context, 
-        'Unable to log out. Please try again.',
-      );
+      AppSnackBar.error(context, 'Unable to log out. Please try again.');
     } finally {
       if (mounted) {
         setState(() {
@@ -440,7 +508,7 @@ class _LogoutState extends State<_Logout> {
       }
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -451,10 +519,9 @@ class _LogoutState extends State<_Logout> {
           label: Text('Logout'),
           loadingLabel: Text('Logging out'),
           actionType: AppButtonActionType.delete,
-          icon: const Icon(
-            Icons.logout
-          ),
-          onPressed: _handleLogout,
+          icon: const Icon(Icons.logout),
+          onProcess: _isLoggingOut,
+          onPressed: _confirmLogout,
         ),
       ),
     );
